@@ -1,9 +1,9 @@
 class CreateOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :orders do |t|
-      t.integer :product_id, null: false
-      t.integer :user_id, null: false
-      t.integer :state, default: 0
+      t.belongs_to :products
+      t.belongs_to :users
+      t.boolean :approved
       t.integer :status, default: 0
       t.integer :payment_type, null: false, default: 0
 

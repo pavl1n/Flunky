@@ -16,40 +16,42 @@ ActiveRecord::Schema.define(version: 2021_04_02_074955) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "user_id", null: false
-    t.integer "state", default: 0
+    t.bigint "products_id"
+    t.bigint "users_id"
+    t.boolean "approved"
     t.integer "status", default: 0
     t.integer "payment_type", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["products_id"], name: "index_orders_on_products_id"
+    t.index ["users_id"], name: "index_orders_on_users_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "restaurant_id", null: false
+    t.bigint "user_id"
     t.string "name", null: false
     t.money "price", scale: 2, null: false
     t.string "category", null: false
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "restaurant_orders", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "restaurant_id", null: false
-    t.integer "state", default: 0
+    t.bigint "order_id"
+    t.bigint "users_id"
+    t.boolean "approved"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_restaurant_orders_on_order_id"
+    t.index ["users_id"], name: "index_restaurant_orders_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "user", null: false
-    t.string "city", null: false
-    t.string "email", null: false
-    t.string "password", null: false
-    t.string "login_status", default: "unregistered", null: false
+    t.string "name"
+    t.string "city"
     t.string "phone_number", null: false
     t.integer "user_type", null: false
     t.datetime "created_at", precision: 6, null: false

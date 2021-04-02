@@ -1,4 +1,5 @@
 class RestaurantOrder < ApplicationRecord
-  enum state: { approved: 0, rejected: 1 }
+  belongs_to :order
+  has_many :users
   enum status: { waiting: 0, in_progress: 1, done: 2 }
 end

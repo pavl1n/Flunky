@@ -1,9 +1,9 @@
 class CreateRestaurantOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :restaurant_orders do |t|
-      t.integer :order_id, null: false
-      t.integer :restaurant_id, null: false
-      t.integer :state, default: 0
+      t.belongs_to :order
+      t.belongs_to :users
+      t.boolean :approved
       t.integer :status, default: 0
 
       t.timestamps
