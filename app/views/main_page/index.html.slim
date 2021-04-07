@@ -1,0 +1,30 @@
+p#notice= notice
+= link_to 'Главная', ''
+= link_to 'Как заказать?', ''
+= link_to 'Новости', ''
+= link_to 'Личный кабинет', ''
+= link_to 'Связь с нами', ''
+h1 Акции
+h1 Блюда
+table
+  thead
+    tr
+      th colspan="3"
+  tbody
+    - @product.each do |product|
+      tr
+        td= product.name
+        td= product.price
+        td= product.category
+        td= product.description
+h1 Рестораны
+table
+  thead
+    tr
+      th colspan="3"
+  tbody
+    - @users.each do |user|
+      tr
+        td= user.name
+        td= user.user_type
+br/
