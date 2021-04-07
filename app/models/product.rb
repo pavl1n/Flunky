@@ -1,3 +1,4 @@
 class Product < ApplicationRecord
-  has_one :restaurant
+  belongs_to :user, -> { where user_type: :restaurant }
+  # belongs_to :restaurant_order
 end
