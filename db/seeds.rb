@@ -19,8 +19,6 @@ end
   @orders = @client.orders.create(approved: true, status: 1, payment_type: 0)
 end
 
-i = 0
 5.times do
   @orders.restaurant_orders.create(products_id: @products.id, user_id: @restaurant.id, approved: true, status: 0)
-  i += 1
 end
