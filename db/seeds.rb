@@ -20,5 +20,5 @@ end
 end
 
 5.times do
-  @orders.restaurant_orders.create(products_id: @products.id, user_id: @restaurant.id, approved: true, status: 0)
+  @orders.restaurant_orders.create(user_id: @restaurant.id, approved: true, status: 0)
 end
