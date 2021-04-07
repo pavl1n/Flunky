@@ -8,5 +8,9 @@ class CreateRestaurantOrders < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    create_table :products_restaurant_orders, id: false do |t|
+      t.belongs_to :product
+      t.belongs_to :restaurant_order
+    end
   end
 end
