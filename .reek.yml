@@ -1,0 +1,12 @@
+exclude_paths:
+    - 'bin/*'
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
+    - 'lib/*'
+    - 'log/*'
+    - 'node_modules/*'
+    - 'public/*'
+    - 'storage/*'
+    - 'test/**/*.rb'
+    - 'tmp/*'
+    - 'vendor/*'
