@@ -1,0 +1,19 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
+    - 'lib/*'
+    - 'log/*'
+    - 'node_modules/*'
+    - 'public/*'
+    - 'storage/*'
+    - 'test/**/*.rb'
+    - 'tmp/*'
+    - 'vendor/*'
+    - 'babel.config.js'
+    - 'config.ru'
+    - 'Gemfile.lock'
+    - 'Rakefile'

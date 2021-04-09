@@ -1,0 +1,7 @@
+reek:
+  enable: true
+  config_file: .reek.yml
+
+rubocop:
+  enable: true
+  config_file: .rubocop.yml
