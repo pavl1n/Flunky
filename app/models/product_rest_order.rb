@@ -1,4 +1,4 @@
 class ProductRestOrder < ApplicationRecord
-  belongs_to :products
-  belongs_to :restaurant_orders
+  belongs_to :product
+  belongs_to :restaurant_order
 end

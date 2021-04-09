@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 2021_04_08_163303) do
   end
 
   create_table "product_rest_orders", force: :cascade do |t|
-    t.bigint "products_id"
-    t.bigint "restaurant_orders_id"
+    t.bigint "product_id"
+    t.bigint "restaurant_order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["products_id"], name: "index_product_rest_orders_on_products_id"
-    t.index ["restaurant_orders_id"], name: "index_product_rest_orders_on_restaurant_orders_id"
+    t.index ["product_id"], name: "index_product_rest_orders_on_product_id"
+    t.index ["restaurant_order_id"], name: "index_product_rest_orders_on_restaurant_order_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -43,13 +43,6 @@ ActiveRecord::Schema.define(version: 2021_04_08_163303) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
-  end
-
-  create_table "products_restaurant_orders", id: false, force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "restaurant_order_id"
-    t.index ["product_id"], name: "index_products_restaurant_orders_on_product_id"
-    t.index ["restaurant_order_id"], name: "index_products_restaurant_orders_on_restaurant_order_id"
   end
 
   create_table "restaurant_orders", force: :cascade do |t|
