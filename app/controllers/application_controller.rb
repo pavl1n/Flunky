@@ -1,4 +1,5 @@
-# rubocop:disable Style/FrozenStringLiteralComment
-# rubocop:enable Style/FrozenStringLiteralComment
+# frozen_string_literal: false
+
+# ApplicationController will be updated
 class ApplicationController < ActionController::Base
 end

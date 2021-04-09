@@ -1,5 +1,4 @@
-# rubocop:disable Style/FrozenStringLiteralComment
-# rubocop:enable Style/FrozenStringLiteralComment
+# frozen_string_literal: false
 
 # This module will be updated in future
 module ApplicationHelper

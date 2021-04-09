@@ -1,5 +1,6 @@
-# rubocop:disable Style/FrozenStringLiteralComment
-# rubocop:enable Style/FrozenStringLiteralComment
+# frozen_string_literal: false
+
+# ApplicationController will be updated
 class ApplicationJob < ActiveJob::Base
   # Automatically retry jobs that encountered a deadlock
   # retry_on ActiveRecord::Deadlocked

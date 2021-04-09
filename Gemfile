@@ -1,5 +1,4 @@
-# rubocop:disable Style/FrozenStringLiteralComment
-# rubocop:enable Style/FrozenStringLiteralComment
+# frozen_string_literal: false
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
