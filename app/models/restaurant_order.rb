@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # Model which binding orders and restaurants
 class RestaurantOrder < ApplicationRecord
   belongs_to :order

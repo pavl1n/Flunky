@@ -1,7 +1,7 @@
 exclude_paths:
     - 'bin/*'
-    - 'config//*.rb'
-    - 'db//*.rb'
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
     - 'lib/*'
     - 'log/*'
     - 'node_modules/*'

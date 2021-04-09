@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 # Model for orders
 class Order < ApplicationRecord
   belongs_to :client, -> { where user_type: :client }, class_name: 'User', foreign_key: 'user_id'

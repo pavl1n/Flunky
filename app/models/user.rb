@@ -1,4 +1,6 @@
-# Moderl for users
+# frozen_string_literal: false
+
+# Model which describes users
 class User < ApplicationRecord
   has_many :products
   has_many :orders
