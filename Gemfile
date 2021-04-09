@@ -8,7 +8,9 @@ ruby '3.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 
-gem 'rubocop-rails', require: false
+gem 'rubocop', '~> 1.12', '>= 1.12.1'
+
+gem 'rubocop-rails', '~> 2.9', '>= 2.9.1', require: false
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
