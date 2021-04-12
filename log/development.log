@@ -415,3 +415,135 @@ Migrating to CreateOrderPositions (20210409133119)
   [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
   [1m[36mOrderPosition Create (0.4ms)[0m  [1m[32mINSERT INTO "order_positions" ("product_id", "restaurant_order_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["product_id", 5], ["restaurant_order_id", 1], ["created_at", "2021-04-09 13:35:56.794237"], ["updated_at", "2021-04-09 13:35:56.794237"]]
   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 1], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 12], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 12], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."user_id" = $1 ORDER BY "products"."id" DESC LIMIT $2[0m  [["user_id", 12], ["LIMIT", 1]]
+  [1m[36mOrderPosition Load (2.3ms)[0m  [1m[34mSELECT "order_positions".* FROM "order_positions" WHERE "order_positions"."product_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["product_id", 5], ["LIMIT", 11]]
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (6.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jorge Koch"], ["city", "Deckowton"], ["phone_number", "347.783.9795"], ["user_type", 0], ["created_at", "2021-04-09 15:21:37.996093"], ["updated_at", "2021-04-09 15:21:37.996093"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mirtha Renner"], ["city", "New Bryantmouth"], ["phone_number", "247.859.5656 x1300"], ["user_type", 0], ["created_at", "2021-04-09 15:21:38.009930"], ["updated_at", "2021-04-09 15:21:38.009930"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Awilda Gerlach PhD"], ["city", "Harlanshire"], ["phone_number", "403.437.8503 x9137"], ["user_type", 1], ["created_at", "2021-04-09 15:21:38.016461"], ["updated_at", "2021-04-09 15:21:38.016461"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Stephan Cronin JD"], ["city", "Jarodmouth"], ["phone_number", "1-235-018-2390"], ["user_type", 1], ["created_at", "2021-04-09 15:21:38.022338"], ["updated_at", "2021-04-09 15:21:38.022338"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kim Mayer"], ["city", "North Trudy"], ["phone_number", "(887) 223-5402"], ["user_type", 1], ["created_at", "2021-04-09 15:21:38.027617"], ["updated_at", "2021-04-09 15:21:38.027617"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tempie Bayer MD"], ["city", "West Annett"], ["phone_number", "466.307.9488"], ["user_type", 1], ["created_at", "2021-04-09 15:21:38.033873"], ["updated_at", "2021-04-09 15:21:38.033873"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Buster Paucek"], ["city", "Stiedemannhaven"], ["phone_number", "(193) 255-6863"], ["user_type", 1], ["created_at", "2021-04-09 15:21:38.052165"], ["updated_at", "2021-04-09 15:21:38.052165"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sugar Burger"], ["city", "East Petronilamouth"], ["phone_number", "587-027-3817 x00208"], ["user_type", 2], ["created_at", "2021-04-09 15:21:38.057725"], ["updated_at", "2021-04-09 15:21:38.057725"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Orange Subs"], ["city", "East Diedra"], ["phone_number", "1-725-837-0064 x949"], ["user_type", 2], ["created_at", "2021-04-09 15:21:38.063729"], ["updated_at", "2021-04-09 15:21:38.063729"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Salty Eatery"], ["city", "Harberland"], ["phone_number", "826-844-3829"], ["user_type", 2], ["created_at", "2021-04-09 15:21:38.068054"], ["updated_at", "2021-04-09 15:21:38.068054"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Blue Plate Kitchen"], ["city", "Hoppechester"], ["phone_number", "215-885-0546 x4704"], ["user_type", 2], ["created_at", "2021-04-09 15:21:38.079100"], ["updated_at", "2021-04-09 15:21:38.079100"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "city", "phone_number", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sweet Box"], ["city", "Kochborough"], ["phone_number", "1-832-664-0642 x1712"], ["user_type", 2], ["created_at", "2021-04-09 15:21:38.084039"], ["updated_at", "2021-04-09 15:21:38.084039"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_type" = $1[0m  [["user_type", 2]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 8], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 8], ["name", "Ricotta Stuffed Ravioli"], ["price", 46], ["category", "Sushi"], ["description", "Creamy mascarpone cheese and custard layered between espresso and rum soaked house-made ladyfingers, topped with Valrhona cocoa powder."], ["created_at", "2021-04-09 15:21:38.127447"], ["updated_at", "2021-04-09 15:21:38.127447"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 9], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 9], ["name", "Pappardelle alla Bolognese"], ["price", 64], ["category", "European"], ["description", "Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant."], ["created_at", "2021-04-09 15:21:38.133917"], ["updated_at", "2021-04-09 15:21:38.133917"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 10], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 10], ["name", "Katsu Curry"], ["price", 51], ["category", "European"], ["description", "Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes."], ["created_at", "2021-04-09 15:21:38.139174"], ["updated_at", "2021-04-09 15:21:38.139174"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 11], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 11], ["name", "Hummus"], ["price", 36], ["category", "Sandwiches"], ["description", "Creamy mascarpone cheese and custard layered between espresso and rum soaked house-made ladyfingers, topped with Valrhona cocoa powder."], ["created_at", "2021-04-09 15:21:38.144428"], ["updated_at", "2021-04-09 15:21:38.144428"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 12], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 12], ["name", "Teriyaki Chicken Donburi"], ["price", 19], ["category", "Korean"], ["description", "Breaded fried chicken with waffles, and a side of maple syrup."], ["created_at", "2021-04-09 15:21:38.149911"], ["updated_at", "2021-04-09 15:21:38.149911"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 20], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 20], ["name", "Chicken Parm"], ["price", 48], ["category", "American (New)"], ["description", "Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes."], ["created_at", "2021-04-09 15:21:38.154983"], ["updated_at", "2021-04-09 15:21:38.154983"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 21], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 21], ["name", "Pork Sausage Roll"], ["price", 97], ["category", "Asian"], ["description", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["created_at", "2021-04-09 15:21:38.160051"], ["updated_at", "2021-04-09 15:21:38.160051"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 22], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 22], ["name", "Ricotta Stuffed Ravioli"], ["price", 77], ["category", "Korean"], ["description", "Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes."], ["created_at", "2021-04-09 15:21:38.165412"], ["updated_at", "2021-04-09 15:21:38.165412"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 23], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 23], ["name", "Cheeseburger"], ["price", 13], ["category", "Korean"], ["description", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["created_at", "2021-04-09 15:21:38.170596"], ["updated_at", "2021-04-09 15:21:38.170596"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 24], ["user_type", 2], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("user_id", "name", "price", "category", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 24], ["name", "Salmon Nigiri"], ["price", 50], ["category", "European"], ["description", "Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant."], ["created_at", "2021-04-09 15:21:38.175755"], ["updated_at", "2021-04-09 15:21:38.175755"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_type" = $1[0m  [["user_type", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 3], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (1.0ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.202099"], ["updated_at", "2021-04-09 15:21:38.202099"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 4], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 4], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.208081"], ["updated_at", "2021-04-09 15:21:38.208081"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 5], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 5], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.213153"], ["updated_at", "2021-04-09 15:21:38.213153"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 6], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 6], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.218715"], ["updated_at", "2021-04-09 15:21:38.218715"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 7], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 7], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.224022"], ["updated_at", "2021-04-09 15:21:38.224022"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 15], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 15], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.232265"], ["updated_at", "2021-04-09 15:21:38.232265"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 16], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 16], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.238535"], ["updated_at", "2021-04-09 15:21:38.238535"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 17], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 17], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.245163"], ["updated_at", "2021-04-09 15:21:38.245163"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 18], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.8ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 18], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.251419"], ["updated_at", "2021-04-09 15:21:38.251419"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."user_type" = $2 LIMIT $3[0m  [["id", 19], ["user_type", 1], ["LIMIT", 1]]
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "approved", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 19], ["approved", true], ["status", 1], ["created_at", "2021-04-09 15:21:38.260516"], ["updated_at", "2021-04-09 15:21:38.260516"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
