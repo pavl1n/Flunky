@@ -43,6 +43,8 @@ gem 'envyable', '~> 1.2'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
 
+gem 'slim-rails', '~> 3.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
