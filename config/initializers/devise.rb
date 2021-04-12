@@ -308,7 +308,10 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+<<<<<<< HEAD
   config.authentication_keys = [:phone_number]
   config.case_insensitive_keys = [:phone_number]
   config.strip_whitespace_keys = [:phone_number]
+=======
+>>>>>>> 120ab5ff (init devise gem)
 end
