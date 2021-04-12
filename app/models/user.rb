@@ -14,6 +14,7 @@ class User < ApplicationRecord
 >>>>>>> 120ab5ff (init devise gem)
   has_many :products
   has_many :orders
+  # validates :name, :phone_number, presence: true
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
