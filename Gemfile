@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.2'
 
+gem 'slim-rails', '~> 3.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
