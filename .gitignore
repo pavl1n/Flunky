@@ -12,6 +12,7 @@
 .DS_Store
 /log
 /test/fixtures/
+/public/packs/
 
 # Used by dotenv library to load environment variables.
 # .env
