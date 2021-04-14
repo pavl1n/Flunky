@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
+gem 'bootstrap', '~> 4.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 
@@ -13,6 +14,8 @@ gem 'rubocop', '~> 1.12', '>= 1.12.1'
 gem 'rubocop-rails', '~> 2.9', '>= 2.9.1', require: false
 
 gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+
+gem 'jquery-rails', '~> 4.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'

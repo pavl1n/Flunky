@@ -1,6 +1,6 @@
 class MainPageController < ApplicationController
   def index
-    @users = User.where(user_type: 'restaurant')
+    @users = User.restaurant
     @product = Product.all
   end
 end

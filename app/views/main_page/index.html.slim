@@ -1,9 +1,5 @@
 p#notice= notice
-= link_to 'Главная', ''
-= link_to 'Как заказать?', ''
-= link_to 'Новости', ''
-= link_to 'Личный кабинет', ''
-= link_to 'Связь с нами', ''
+= render 'navigation/nav'
 h1 Акции
 h1 Блюда
 table
@@ -13,10 +9,14 @@ table
   tbody
     - @product.each do |product|
       tr
-        td= product.name
-        td= product.price
-        td= product.category
-        td= product.description
+        td
+          = product.name
+        td
+          = product.price
+        td
+          = product.category
+        td
+          = product.description
 h1 Рестораны
 table
   thead
