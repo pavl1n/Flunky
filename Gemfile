@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.2'
+gem 'phonelib', '~> 0.6.49'
+gem 'twilio-ruby', '~> 5.51'
 
 gem 'slim-rails', '~> 3.2'
 
