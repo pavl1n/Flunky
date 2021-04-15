@@ -329,6 +329,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.9, >= 2.9.1)
   sass-rails (>= 6)
   selenium-webdriver
+  slim (~> 4.1)
   slim-rails (~> 3.2)
   spring
   turbolinks (~> 5)
