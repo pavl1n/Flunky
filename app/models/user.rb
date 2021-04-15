@@ -2,12 +2,29 @@
 
 # Model which describes users
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :products
   has_many :orders
-  # validates :name, :phone_number, presence: true
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
+
+  validates :email, uniqueness: true
+  validates :phone_number, uniqueness: true
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    where(phone_number: conditions[:phone_number]).first
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
 end
