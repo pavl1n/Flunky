@@ -3,7 +3,7 @@
 # Controller for main page
 class MenuController < ApplicationController
   def index
-    @users = User.restaurant
+    @restaurants = User.restaurant
     @product = Product.all
   end
 end
