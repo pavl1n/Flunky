@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
-  get 'users/profile'
+  resources :users, only: [:index, :show, :edit, :update]
+  get 'user_registration/index'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
