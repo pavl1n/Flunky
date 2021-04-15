@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :name,
       :phone_number,
-      :user_type
+      :city
     )
   end
 end
