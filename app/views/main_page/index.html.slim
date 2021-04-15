@@ -1,24 +1,22 @@
-p#notice= notice
 = render 'navigation/nav'
-html[lang="en"]
-  body
-      section.jumbotron.text-center
-        .container
-          h1.jumbotron-heading
-            | Promotions
-          p.lead.text-muted
-            | Здесь будут акции
-          p
-            a.btn.btn-primary.my-2[href="#"]
-              | Показать больше
-      section.text-center.h1 Menu
+body
+    section.jumbotron.text-center
+      .container
+        h1.jumbotron-heading
+          | Promotions
+        p.lead.text-muted
+          | Здесь будут акции
+        p
+          a.btn.btn-primary.my-2[href="#"]
+            | Показать больше
       .album.py-5.bg-light
+        section.text-center.h1 Menu
         .container
           .row
-            - @product.each do |product|
+            - @product.slice(0, 12).each do |product|
               .col-md-4
                 .card.mb-4.box-shadow
-                  img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;    text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"     src="https://static.1000.menu/img/content-v2/05/d8/21554/klassicheskaya-shaurma_1589963797_11_max.jpg" data-holder-rendered="true"]
+                  img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;      text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"      src="https://static.1000.menu/img/content-v2/05/d8/21554/klassicheskaya-shaurma_1589963797_11_max.jpg"   data-holder-rendered="true"]
                   .card-body
                     h1.card-text
                       = product.name
@@ -35,14 +33,14 @@ html[lang="en"]
                       small.text-muted
                         = product.price
 
-      section.text-center.h1 Restaurants
       .album.py-5.bg-light
+        section.text-center.h1 Restaurants
         .container
           .row
-            - @users.each do |user|
+            - @users.slice(0, 50).each do |user|
               .col-md-4
                 .card.mb-4.box-shadow
-                  img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;    text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"     src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Restaurant_N%C3%A4sinneula.jpg" data-holder-rendered="true"]
+                  img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;      text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"      src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Restaurant_N%C3%A4sinneula.jpg"   data-holder-rendered="true"]
                   .card-body
                     h1.card-text
                       = user.name
@@ -58,10 +56,8 @@ html[lang="en"]
           a[href="#"]
             | Back to top
         p
-          | Чётко, внатуре классно!
-      script[src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"]
+      script[src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/  Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"]
       script
-      | window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
       script[src="../../assets/js/vendor/popper.min.js"]
       script[src="../../dist/js/bootstrap.min.js"]
       script[src="../../assets/js/vendor/holder.min.js"]
