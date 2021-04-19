@@ -1,8 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-
   protected
 
   def after_sign_up_path_for(_resource)
-    edit_user_path(current_user)
+    after_signup_index_path
   end
 end
