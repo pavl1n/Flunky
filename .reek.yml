@@ -10,3 +10,7 @@ exclude_paths:
     - 'test/**/*.rb'
     - 'tmp/*'
     - 'vendor/*'
+directories:
+  "app/controllers":
+    InstanceVariableAssumption:
+      enabled: false
