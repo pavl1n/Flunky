@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# Override devise after paths
 class RegistrationsController < Devise::RegistrationsController
   protected
 
