@@ -1,0 +1,16 @@
+h1
+  | Verify your phone number
+= form_tag(phone_verifications_path, method: :post) do
+  - if @response
+    - @response.errors.each do |key, message|
+      p
+        = message
+  div
+    = label_tag "phone_number", "Phone number:"
+    = telephone_field_tag "phone_number", @user.phone_number, name: 'phone_number'
+  div
+    p
+      | Verification method
+    = label_tag "method_sms", "SMS method: "
+    = radio_button_tag "method", "sms"
+  = button_tag "Verify"
