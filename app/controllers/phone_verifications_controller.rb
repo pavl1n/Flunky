@@ -13,7 +13,7 @@ class PhoneVerificationsController < ApplicationController
     if @response.ok?
       redirect_to challenge_phone_verifications_path
     else
-      render :new
+      render :_new
     end
 
   end
@@ -30,6 +30,7 @@ class PhoneVerificationsController < ApplicationController
     if @response.ok?
       session[:phone_number] = nil
       session[:country_code] = nil
+      current_user.update(confirmed: true)
       redirect_to success_phone_verifications_path
     else
       render :challenge
