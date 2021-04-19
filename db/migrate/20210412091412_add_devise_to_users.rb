@@ -8,6 +8,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at
+      t.boolean :confirmed, default: ""
     end
   end
 
