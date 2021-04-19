@@ -13,6 +13,6 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
   end
 
   def self.down
-    #raise ActiveRecord::IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 end
