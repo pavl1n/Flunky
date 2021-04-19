@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'envyable', '~> 1.2'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
+gem 'phonelib', '~> 0.6.49'
+gem 'envyable', '~> 1.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
