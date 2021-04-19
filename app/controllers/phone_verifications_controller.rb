@@ -39,5 +39,7 @@ class PhoneVerificationsController < ApplicationController
     redirect_to success_phone_verifications_path
   end
 
-  def success; end
+  def success
+    current_user.update(confirmed: true)
+  end
 end

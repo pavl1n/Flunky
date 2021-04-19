@@ -4,7 +4,7 @@
 class AfterSignupController < ApplicationController
   include Wicked::Wizard
 
-  steps :confirm_profile
+  steps :confirm_profile, :profile
 
   def show
     render_wizard
