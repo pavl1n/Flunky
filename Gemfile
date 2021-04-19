@@ -6,9 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'bootstrap', '~> 4.6'
+gem 'authy', '~> 3.0'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+gem 'wicked', '~> 1.3', '>= 1.3.4'
 
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
 
@@ -24,6 +26,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'slim-rails', '~> 3.2'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -38,8 +41,6 @@ gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.2'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
-
-gem 'slim-rails', '~> 3.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

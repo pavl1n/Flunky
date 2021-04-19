@@ -1,0 +1,11 @@
+h1
+  | Challenge
+= form_tag(verify_phone_verifications_path, method: :post) do
+  - if @response
+    - @response.errors.each do |key, message|
+      p
+        = message
+  div
+    = label_tag "code", "Enter the code you were sent:"
+    = text_field_tag "code"
+  = button_tag "Verify"
