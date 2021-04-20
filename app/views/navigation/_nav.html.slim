@@ -21,7 +21,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     - if user_signed_in?
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
-          | Exit
+          | Sign out
     - else
       span.navbar-nav
           a.nav-link[href=new_user_session_path]
