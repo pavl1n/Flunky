@@ -7,7 +7,6 @@ class AfterSignupController < ApplicationController
   steps :confirm_profile
 
   def show
-    @user = current_user
     render_wizard
   end
 end

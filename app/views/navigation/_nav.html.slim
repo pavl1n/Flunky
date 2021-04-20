@@ -1,31 +1,36 @@
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"]
+  button.navbar-toggler[type='button' data-toggle='collapse' data-target='#navbarTogglerDemo03' aria-controls='navbarTogglerDemo03' aria-expanded='false' aria-label='Toggle navigation']
     span.navbar-toggler-icon
 
-  a.navbar-brand[href="#"]
+  a.navbar-brand[href=root_path]
     | Flunky
   #navbarTogglerDemo03.collapse.navbar-collapse
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0
       li.nav-item.active
-        a.nav-link[href="#"]
+        a.nav-link[href=root_path]
           | Home
       li.nav-item
-        a.nav-link[href="#"]
+        a.nav-link[href=users_profile_path]
           | Profile
       li.nav-item
-        a.nav-link[href="#"]
+        a.nav-link[href='#']
           | News
       li.nav-item
-        a.nav-link[href="#"]
+        a.nav-link[href='#']
           | Feedback
-    span.navbar-nav
-        a.nav-link[href="#"]
-          | Log in
-    span.navbar-nav
-        a.nav-link[href="#"]
-          | Sign up
-
+    - if user_signed_in?
+      span.navbar-nav
+        a.nav-link[href=destroy_user_session_path]
+          | Exit
+    - else
+      span.navbar-nav
+          a.nav-link[href=new_user_session_path]
+            | Log in
+      span.navbar-nav
+          a.nav-link[href=new_user_registration_path]
+            | Sign up
+    end
     form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
-      button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
+      input.form-control.mr-sm-2[type='search' placeholder='Search' aria-label='Search']
+      button.btn.btn-outline-success.my-2.my-sm-0[type='submit']
         | Search
