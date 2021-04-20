@@ -34,7 +34,6 @@ class PhoneVerificationsController < ApplicationController
 
   def redirect
     session[:phone_number] = nil
-    session[:country_code] = nil
     current_user.update(confirmed: true)
     redirect_to success_phone_verifications_path
   end
