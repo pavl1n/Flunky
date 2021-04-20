@@ -1,5 +1,7 @@
 # frozen_string_literal: false
 
+require_relative '../lib/constants'
+
 # Sending sms to verify user
 class PhoneVerificationsController < ApplicationController
   def new; end
@@ -9,7 +11,7 @@ class PhoneVerificationsController < ApplicationController
     session[:country_code] = params[:country_code]
     @response = Authy::PhoneVerification.start(
       via: params[:method],
-      country_code: '+375',
+      country_code: PHONE_CODE,
       phone_number: session[:phone_number]
     )
     redirect_to challenge_phone_verifications_path if @response.ok?
@@ -20,7 +22,7 @@ class PhoneVerificationsController < ApplicationController
   def verify
     @response = Authy::PhoneVerification.check(
       verification_code: params[:code],
-      country_code: '+375',
+      country_code: PHONE_CODE,
       phone_number: session[:phone_number]
     )
     if @response.ok?
