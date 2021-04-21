@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
-    where(phone_number: conditions[:phone_number]).first || where(email: conditions[:email]).first
+    where(phone_number: conditions[:phone_number]).first || where(email: conditions[:email]).first || where(reset_password_token: conditions[:reset_password_token]).first
   end
 
   def email_required?
