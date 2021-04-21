@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# Handling errors on pages
 class ErrorsController < ApplicationController
   protect_from_forgery with: :null_session
 

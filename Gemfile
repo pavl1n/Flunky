@@ -10,6 +10,7 @@ gem 'authy', '~> 3.0'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+gem 'rails_helper', '~> 2.2', '>= 2.2.2'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
@@ -27,6 +28,7 @@ gem 'pry', '~> 0.14.1'
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.2'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
