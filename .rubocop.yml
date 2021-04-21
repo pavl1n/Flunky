@@ -18,3 +18,4 @@ AllCops:
     - 'config.ru'
     - 'Gemfile.lock'
     - 'Rakefile'
+    - 'spec/**/*.rb'
