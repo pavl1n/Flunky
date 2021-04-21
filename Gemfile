@@ -10,6 +10,7 @@ gem 'bootstrap', '~> 4.6'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
+gem 'rails_helper', '~> 2.2', '>= 2.2.2'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
@@ -42,9 +43,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'envyable', '~> 1.2'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
-gem 'slim', '~> 4.1'
-gem 'slim-rails', '~> 3.2'
-gem 'rails_helper', '~> 2.2', '>= 2.2.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
