@@ -14,18 +14,18 @@ class User < ApplicationRecord
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
-    where(phone_number: conditions[:phone_number]).first
+    where(phone_number: conditions[:phone_number]).first || where(email: conditions[:email]).first
   end
 
   def email_required?
     false
   end
-#
-  # def email_changed?
-  #   false
-  # end
-#
-  # def will_save_change_to_email?
-  #   false
-  # end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
 end
