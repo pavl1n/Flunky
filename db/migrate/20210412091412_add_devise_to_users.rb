@@ -10,6 +10,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       t.boolean :confirmed, default: false
     end
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
   end
 
   def self.down
