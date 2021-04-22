@@ -10,7 +10,6 @@ gem 'bootstrap', '~> 4.6'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
-gem 'rails_helper', '~> 2.2', '>= 2.2.2'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
