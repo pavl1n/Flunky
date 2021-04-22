@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
 # Override devise after paths
-class RegistrationsController < Devise::RegistrationsController
+class ClientRegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(_resource)
