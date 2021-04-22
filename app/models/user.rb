@@ -10,7 +10,8 @@ class User < ApplicationRecord
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
   validates :email, uniqueness: true
-  validates :phone_number, uniqueness: true, phone: true
+  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
+
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
