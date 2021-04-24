@@ -19,7 +19,7 @@ gem 'rubocop-rails', '~> 2.9', '>= 2.9.1', require: false
 gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 
 gem 'jquery-rails', '~> 4.4'
-
+gem 'omniauth-google-oauth2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 gem 'pry', '~> 0.14.1'
