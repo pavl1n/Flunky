@@ -3,7 +3,7 @@
 # Model which describes users
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]
 
   has_many :products
   has_many :orders
