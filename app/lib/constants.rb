@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-PHONE_CODE = '+375'
+module Constant
+  PHONE_CODE = '+375'
+end

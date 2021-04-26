@@ -4,6 +4,7 @@ require_relative '../lib/constants'
 
 # Sending sms to verify user
 class PhoneVerificationsController < ApplicationController
+  include Constant
   def new; end
 
   def create
