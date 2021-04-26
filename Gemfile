@@ -4,10 +4,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
+gem 'authy', '~> 3.0'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 
 gem 'authy', '~> 3.0'
 gem 'bootstrap', '~> 4.6'
-gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
@@ -40,6 +41,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'envyable', '~> 1.2'
+gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
 
@@ -76,3 +78,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-twitter', '~> 1.4'
