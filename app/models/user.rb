@@ -3,16 +3,21 @@
 # Model which describes users
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_many :products
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
-  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
+  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }, allow_nil: true
 
-  def self.from_google(email:, name:)
-    create_with(name: name).find_or_create_by!(email: email)
+  def self.from_omniauth(auth)
+    where(email: auth.info.email).first_or_create do |user|
+      user.email = auth.info.email
+      user.phone_number = nil
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+    end
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
