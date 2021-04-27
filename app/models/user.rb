@@ -14,9 +14,11 @@ class User < ApplicationRecord
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if conditions[:phone_number]
-      where(phone_number: conditions[:phone_number]).first
+      find_by_phone_number(conditions[:phone_number])
     elsif conditions[:email]
-      where(email: conditions[:email]).first || where(reset_password_token: conditions[:reset_password_token]).first
+      find_by_email(conditions[:email])
+    elsif conditions.key?(:reset_password_token)
+      find_by_reset_password_token(conditions[:reset_password_token])
     end
   end
 
