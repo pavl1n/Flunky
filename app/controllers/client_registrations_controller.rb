@@ -2,7 +2,6 @@
 
 # Override devise after paths
 class ClientRegistrationsController < Devise::RegistrationsController
-
   protected
 
   def sign_up_params
