@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_061219) do
     t.string "name"
     t.string "city"
     t.string "phone_number"
-    t.integer "user_type"
+    t.integer "user_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
