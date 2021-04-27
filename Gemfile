@@ -5,8 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-gem 'bootstrap', '~> 4.6'
 gem 'authy', '~> 3.0'
+gem 'bootstrap', '~> 4.6'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
@@ -39,11 +39,6 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'slim', '~> 4.1'
-gem 'slim-rails', '~> 3.2'
-gem 'phonelib', '~> 0.6.49'
-gem 'twilio-ruby', '~> 5.51'
-gem 'phonelib', '~> 0.6.49'
 gem 'envyable', '~> 1.2'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
