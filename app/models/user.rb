@@ -7,10 +7,11 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :orders
-  validates :name, presence: true, on: :update
-  validates :phone_number, presence: true, on: :update
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
+  validates :name, presence: true, on: :update
+  validates :city, presence: true, on: :update
+  validates_uniqueness_of :email, presence: true, on: :update
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
 
   def self.find_first_by_auth_conditions(warden_conditions)
