@@ -7,7 +7,6 @@ ruby '3.0.0'
 gem 'authy', '~> 3.0'
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 
-gem 'authy', '~> 3.0'
 gem 'bootstrap', '~> 4.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'

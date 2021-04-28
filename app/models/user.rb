@@ -15,6 +15,7 @@ class User < ApplicationRecord
     where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
       user.phone_number = nil
+      user.user_type = 1
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
     end
