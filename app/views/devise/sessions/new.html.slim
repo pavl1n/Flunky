@@ -7,7 +7,7 @@ body
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = alert
         .field
-          = f.label :phone_number
+          = f.label t 'devise.phone_number'
           br
           = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
         .field

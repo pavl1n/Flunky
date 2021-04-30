@@ -1,12 +1,12 @@
 h1
-  | Verify your phone number
+  = t 'phone_verification.verify'
 = form_tag(phone_verifications_path, method: :post) do
   - if @response
     - @response.errors.each do |key, message|
       p
         = message
   div
-    = label_tag 'phone_number', 'Phone number:'
+    = label_tag 'phone_number', (t 'devise.phone_number')
     = telephone_field_tag 'phone_number', current_user.phone_number, name: 'phone_number'
   div
   = button_tag 'Verify'

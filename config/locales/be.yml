@@ -17,3 +17,5 @@ be:
     search: 'Пошук'
   devise:
     phone_number: 'Мабiльны номер'
+  phone_verification:
+    verify: 'Пацвердзiце свой мабiльны нумар'
