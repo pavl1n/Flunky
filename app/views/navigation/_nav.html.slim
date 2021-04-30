@@ -18,6 +18,12 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link[href='#']
           = t 'navigation.feedback'
+      li.nav-item
+        a.nav-link[href="#{root_path(locale: :en)}"]
+          | English
+      li.nav-item
+        a.nav-link[href="#{root_path(locale: :be)}"]
+          | Belarussian
     - if user_signed_in?
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
