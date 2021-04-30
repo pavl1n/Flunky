@@ -8,29 +8,29 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0
       li.nav-item.active
         a.nav-link[href=root_path]
-          | Home
+          = t 'navigation.home'
       li.nav-item
         a.nav-link[href=users_profile_path]
-          | Profile
+          = t 'navigation.profile'
       li.nav-item
         a.nav-link[href='#']
-          | News
+          = t 'navigation.news'
       li.nav-item
         a.nav-link[href='#']
-          | Feedback
+          = t 'navigation.feedback'
     - if user_signed_in?
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
-          | Sign out
+          = t 'navigation.sign_out'
     - else
       span.navbar-nav
           a.nav-link[href=new_user_session_path]
-            | Log in
+            = t 'navigation.log_in'
       span.navbar-nav
           a.nav-link[href=new_user_registration_path]
-            | Sign up
+            = t 'navigation.sign_up'
     end
     form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2[type='search' placeholder='Search' aria-label='Search']
+      input.form-control.mr-sm-2[type='search' placeholder="#{t 'navigation.search'}" aria-label='Search']
       button.btn.btn-outline-success.my-2.my-sm-0[type='submit']
-        | Search
+        = t 'navigation.search'

@@ -1,0 +1,17 @@
+be:
+  menu_page:
+    promotions: 'Акцыi'
+    show_more: 'Паказаць больш'
+    menu: 'Стравы'
+    view: 'Прагледзець'
+    add_to_check: 'Дадаць у чэк'
+    restaurants: 'Рэстараны'
+  navigation:
+    home: 'Галоўная'
+    profile: 'Мая старонка'
+    news: 'Навiны'
+    feedback: 'Зваротная сувязь'
+    sign_out: 'Выйсцi'
+    log_in: 'Увайсцi'
+    sign_up: 'Зарэгістравацца'
+    search: 'Пошук'

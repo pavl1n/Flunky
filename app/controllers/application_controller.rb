@@ -2,9 +2,14 @@
 
 # This module smells of :reek:IrresponsibleModule
 class ApplicationController < ActionController::Base
+  before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+
+  def set_locale
+    I18n.locale = :be
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
