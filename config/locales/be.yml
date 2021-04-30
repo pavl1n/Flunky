@@ -15,3 +15,5 @@ be:
     log_in: 'Увайсцi'
     sign_up: 'Зарэгістравацца'
     search: 'Пошук'
+  devise:
+    phone_number: 'Мабiльны номер'
