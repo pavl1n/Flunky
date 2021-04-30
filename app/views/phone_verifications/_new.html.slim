@@ -6,7 +6,7 @@ h1
       p
         = message
   div
-    = label_tag 'phone_number', 'Phone number:'
-    = telephone_field_tag 'phone_number', current_user.phone_number, name: 'phone_number'
+    = label_tag :phone_number, 'Phone number:'
+    = telephone_field_tag :phone_number, current_user.phone_number, name: 'phone_number'
   div
   = button_tag 'Verify'
