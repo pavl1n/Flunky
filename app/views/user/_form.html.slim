@@ -1,0 +1,37 @@
+= render 'navigation/nav'
+.container.p-0[style="height: 100vh;"]
+  h1.h3.mb-3
+    | Settings
+  .row
+    .col-md-5.col-xl-4
+      = render 'user/panel'
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          .card
+            .card-header
+              .card-actions.float-right
+              h5.card-title.mb-0
+                | Profile information change
+          = form_with(model: current_user) do |f|
+            - if current_user.errors.any?
+              ul
+                - current_user.errors.each do |error|
+                  li
+                    = error.full_message
+            .field
+              = f.label :name
+              br
+              = f.text_field :name, autofocus: true
+            .field
+              = f.label :email
+              br
+              = f.email_field :email, autofocus: true, autocomplete: 'email'
+            .field
+              = f.label :city
+              br
+              = f.text_field :city, autofocus: true, autocomplete: 'city'
+            .actions
+            br
+              = f.submit
+= render 'footer/footer'

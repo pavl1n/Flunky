@@ -12,13 +12,7 @@ class ClientRegistrationsController < Devise::RegistrationsController
     after_signup_index_path
   end
 
-  def update_resource(resource, params)
-    return super if params['password']&.present?
-
-    resource.update_without_password(params.except('current_password'))
-  end
-
   def after_update_path_for(_resource)
-    user_registration_profile_path
+    user_profile_path
   end
 end
