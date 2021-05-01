@@ -35,11 +35,10 @@ class PhoneVerificationsController < ApplicationController
 
   def redirect
     session[:phone_number] = nil
-    current_user.update(confirmed: true)
     redirect_to success_phone_verifications_path
   end
 
   def success
-    current_user.update(confirmed: true)
+    current_user.update_attribute(:confirmed, true)
   end
 end
