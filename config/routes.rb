@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
-  resources :user, only: [:edit, :update]
+  resources :user, only: %i[edit update]
   get 'user/profile'
 end

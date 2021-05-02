@@ -1,3 +1,3 @@
 setTimeout(function(){
-  window.location.href = 'http://localhost:3000/users/edit_profile';
+  window.location.href = 'http://localhost:3000/user/profile';
 }, 3000);
