@@ -4,7 +4,10 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
 
-  def profile; end
+  def profile
+    (return unless current_user.name.nil? || current_user.email.nil? || current_user.city.nil?)
+    redirect_to edit_user_path(current_user)
+  end
 
   def edit
     @user = current_user
