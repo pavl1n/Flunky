@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
+
+  def all_contact_info_filled?
+    name && email && city
+  end
 end

@@ -5,7 +5,7 @@ class UserController < ApplicationController
   before_action :authenticate_user!
 
   def profile
-    return unless all_contact_info_filled?
+    return if current_user.all_contact_info_filled?
 
     redirect_to edit_user_path(current_user)
   end
@@ -25,10 +25,6 @@ class UserController < ApplicationController
   end
 
   protected
-
-  def all_contact_info_filled?
-    current_user.name.nil? || current_user.email.nil? || current_user.city.nil?
-  end
 
   def user_params
     params.require(:user).permit(
