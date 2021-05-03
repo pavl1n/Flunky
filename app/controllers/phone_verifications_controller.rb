@@ -20,25 +20,20 @@ class PhoneVerificationsController < ApplicationController
 
   def challenge; end
 
-  def verify
+  def verify # rubocop:disable Metrics/MethodLength
     @response = Authy::PhoneVerification.check(
       verification_code: params[:code],
       country_code: PHONE_CODE,
       phone_number: session[:phone_number]
     )
     if @response.ok?
-      redirect
+      session[:phone_number] = nil
+      current_user.update_attribute(:confirmed, true)
+      redirect_to success_phone_verifications_path
     else
       render :challenge
     end
   end
 
-  def redirect
-    session[:phone_number] = nil
-    redirect_to success_phone_verifications_path
-  end
-
-  def success
-    current_user.update_attribute(:confirmed, true)
-  end
+  def success; end
 end
