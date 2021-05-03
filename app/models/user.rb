@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_validation :normalize_phone
   has_many :products
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
@@ -39,5 +40,11 @@ class User < ApplicationRecord
 
   def all_contact_info_filled?
     name && email && city
+  end
+
+  private
+
+  def normalize_phone
+    self.phone_number = Phonelib.parse(phone_number).full_e164.presence
   end
 end
