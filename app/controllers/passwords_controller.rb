@@ -2,7 +2,6 @@
 
 # Overriding redirect after password reset
 class PasswordsController < Devise::PasswordsController
-  # rubocop:disable Metrics/AbcSize
   def update
     self.resource = resource_class.reset_password_by_token(resource_params)
     yield resource if block_given?
@@ -15,7 +14,6 @@ class PasswordsController < Devise::PasswordsController
       respond_with resource
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   protected
 
