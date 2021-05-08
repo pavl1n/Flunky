@@ -2,18 +2,31 @@
 
 # Model which describes users
 class User < ApplicationRecord
+  cattr_accessor :form_steps do
+    %w[confirm_profile personal_information]
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  attr_accessor :form_step
 
   before_validation :normalize_phone
   has_many :products
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
-  validates :name, presence: true, on: :update
-  validates :email, uniqueness: true, presence: true, on: :update
-  validates :city, presence: true, on: :update
+  with_options if: -> { required_for_step?(:personal_information) } do |step|
+    step.validates :name, :email, :city, presence: true
+    step.validates :email, uniqueness: true
+  end
+
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
+
+  def required_for_step?(step)
+    return true if form_step.nil?
+    return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
