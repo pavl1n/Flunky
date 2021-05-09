@@ -9,26 +9,21 @@ class UserValidator < ActiveModel::Validator
 
   private
 
-  def validate_stage0
-    @record.errors.add(:phone_number) if Phonelib.invalid_for_country? @record.phone_number, :by
-  end
+  def validate_stage0; end
 
   def validate_stage1
-    validate_stage0
-    validate_present(:name)
+    existing = User.find_by_email(@record.email)
+    @record.errors.add(:email, "#{@record.email} already taken") if existing.nil? || existing.id == @record.id
   end
 
   def validate_stage2
     validate_stage1
+    validate_present(:name)
     validate_present(:city)
-  end
-
-  def validate_stage3
-    validate_stage2
     validate_present(:email)
   end
 
   def validate_present(attr)
-    @record.errors.add(attr, "Can't be blank") unless @record.__send__(attr).present?
+    @record.errors.add(attr, 'can\'t be blank') unless @record.__send__(attr).present?
   end
 end

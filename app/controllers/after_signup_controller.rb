@@ -9,7 +9,7 @@ class AfterSignupController < ApplicationController
     render_wizard
     case step
     when :confirm_profile
-      current_user.update_attribute(:create_stage, 3)
+      current_user.update_attribute(:create_stage, 2)
     end
   end
 end
