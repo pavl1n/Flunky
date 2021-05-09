@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/constants'
-
 # Sending sms to verify user
 class PhoneVerificationsController < ApplicationController
   include Constants
@@ -27,7 +25,7 @@ class PhoneVerificationsController < ApplicationController
       phone_number: session[:phone_number]
     )
     if @response.ok?
-      current_user.update_attribute(:confirmed, true) && (redirect_to success_phone_verifications_path)
+      redirect_to success_phone_verifications_path if current_user.update_attribute(:confirmed, true)
     else
       render :challenge
     end
