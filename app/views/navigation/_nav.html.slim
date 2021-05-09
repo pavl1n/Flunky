@@ -20,6 +20,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           | Feedback
     - if user_signed_in?
       span.navbar-nav
+          a.nav-link[href=users_profile_path]
+            = current_user.name
+      span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
           | Sign out
     - else

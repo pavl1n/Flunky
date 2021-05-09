@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'menu#index'
-  devise_for :users, controllers: { registrations: 'client_registrations', passwords: 'passwords' }
+  devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords' }
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
   resources :phone_verifications, only: %i[new create] do |p|

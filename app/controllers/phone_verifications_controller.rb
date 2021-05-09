@@ -7,6 +7,7 @@ class PhoneVerificationsController < ApplicationController
 
   def create
     session[:phone_number] = params[:phone_number]
+    current_user.update(phone_number: params[:phone_number]) if current_user.phone_number.nil?
     session[:country_code] = params[:country_code]
     @response = Authy::PhoneVerification.start(
       via: params[:method],

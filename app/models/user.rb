@@ -3,7 +3,7 @@
 # Model which describes users
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]
 
   validates_with UserValidator
   before_validation :normalize_phone
@@ -12,6 +12,16 @@ class User < ApplicationRecord
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
   validates :phone_number, uniqueness: true
+
+  def self.from_omniauth(auth)
+    where(email: auth.info.email).first_or_create do |user|
+      user.email = auth.info.email
+      user.phone_number = nil
+      user.user_type = 1
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+    end
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
