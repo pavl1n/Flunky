@@ -5,7 +5,7 @@ module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
       @user = User.from_omniauth(request.env['omniauth.auth'])
-      if @user.persisted?
+      if @user.save(validate: false)
         sign_and_redirect
         set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
       else
@@ -17,7 +17,7 @@ module Users
 
     def twitter
       @user = User.from_omniauth(request.env['omniauth.auth'])
-      if @user.persisted?
+      if @user.save(validate: false)
         sign_and_redirect
         set_flash_message(:notice, :success, kind: 'Twitter') if is_navigational_format?
       else
@@ -35,7 +35,7 @@ module Users
 
     def sign_and_redirect
       sign_in(@user)
-      redirect_to current_user.phone_number.nil? ? after_signup_index_path : root_path
+      redirect_to current_user.phone_number.nil? ? edit_user_path(current_user) : root_path
     end
   end
 end

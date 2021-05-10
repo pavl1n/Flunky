@@ -11,13 +11,13 @@ class User < ApplicationRecord
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
-  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }, allow_nil: true
+  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
       user.phone_number = nil
       user.user_type = 1
-      user.create_stage = 1
+      user.create_stage = 0
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
     end

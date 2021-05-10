@@ -19,18 +19,25 @@
                 - current_user.errors.each do |error|
                   li
                     = error.full_message
-            .field
-              = f.label :name
-              br
-              = f.text_field :name, autofocus: true
-            .field
-              = f.label :email
-              br
-              = f.email_field :email, autofocus: true, autocomplete: 'email'
-            .field
-              = f.label :city
-              br
-              = f.text_field :city, autofocus: true, autocomplete: 'city'
+            - if current_user.phone_number.nil? || current_user.errors.any?
+              h1 Enter your phone number
+              .field
+                = f.label :phone_number
+                br
+                = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
+            - else
+              .field
+                = f.label :name
+                br
+                = f.text_field :name, autofocus: true
+              .field
+                = f.label :email
+                br
+                = f.email_field :email, autofocus: true, autocomplete: 'email'
+              .field
+                = f.label :city
+                br
+                = f.text_field :city, autofocus: true, autocomplete: 'city'
             .actions
             br
               = f.submit

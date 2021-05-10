@@ -5,7 +5,7 @@ class ClientRegistrationsController < Devise::RegistrationsController
   protected
 
   def sign_up_params
-    super.merge({ user_type: 1, create_stage: 0 })
+    super.merge(user_type: 1, create_stage: 0)
   end
 
   def after_sign_up_path_for(_resource)
