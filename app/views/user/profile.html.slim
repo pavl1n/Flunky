@@ -1,0 +1,44 @@
+= render 'navigation/nav'
+body
+.container.p-0[style="height: 100vh;"]
+  h1.h3.mb-3
+    | Settings
+  .row
+    .col-md-5.col-xl-4
+      = render 'user/panel'
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          .card
+            .card-header
+              .card-actions.float-right
+              h5.card-title.mb-0
+                | Public info
+            .card-body
+              form
+                .row
+                  .col-md-8
+                    .form-group
+                      label
+                        | Name:
+                      = current_user.name
+                    .form-group
+                      label
+                        | Email:
+                      = current_user.email
+                    .form-group
+                      label
+                        | City:
+                      = current_user.city
+                    .form-group
+                      label
+                        | Contact phone:
+                      = current_user.phone_number
+                    .form-group
+                      label
+                        | Account status:
+                      - if current_user.confirmed
+                          | Verified
+                      - else
+                          | Not verified
+= render 'footer/footer'

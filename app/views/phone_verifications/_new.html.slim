@@ -1,12 +1,19 @@
-h1
-  | Verify your phone number
-= form_tag(phone_verifications_path, method: :post) do
-  - if @response
-    - @response.errors.each do |key, message|
-      p
-        = message
-  div
-    = label_tag :phone_number, 'Phone number:'
-    = telephone_field_tag :phone_number, current_user.phone_number, name: 'phone_number'
-  div
-  = button_tag 'Verify'
+= render 'navigation/nav'
+body
+  section.jumbotron.text-center[style="margin: 0; height: 100vh;"]
+    - if current_user.confirmed == true
+      h1
+        | Your account already activated
+    - else
+      h1
+        | Verify your phone number
+      = form_tag(phone_verifications_path, method: :post) do
+        - if @response
+          - @response.errors.each do |key, message|
+            p
+              = message
+        div
+          = label_tag 'phone_number', 'Phone number:'
+          = telephone_field_tag 'phone_number', current_user.phone_number, name: 'phone_number'
+        = button_tag 'Verify'
+= render 'footer/footer'

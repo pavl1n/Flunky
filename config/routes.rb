@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'menu#index'
-  devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords' }
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
-  resources :phone_verifications, only: [:new, :create] do |p|
+  resources :phone_verifications, only: %i[new create] do
     collection do
       get 'challenge'
       post 'verify'
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
-  get 'users/profile'
+  resources :user, only: %i[edit update]
+  get 'user/profile'
 end
