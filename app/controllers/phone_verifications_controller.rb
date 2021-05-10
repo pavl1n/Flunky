@@ -26,7 +26,7 @@ class PhoneVerificationsController < ApplicationController
       phone_number: session[:phone_number]
     )
     if @response.ok?
-      redirect_to success_phone_verifications_path if current_user.update_attribute(:confirmed, true)
+      redirect_to success_phone_verifications_path if current_user.update(confirmed: true)
     else
       render :challenge
     end
