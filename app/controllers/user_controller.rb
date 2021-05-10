@@ -12,13 +12,11 @@ class UserController < ApplicationController
     redirect_to edit_user_path(current_user)
   end
 
-  def edit
-    @user = current_user
-  end
+  def edit; end
 
   def update
     respond_to do |format|
-      if current_user.update(user_params)
+      if current_user.update(user_params.merge(create_stage: 1))
         format.html { current_user.confirmed ? (redirect_to user_profile_path) : (redirect_to after_signup_index_path) }
       else
         format.html { render action: :edit }

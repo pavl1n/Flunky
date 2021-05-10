@@ -7,9 +7,5 @@ class AfterSignupController < ApplicationController
 
   def show
     render_wizard
-    case step
-    when :confirm_profile
-      current_user.update_attribute(:create_stage, 1)
-    end
   end
 end

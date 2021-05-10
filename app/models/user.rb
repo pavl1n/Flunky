@@ -2,17 +2,18 @@
 
 # Model which describes users
 class User < ApplicationRecord
+  before_validation :normalize_phone
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]
 
   validates_with UserValidator
-  before_validation :normalize_phone
+  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
+  validates_uniqueness_of :email, if: :email
+
   has_many :products
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
-  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
-  validates_uniqueness_of :email
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
       user.email = auth.info.email
