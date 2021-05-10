@@ -12,12 +12,6 @@ class UserValidator < ActiveModel::Validator
   def validate_stage0; end
 
   def validate_stage1
-    existing = User.find_by_email(@record.email)
-    @record.errors.add(:email, "#{@record.email} already taken") unless existing.nil? || existing.id == @record.id
-  end
-
-  def validate_stage2
-    validate_stage1
     validate_present(:name)
     validate_present(:city)
     validate_present(:email)

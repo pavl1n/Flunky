@@ -19,7 +19,7 @@
                 - current_user.errors.each do |error|
                   li
                     = error.full_message
-            - if current_user.phone_number.nil? || current_user.errors.any?
+            - if current_user.phone_number.nil? || !(current_user.errors[:phone_number].blank?)
               h1 Enter your phone number
               .field
                 = f.label :phone_number
