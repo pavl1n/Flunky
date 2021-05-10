@@ -9,7 +9,9 @@ class UserValidator < ActiveModel::Validator
 
   private
 
-  def validate_stage0; end
+  def validate_stage0
+    @record.phone_number || @record.email
+  end
 
   def validate_stage1
     validate_present(:name)
