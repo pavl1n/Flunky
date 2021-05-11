@@ -16,6 +16,7 @@ class UserController < ApplicationController
 
   def update
     respond_to do |format|
+      current_user.update(user_params) if user_params[:phone_number]
       if current_user.update(user_params.merge(create_stage: 1))
         format.html { current_user.confirmed ? (redirect_to user_profile_path) : (redirect_to after_signup_index_path) }
       else
