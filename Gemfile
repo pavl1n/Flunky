@@ -4,22 +4,20 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-
 gem 'authy', '~> 3.0'
 gem 'bootstrap', '~> 4.6'
-gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
-gem 'wicked', '~> 1.3', '>= 1.3.4'
-
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
+gem 'wicked', '~> 1.3', '>= 1.3.4'
 
 gem 'rubocop-rails', '~> 2.9', '>= 2.9.1', require: false
 
 gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 
 gem 'jquery-rails', '~> 4.4'
-
+gem 'omniauth-google-oauth2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 gem 'pry', '~> 0.14.1'
@@ -40,6 +38,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'envyable', '~> 1.2'
+gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'phonelib', '~> 0.6.49'
 gem 'twilio-ruby', '~> 5.51'
 
@@ -78,3 +77,6 @@ end
 gem 'devise-i18n', '~> 1.9', '>= 1.9.3'
 gem 'i18n', '~> 1.8', '>= 1.8.10'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-twitter', '~> 1.4'

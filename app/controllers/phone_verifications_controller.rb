@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/constants'
-
 # Sending sms to verify user
 class PhoneVerificationsController < ApplicationController
   include Constants
@@ -9,6 +7,7 @@ class PhoneVerificationsController < ApplicationController
 
   def create
     session[:phone_number] = params[:phone_number]
+    current_user.update(phone_number: params[:phone_number]) if current_user.phone_number.nil?
     session[:country_code] = params[:country_code]
     @response = Authy::PhoneVerification.start(
       via: params[:method],
@@ -27,16 +26,10 @@ class PhoneVerificationsController < ApplicationController
       phone_number: session[:phone_number]
     )
     if @response.ok?
-      redirect
+      redirect_to success_phone_verifications_path if current_user.update(confirmed: true)
     else
       render :challenge
     end
-  end
-
-  def redirect
-    session[:phone_number] = nil
-    current_user.update(confirmed: true)
-    redirect_to success_phone_verifications_path
   end
 
   def success; end

@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link[href=root_path]
           = t 'navigation.home'
       li.nav-item
-        a.nav-link[href=users_profile_path]
+        a.nav-link[href=user_profile_path]
           = t 'navigation.profile'
       li.nav-item
         a.nav-link[href='#']
@@ -25,6 +25,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link[href="#{root_path(locale: :be)}"]
           | Belarussian
     - if user_signed_in?
+      span.navbar-nav
+          a.nav-link[href=user_profile_path]
+            = current_user.name
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
           = t 'navigation.sign_out'
