@@ -12,7 +12,7 @@
             .card-header
               .card-actions.float-right
               h5.card-title.mb-0
-                | Password change
+                = t 'profile.password_change'
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
                 = render 'devise/shared/error_messages', resource: resource
                 .field
@@ -23,7 +23,8 @@
                     br
                     em
                       = @minimum_password_length
-                      |  characters minimum
+                      = ' '
+                      = t 'devise.password_length'
                 .field
                   = f.label :password_confirmation
                   br
@@ -31,7 +32,7 @@
                 .field
                   = f.label :current_password
                   i
-                    | (we need your current password to confirm password changes)
+                    = t 'profile.ask_password'
                   br
                   = f.password_field :current_password, autocomplete: 'current-password'
                 .actions

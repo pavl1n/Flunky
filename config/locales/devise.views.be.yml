@@ -2,6 +2,7 @@ be:
   activerecord:
     attributes:
       user:
+        phone_number: 'Мабільны нумар:'
         confirmation_sent_at:
         confirmation_token:
         confirmed_at:
@@ -16,7 +17,7 @@ be:
         last_sign_in_ip:
         locked_at:
         password: Пароль
-        password_confirmation: пацвердзіце пароль
+        password_confirmation: Пацвердзіце пароль
         remember_created_at:
         remember_me: Запомніць мяне
         reset_password_sent_at:
@@ -27,6 +28,17 @@ be:
         updated_at:
     models:
       user: Карыстальнік
+    errors:
+      models:
+        user:
+          attributes:
+            phone_number:
+              invalid: ня добры
+            password:
+              blank: пусты
+              too_short: даволі кароткі
+            password_confirmation:
+              confirmation: ' '
   devise:
     confirmations:
       confirmed: Ваш адрас эл. пошты паспяхова пацверджаны.
@@ -37,7 +49,7 @@ be:
     failure:
       already_authenticated: Вы ўжо ўвайшлі ў сістэму.
       inactive: Ваш уліковы запіс яшчэ не актываваны.
-      invalid:
+      invalid: Ня верны нумар ці пароль
       last_attempt: У вас засталася апошняя спроба ўводу пароля да блакавання ўліковага запісу.
       locked: Ваш уліковы запіс заблакаваны.
       not_found_in_database:

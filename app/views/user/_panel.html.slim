@@ -1,17 +1,17 @@
 .card
   .card-header
     h5.card-title.mb-0
-      | Profile Settings
+      = t 'profile.profile_settings'
   .list-group.list-group-flush[role="tablist"]
     a.list-group-item.list-group-item-action[data-toggle="list" href=user_profile_path role="tab"]
-      |  Account
+      = t 'profile.my_page'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_path(current_user) role="tab"]
-      |  Edit account information
+      = t 'profile.info_change'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_registration_path role="tab"]
-      |  Password change
+      = t 'profile.password_change'
     a.list-group-item.list-group-item-action[data-toggle="list" href="#" role="tab"]
-      |  Email notifications
+      = t 'profile.email_notifications'
     a.list-group-item.list-group-item-action[data-toggle="list" href="#" role="tab"]
-      |  Web notifications
+      = t 'profile.web_notifications'
     a.list-group-item.list-group-item-action[data-toggle="list" href=after_signup_index_path role="tab"]
-      |  Verify account
+      = t 'profile.verify'
