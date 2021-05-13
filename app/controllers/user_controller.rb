@@ -9,8 +9,7 @@ class UserController < ApplicationController
   def profile
     if current_user.phone_number.blank?
       redirect_to edit_phone_number_user_path(current_user)
-    else
-      current_user.all_contact_info_filled?
+    elsif !current_user.all_contact_info_filled?
       redirect_to edit_user_path(current_user)
     end
   end
