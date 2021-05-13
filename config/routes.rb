@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
-  resources :user, only: %i[edit update]
+  resources :user, only: %i[edit update] do
+    member do
+      get :edit_phone_number
+      patch :update_phone_number
+      put :update_phone_number
+    end
+  end
   get 'user/profile'
 end
