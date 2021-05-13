@@ -35,7 +35,7 @@ module Users
 
     def sign_and_redirect
       sign_in(@user)
-      redirect_to current_user.phone_number ? root_path : edit_user_path(current_user)
+      redirect_to current_user.phone_number ? root_path : edit_phone_number_user_path(current_user)
     end
   end
 end
