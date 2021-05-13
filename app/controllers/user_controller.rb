@@ -7,11 +7,8 @@ class UserController < ApplicationController
   def phone_number; end
 
   def profile
-    if current_user.phone_number.blank?
-      redirect_to edit_phone_number_user_path(current_user)
-    elsif !current_user.all_contact_info_filled?
-      redirect_to edit_user_path(current_user)
-    end
+    return redirect_to edit_phone_number_user_path(current_user) unless current_user.phone_number
+    return redirect_to edit_user_path(current_user) unless current_user.all_contact_info_filled?
   end
 
   def edit
