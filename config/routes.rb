@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
+  resources :restaurant_steps
   resources :user, only: %i[edit update] do
     member do
       get :edit_phone_number
@@ -29,5 +30,7 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
+  post 'restaurant_steps/dishes'
   get 'user/profile'
+  resources :product, only: %i[create]
 end

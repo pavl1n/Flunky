@@ -1,0 +1,20 @@
+= render 'navigation/nav'
+= form_for @restaurant, url: wizard_path, method: :put do |f|
+  section.text-center.h1 Personal information
+  .container
+    .field
+      = f.label :name
+    br
+      = f.text_field :name, autofocus: true
+    .field
+      = f.label :email
+    br
+      = f.email_field :email, autofocus: true, autocomplete: 'email'
+    .field
+      = f.label :city
+    br
+      = f.text_field :city, autofocus: true, autocomplete: 'city'
+    .actions
+    br
+    = f.submit 'Submit information'
+= render 'footer/footer'
