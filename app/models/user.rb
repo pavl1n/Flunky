@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]
 
-  #validates_with UserValidator
+  validates_with UserValidator
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
   validates_uniqueness_of :email, if: :email
 
