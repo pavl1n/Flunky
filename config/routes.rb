@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   end
   post 'restaurant_steps/dishes'
   get 'user/profile'
+  get 'user/dishes'
   resources :product, only: %i[create]
 end
