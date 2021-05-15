@@ -1,24 +1,12 @@
 = render 'navigation/nav'
-= form_with(model: product, url: path) do |f|
+= form_with(model: restaurant, url: path) do |f|
   section.text-center.h1 Dishes insert
   .container
-    .field
-      = f.label :name
-    br
-      = f.text_field :name, autofocus: true
-    .field
-      = f.label :price
-    br
-      = f.text_field :price, autofocus: true
-    .field
-      = f.label :category
-    br
-      = f.text_field :category, autofocus: true, autocomplete: 'category'
-    .field
-      = f.label :description
-    br
-      = f.text_area :description, autofocus: true, autocomplete: 'description'
-    .actions
-    br
-    = f.submit 'Submit information'
+    fieldset
+      legend
+        | Info:
+      = f.fields_for :products do |product_form|
+        = render "product/product_fields", f: product_form
+      = link_to_add_fields "Add more products", f, :products
+      = f.submit
 = render 'footer/footer'

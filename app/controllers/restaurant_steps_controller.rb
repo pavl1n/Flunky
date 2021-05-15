@@ -11,17 +11,6 @@ class RestaurantStepsController < ApplicationController
     render_wizard
   end
 
-  def dishes
-    @product = current_restaurant.products.new(product_params)
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to root_path }
-      else
-        format.html { render action: :create }
-      end
-    end
-  end
-
   def update
     @restaurant = current_restaurant
     @restaurant.update(user_params)
@@ -34,16 +23,13 @@ class RestaurantStepsController < ApplicationController
     params.require(:user).permit(
       :name,
       :email,
-      :city
+      :city,
+      products_attributes: %i[
+        name
+        price
+        category
+        description
+      ]
     ).merge(create_stage: 1)
-  end
-
-  def product_params
-    params.require(:product).permit(
-      :name,
-      :price,
-      :category,
-      :description
-    )
   end
 end

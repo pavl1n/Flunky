@@ -1,5 +1,4 @@
 class ProductController < ApplicationController
-
   def create
     @product = current_restaurant.products.new(product_params)
     respond_to do |format|

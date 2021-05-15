@@ -1,0 +1,16 @@
+.nested-fields
+  = f.hidden_field :_destroy
+  div
+    = f.label :name
+    = f.text_field :name, autofocus: true
+  div
+    = f.label :price
+    = f.text_field :price, autofocus: true
+  div
+    = f.label :category
+    = f.text_field :category, autofocus: true, autocomplete: 'category'
+  div
+    = f.label :description
+    = f.text_area :description, autofocus: true, autocomplete: 'description'
+  div
+    = link_to "Remove", '#', class: "remove_fields"
