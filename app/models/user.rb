@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, if: :email
 
   has_many :products
+  accepts_nested_attributes_for :products, allow_destroy: true, reject_if: :all_blank
   has_many :orders
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 

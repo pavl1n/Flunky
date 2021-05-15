@@ -17,13 +17,14 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           | News
       li.nav-item
         a.nav-link[href='#']
-          | Link
-      li.nav-item
-        a.nav-link[href=new_restaurant_path]
-          | Sign up as restaurant
-      li.nav-item
-        a.nav-link[href=destroy_restaurant_session_path]
-          | Exit
+          | Feedback
+      - if !user_signed_in?
+        li.nav-item
+          a.nav-link[href=new_restaurant_path]
+            | Sign up as restaurant
+      /li.nav-item
+        a.nav-link[href=product_index_path]
+          | Hi
     - if user_signed_in?
       span.navbar-nav
           a.nav-link[href=user_profile_path]

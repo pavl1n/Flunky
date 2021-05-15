@@ -14,3 +14,5 @@ ActiveStorage.start()
 jquery3.start();
 popper.start();
 bootstrap-sprockets.start();
+require('./nested-forms/addFields')
+require('./nested-forms/removeFields')
