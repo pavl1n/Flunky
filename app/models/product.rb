@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   has_many :order_positions
   has_many :restaurant_orders, through: :order_positions
   validates :name, :price, :category, :description, presence: true, allow_blank: false
+  validates_numericality_of :price, message: 'only allows digits'
+  validates :description, length: { maximum: 100 }
 end

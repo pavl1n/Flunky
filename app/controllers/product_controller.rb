@@ -1,5 +1,7 @@
-class ProductController < ApplicationController
+# frozen_string_literal: false
 
+# Described product actions
+class ProductController < ApplicationController
   def show; end
 
   def new
