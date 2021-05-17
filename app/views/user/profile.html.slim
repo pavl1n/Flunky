@@ -35,6 +35,7 @@ body
                         | Contact phone:
                       = current_user.phone_number
                     .form-group
+                    - if current_user.client?
                       label
                         | Account status:
                       - if current_user.confirmed

@@ -6,8 +6,8 @@ class RestaurantStepsController < ApplicationController
   steps :personal_information, :dishes
 
   def show
-    @product = current_restaurant.products.new
     @restaurant = current_restaurant
+    @product = current_restaurant.products.new
     render_wizard
   end
 
@@ -24,12 +24,7 @@ class RestaurantStepsController < ApplicationController
       :name,
       :email,
       :city,
-      products_attributes: %i[
-        name
-        price
-        category
-        description
-      ]
+      products_attributes: %i[name price category description _destroy]
     ).merge(create_stage: 1)
   end
 end
