@@ -1,12 +1,18 @@
 = render 'navigation/nav'
-= form_with(model: restaurant, url: path) do |f|
-  section.text-center.h1 Dishes insert
+= form_with(model: restaurant, url: path, local: true) do |f|
+  section.text-center.h1 Products insert
   .container
+    - if restaurant.errors.any?
+          ul
+            - restaurant.errors.each do |error|
+              li
+                = error.full_message
     fieldset
       legend
         | Info:
       = f.fields_for :products do |product_form|
-        = render "product/product_fields", f: product_form
-      = link_to_add_fields "Add more products", f, :products
-      = f.submit
+        = render 'product/product_fields', f: product_form
+    = link_to_add_fields 'Add more products', f, :products
+    br
+    = f.submit 'Create products'
 = render 'footer/footer'

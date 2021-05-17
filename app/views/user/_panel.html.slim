@@ -16,5 +16,9 @@
       |  Email notifications
     a.list-group-item.list-group-item-action[data-toggle="list" href="#" role="tab"]
       |  Web notifications
-    a.list-group-item.list-group-item-action[data-toggle="list" href=after_signup_index_path role="tab"]
-      |  Verify account
+    - if current_user.client?
+      a.list-group-item.list-group-item-action[data-toggle="list" href=after_signup_index_path role="tab"]
+        |  Verify account
+    - else
+      a.list-group-item.list-group-item-action[data-toggle="list" href=new_product_path role="tab"]
+        |  Insert dishes
