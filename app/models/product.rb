@@ -9,4 +9,5 @@ class Product < ApplicationRecord
   validates :name, :price, :category, :description, presence: true, allow_blank: false
   validates_numericality_of :price, message: 'only allows digits'
   validates :description, length: { maximum: 100 }
+  validates :product_picture, attached: true, content_type: %i[png jpg jpeg]
 end

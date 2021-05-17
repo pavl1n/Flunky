@@ -2,6 +2,11 @@
 = form_for @restaurant, url: wizard_path, method: :put do |f|
   section.text-center.h1 Personal information
   .container
+    - if @restaurant.errors.any?
+      ul
+        - @restaurant.errors.each do |error|
+          li
+            = error.full_message
     .field
       = f.label :name
     br
@@ -17,7 +22,7 @@
     .field
       = f.label 'Profile photo'
     br
-      = f.file_field :product_picture
+      = f.file_field :avatar
     .actions
     br
     = f.submit 'Submit information'
