@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# Responsible for registration through devise
 class RestaurantsController < Devise::RegistrationsController
   protected
 
