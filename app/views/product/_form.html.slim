@@ -3,10 +3,10 @@
   section.text-center.h1 Products insert
   .container
     - if restaurant.errors.any?
-          ul
-            - restaurant.errors.each do |error|
-              li
-                = error.full_message
+      ul
+        - restaurant.errors.each do |error|
+          li
+            = error.full_message
     fieldset
       legend
         | Info:

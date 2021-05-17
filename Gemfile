@@ -11,7 +11,7 @@ gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
-
+gem 'active_storage_validations', '~> 0.9.3'
 gem 'rubocop-rails', '~> 2.9', '>= 2.9.1', require: false
 
 gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
