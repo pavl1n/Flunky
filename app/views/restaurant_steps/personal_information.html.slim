@@ -14,6 +14,10 @@
       = f.label :city
     br
       = f.text_field :city, autofocus: true, autocomplete: 'city'
+    .field
+      = f.label 'Profile photo'
+    br
+      = f.file_field :product_picture
     .actions
     br
     = f.submit 'Submit information'

@@ -24,7 +24,8 @@ class RestaurantStepsController < ApplicationController
       :name,
       :email,
       :city,
-      products_attributes: %i[name price category description _destroy]
+      :avatar,
+      products_attributes: %i[name price category description _destroy product_picture]
     ).merge(create_stage: 1)
   end
 end
