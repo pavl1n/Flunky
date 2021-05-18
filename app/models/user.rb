@@ -55,6 +55,10 @@ class User < ApplicationRecord
     name && email && city
   end
 
+  def address
+    "#{city},#{street} #{house_number}"
+  end
+
   private
 
   def normalize_phone

@@ -29,7 +29,10 @@ body
                     .form-group
                       label
                         | City:
-                      = current_user.city
+                      - if current_user.restaurant?
+                        = current_user.address
+                      - else
+                        = current_user.city
                     .form-group
                       label
                         | Contact phone:

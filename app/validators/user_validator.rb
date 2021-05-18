@@ -21,6 +21,8 @@ class UserValidator < ActiveModel::Validator
 
   def validate_stage2
     validate_stage1
+    validate_present(:street)
+    validate_present(:house_number)
     @record.avatar
   end
 
