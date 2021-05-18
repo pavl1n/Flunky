@@ -3,15 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it"ll be compiled.
 
-require("./nested-forms/addFields");
-require("./nested-forms/removeFields");
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require("./nested-forms/removeFields");
 Rails.start()
 Turbolinks.start()
+require("./nested-forms/addFields");
 ActiveStorage.start()
 jquery3.start();
 popper.start();

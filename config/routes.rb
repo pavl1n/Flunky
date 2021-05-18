@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   post 'restaurant_steps/dishes'
   get 'user/profile'
   get 'user/dishes'
-  resources :product, only: [:show, :new, :create, :edit, :update]
+  resources :product
 end
