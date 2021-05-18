@@ -1,19 +1,19 @@
 .nested-fields
-  = f.hidden_field :_destroy
+  = form.hidden_field :_destroy
   div
-    = f.label :name
-    = f.text_field :name, autofocus: true
+    = form.label :name
+    = form.text_field :name, autofocus: true
   div
-    = f.label :price
-    = f.text_field :price, autofocus: true
+    = form.label :price
+    = form.text_field :price, autofocus: true
   div
-    = f.label :category
-    = f.text_field :category, autofocus: true, autocomplete: 'category'
+    = form.label :category
+    = form.text_field :category, autofocus: true, autocomplete: 'category'
   div
-    = f.label :description
-    = f.text_area :description, autofocus: true, autocomplete: 'description'
+    = form.label :description
+    = form.text_area :description, autofocus: true, autocomplete: 'description'
   div
-    = f.label 'Product photo'
-    = f.file_field :product_picture
+    = form.label 'Product photo'
+    = form.file_field :product_picture
   div
     = link_to 'Remove', '#', class: 'remove_fields'
