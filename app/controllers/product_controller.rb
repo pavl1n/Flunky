@@ -6,7 +6,7 @@ class ProductController < ApplicationController
 
   def new
     @user = current_user
-    @product = current_user.products.build
+    @product = current_user.products.new
   end
 
   def edit; end
