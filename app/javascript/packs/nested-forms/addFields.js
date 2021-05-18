@@ -20,7 +20,9 @@ class addFields {
     let linkId = link.dataset.id;
     let regexp = linkId ? new RegExp(linkId, "g") : null;
     let newFields = regexp ? link.dataset.fields.replace(regexp, time) : null;
-    newFields ? link.insertAdjacentHTML("beforebegin", newFields) : null;
+    if (newFields != null) {
+      link.insertAdjacentHTML("beforebegin", newFields)
+    }
   }
 }
 

@@ -15,9 +15,7 @@ class removeFields {
     if (!link || !e) return;
     e.preventDefault();
     let fieldParent = link.closest(".nested-fields");
-    let deleteField = fieldParent
-      ? fieldParent.querySelector('input[type="hidden"]')
-      : null;
+    let deleteField = fieldParent ? fieldParent.querySelector('input[type="hidden"]') : null;
     if (deleteField) {
       deleteField.value = 1;
       fieldParent.style.display = "none";

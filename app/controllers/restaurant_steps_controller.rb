@@ -3,7 +3,7 @@
 # Here describes steps after clients registration
 class RestaurantStepsController < ApplicationController
   include Wicked::Wizard
-  steps :personal_information, :dishes
+  steps :personal_information, :products
 
   def show
     @restaurant = current_restaurant
