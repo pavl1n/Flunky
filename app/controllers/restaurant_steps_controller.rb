@@ -25,6 +25,8 @@ class RestaurantStepsController < ApplicationController
       :name,
       :email,
       :city,
+      :street,
+      :house_number,
       :avatar
     ).merge(create_stage: 2)
   end
