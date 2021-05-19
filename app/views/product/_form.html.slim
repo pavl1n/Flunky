@@ -1,7 +1,7 @@
 = render 'navigation/nav'
 = form_with(model: restaurant, url: path, local: true) do |form|
   section.text-center.h1 Products insert
-  .container
+  .container[style="height: 100vh;"]
     - if restaurant.errors.any?
       ul
         - restaurant.errors.each do |error|
