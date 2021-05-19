@@ -14,6 +14,7 @@ class RestaurantStepsController < ApplicationController
   def update
     @restaurant = current_restaurant
     @restaurant.update(user_params)
+    @restaurant.update(product_params) if :products
     render_wizard @restaurant
   end
 
@@ -26,12 +27,11 @@ class RestaurantStepsController < ApplicationController
       :city,
       :street,
       :house_number,
-      :avatar,
-      products_attributes: %i[name price category description _destroy product_picture]
-    )#.merge(create_stage: 2)
+      :avatar
+    ).merge(create_stage: 2)
   end
 
-  def user_products_params
+  def product_params
     params.require(:user).permit(
       products_attributes: %i[name price category description _destroy product_picture]
     )
