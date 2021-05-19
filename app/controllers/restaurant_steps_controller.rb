@@ -14,7 +14,7 @@ class RestaurantStepsController < ApplicationController
   def update
     @restaurant = current_restaurant
     @restaurant.update(user_params)
-    @restaurant.update(product_params) if :products
+    @restaurant.update(product_params) if :products # rubocop:disable Lint/LiteralAsCondition
     render_wizard @restaurant
   end
 
