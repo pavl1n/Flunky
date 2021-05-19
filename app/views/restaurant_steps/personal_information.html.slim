@@ -1,7 +1,7 @@
 = render 'navigation/nav'
 = form_for @restaurant, url: wizard_path, method: :put do |f|
   section.text-center.h1 Personal information
-  .container
+  .container[style="height: 100vh;"]
     - if @restaurant.errors.any?
       ul
         - @restaurant.errors.each do |error|
@@ -9,28 +9,32 @@
             = error.full_message
     .field
       = f.label :name
-    br
+    td
       = f.text_field :name, autofocus: true
     .field
-      = f.label :email
     br
+      = f.label :email
+    td
       = f.email_field :email, autofocus: true, autocomplete: 'email'
     .field
+    br
       = f.label :city
-    br
+    td
       = f.text_field :city, autofocus: true, autocomplete: 'city'
-    br
     .field
-      = f.label :street
     br
+      = f.label :street
+    td
       = f.text_field :street, autofocus: true, autocomplete: 'street'
+    br
     .field
       = f.label :house_number
-    br
+    td
       = f.text_field :house_number, autofocus: true, autocomplete: 'house_number'
     .field
-      = f.label 'Profile photo'
     br
+      = f.label 'Profile photo'
+    td
       = f.file_field :avatar
     .actions
     br
