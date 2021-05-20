@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def address
-    "#{city},#{street} #{house_number}"
+    "#{city}, #{street} #{house_number}"
   end
 
   private

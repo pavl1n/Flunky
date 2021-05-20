@@ -2,14 +2,13 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
-  def new
-    @user = current_user
-  end
+  def new; end
 
   def create
-    @user = current_user
+    #@user = current_user
     respond_to do |format|
-      if @user.update(product_params)
+      binding.pry
+      if current_user.update(product_params)
         format.html { render :new, notice: 'Product was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }

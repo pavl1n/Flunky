@@ -18,7 +18,7 @@ class addFields {
     e.preventDefault();
     let time = new Date().getTime();
     let linkId = link.dataset.id;
-    let regexp = linkId ? new RegExp(linkId, "g") : null;
+    let regexp = linkId ? new RegExp(linkId, "g") : null; //TODO
     let newFields = regexp ? link.dataset.fields.replace(regexp, time) : null;
     if (newFields !== null) {
       link.insertAdjacentHTML("beforebegin", newFields);
