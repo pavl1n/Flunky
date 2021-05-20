@@ -8,10 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-require("./nested-forms/removeFields");
 Rails.start()
 Turbolinks.start()
-require("./nested-forms/addFields");
 ActiveStorage.start()
 jquery3.start();
 popper.start();

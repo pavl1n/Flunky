@@ -13,14 +13,13 @@ class RestaurantStepsController < ApplicationController
 
   def update
     @restaurant = current_restaurant
-    @restaurant.update(user_params)
-    @restaurant.update(product_params) if :products # rubocop:disable Lint/LiteralAsCondition
+    @restaurant.update(rest_params)
     render_wizard @restaurant
   end
 
   private
 
-  def user_params
+  def rest_params
     params.require(:user).permit(
       :name,
       :email,
@@ -29,11 +28,5 @@ class RestaurantStepsController < ApplicationController
       :house_number,
       :avatar
     ).merge(create_stage: 2)
-  end
-
-  def product_params
-    params.require(:user).permit(
-      products_attributes: %i[name price category description _destroy product_picture]
-    )
   end
 end

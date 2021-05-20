@@ -2,16 +2,17 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
-  def new; end
+  def new
+    @product = current_restaurant.products.new
+  end
 
   def create
-    #@user = current_user
+    @product = current_restaurant.products.new(product_params)
     respond_to do |format|
-      binding.pry
-      if current_user.update(product_params)
-        format.html { render :new, notice: 'Product was successfully created.' }
+      if @product.save
+        format.html { redirect_to new_product_path, notice: 'Product was successfully created.' }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -19,8 +20,12 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:user).permit(
-      products_attributes: %i[id name price category description _destroy product_picture]
+    params.require(:product).permit(
+      :name,
+      :price,
+      :category,
+      :description,
+      :product_picture
     )
   end
 end
