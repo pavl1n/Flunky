@@ -1,16 +1,17 @@
-= form_with(model: restaurant, url: path, local: true) do |form|
+= form_with(model: product, local: true) do |form|
   section.text-center.h1 Products insert
-  .container[style="margin-bottom: 500vh; height: 100vh;"]
-    - if restaurant.errors.any?
+  .container[style="height: 100vh;"]
+    - if product.errors.any?
       ul
-        - restaurant.errors.each do |error|
+        - product.errors.each do |error|
           li
             = error.full_message
     fieldset
       legend
         | New product
-      = form.fields_for :products do |product_form|
-        = render 'product/product_fields', form: product_form unless path.is_a? Hash
-    = link_to_add_fields 'Add new product fields', form, :products
+      = render 'product/product_fields', form: form
     br
-    = form.submit 'Create products'
+    = form.submit 'Create product'
+    br
+    section.text-center
+      = link_to 'End up registration', root_path, method: :get if current_restaurant.products.exists? && current_user.nil?

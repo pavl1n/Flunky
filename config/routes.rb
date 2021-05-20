@@ -32,6 +32,5 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
-  resources :products
-  patch 'products', to: 'products#create'
+  resources :products, only: %i[new create]
 end
