@@ -23,7 +23,6 @@ class UserValidator < ActiveModel::Validator
     validate_stage1
     validate_present(:street)
     validate_present(:house_number)
-    @record.avatar
   end
 
   def validate_present(attr)

@@ -24,15 +24,14 @@ Rails.application.routes.draw do
   resources :after_signup
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
+    get 'profile', on: :collection
+    get 'dishes', on: :collection
     member do
       get :edit_phone_number
       patch :update_phone_number
       put :update_phone_number
     end
   end
-  post 'restaurant_steps/dishes'
-  get 'user/profile'
-  get 'user/dishes'
   resources :products
   patch 'products', to: 'products#create'
 end

@@ -3,6 +3,7 @@ html
   head
     title
       | Flunky
+    = render 'navigation/nav'
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
@@ -21,3 +22,4 @@ html
           = value.html_safe
   body
     = yield
+= render 'footer/footer'

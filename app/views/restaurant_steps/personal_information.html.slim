@@ -1,4 +1,3 @@
-= render 'navigation/nav'
 = form_for @restaurant, url: wizard_path, method: :put do |f|
   section.text-center.h1 Personal information
   .container[style="height: 100vh;"]
@@ -39,4 +38,3 @@
     .actions
     br
     = f.submit 'Submit information'
-= render 'footer/footer'

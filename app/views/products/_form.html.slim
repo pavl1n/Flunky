@@ -1,4 +1,3 @@
-= render 'navigation/nav'
 = form_with(model: restaurant, url: path, local: true) do |form|
   section.text-center.h1 Products insert
   .container[style="margin-bottom: 500vh; height: 100vh;"]
@@ -15,4 +14,3 @@
     = link_to_add_fields 'Add new product fields', form, :products
     br
     = form.submit 'Create products'
-= render 'footer/footer'

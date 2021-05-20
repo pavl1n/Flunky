@@ -20,7 +20,7 @@ class UserController < ApplicationController
   def update
     respond_to do |format|
       if current_user.update(user_params.merge(create_stage: 1))
-        format.html { current_user.confirmed ? (redirect_to user_profile_path) : (redirect_to after_signup_index_path) }
+        format.html { current_user.confirmed ? (redirect_to root_path) : (redirect_to after_signup_index_path) }
       else
         format.html { render action: :edit }
       end

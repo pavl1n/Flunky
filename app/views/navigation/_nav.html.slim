@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link[href=root_path]
           | Home
       li.nav-item
-        a.nav-link[href=user_profile_path]
+        a.nav-link[href=profile_user_index_path]
           | Profile
       li.nav-item
         a.nav-link[href='#']
@@ -18,13 +18,13 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link[href='#']
           | Feedback
-      - if !user_signed_in?
+      - unless user_signed_in?
         li.nav-item
           a.nav-link[href=new_restaurant_path]
             | Sign up as restaurant
     - if user_signed_in?
       span.navbar-nav
-          a.nav-link[href=user_profile_path]
+          a.nav-link[href=profile_user_index_path]
             = current_user.name
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
