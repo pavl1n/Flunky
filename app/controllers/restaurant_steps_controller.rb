@@ -7,7 +7,7 @@ class RestaurantStepsController < ApplicationController
 
   def show
     @restaurant = current_restaurant
-    @product = current_restaurant.products.new
+    @product = current_restaurant.products.build
     render_wizard
   end
 

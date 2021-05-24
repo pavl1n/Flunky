@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :after_signup
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
+    resources :products
     get 'profile', on: :collection
     get 'dishes', on: :collection
     member do
@@ -32,5 +33,6 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
-  resources :products, only: %i[new create]
+  get 'products', to: 'products#create'
+  patch '/user/:id/products', to: 'products#create'
 end
