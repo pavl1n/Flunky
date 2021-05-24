@@ -1,4 +1,4 @@
-= form_with(model: product, local: true) do |form|
+= form_for restaurant, url: path, local: true do |f|
   section.text-center.h1 Products insert
   .container[style="height: 100vh;"]
     - if product.errors.any?
@@ -6,12 +6,13 @@
         - product.errors.each do |error|
           li
             = error.full_message
-    fieldset
+    .field
       legend
         | New product
-      = render 'product/product_fields', form: form
+      #products
+        = f.fields_for :products, restaurant.products.build do |product|
+          = render 'product_fields', f: product
+        .links
+          = link_to_add_association 'Add product', f, :products
     br
-    = form.submit 'Create product'
-    br
-    section.text-center
-      = link_to 'End up registration', root_path, method: :get if current_restaurant.products.exists? && current_user.nil?
+    = f.submit 'Create product'

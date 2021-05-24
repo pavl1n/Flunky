@@ -3,14 +3,13 @@
 # Actions for product model
 class ProductsController < ApplicationController
   def new
-    @product = current_restaurant.products.new
+    @product = current_user.products.build
   end
 
   def create
-    @product = current_restaurant.products.new(product_params)
     respond_to do |format|
-      if @product.save
-        format.html { redirect_to new_product_path, notice: 'Product was successfully created.' }
+      if current_user.update(product_params)
+        format.html { redirect_to root_path, notice: 'Product was successfully created.' }
       else
         format.html { render :new }
       end
@@ -20,12 +19,8 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(
-      :name,
-      :price,
-      :category,
-      :description,
-      :product_picture
+    params.require(:user).permit(
+      products_attributes: %i[id name price category description product_picture _destroy]
     )
   end
 end
