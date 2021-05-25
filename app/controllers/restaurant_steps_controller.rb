@@ -6,15 +6,15 @@ class RestaurantStepsController < ApplicationController
   steps :personal_information, :products
 
   def show
-    @restaurant = current_restaurant
+    #@restaurant = current_restaurant
     @product = current_restaurant.products.build
     render_wizard
   end
 
   def update
-    @restaurant.update(rest_params)
-    sign_in(@restaurant, bypass: true)
-    render_wizard @restaurant
+    current_restaurant.update(rest_params)
+    sign_in(current_restaurant, bypass: true)
+    render_wizard current_restaurant
   end
 
   private
