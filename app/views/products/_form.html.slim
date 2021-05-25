@@ -1,4 +1,5 @@
 = form_for restaurant, url: path, local: true do |f|
+  = binding.pry
   section.text-center.h1 Products insert
   .container[style="height: 100vh;"]
     - if product.errors.any?
@@ -11,8 +12,8 @@
         | New product
       #products
         = f.fields_for :products, restaurant.products.build do |product|
-          = render 'product_fields', f: product
+          = render 'products/product_fields', f: product
         .links
-          = link_to_add_association 'Add product', f, :products
+          = link_to_add_association 'add task', f, :products, partial: 'products/product_fields'
     br
     = f.submit 'Create product'

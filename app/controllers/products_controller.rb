@@ -7,12 +7,16 @@ class ProductsController < ApplicationController
   end
 
   def create
+    products_arr = []
+    product_params[:products_attributes].each { |_key, value| products_arr << value }
     respond_to do |format|
-      if current_user.update(product_params)
-        format.html { redirect_to root_path, notice: 'Product was successfully created.' }
-      else
+      products_arr.each do |product|
+        @product = current_user.products.build(product)
+        next if @product.save
+
         format.html { render :new }
       end
+      format.html { redirect_to root_path, notice: 'Products was successfully created.' }
     end
   end
 
@@ -20,7 +24,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:user).permit(
-      products_attributes: %i[id name price category description product_picture _destroy]
+      products_attributes: %i[name price category description product_picture]
     )
   end
 end
