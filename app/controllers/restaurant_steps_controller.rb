@@ -6,7 +6,6 @@ class RestaurantStepsController < ApplicationController
   steps :personal_information, :products
 
   def show
-    #@restaurant = current_restaurant
     @product = current_restaurant.products.build
     render_wizard
   end
