@@ -14,6 +14,7 @@ class RestaurantStepsController < ApplicationController
   def update
     @restaurant = current_restaurant
     @restaurant.update(rest_params)
+    sign_in(@restaurant, bypass: true)
     render_wizard @restaurant
   end
 

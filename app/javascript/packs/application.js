@@ -14,5 +14,4 @@ ActiveStorage.start()
 jquery3.start();
 popper.start();
 bootstrap-sprockets.start();
-require("jquery")
-require("@nathanvda/cocoon")
+import "cocoon-js";
