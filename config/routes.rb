@@ -25,8 +25,10 @@ Rails.application.routes.draw do
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
     resources :products
-    get 'profile', on: :collection
-    get 'dishes', on: :collection
+    collection do
+      get 'profile'
+      get 'dishes'
+    end
     member do
       get :edit_phone_number
       patch :update_phone_number
