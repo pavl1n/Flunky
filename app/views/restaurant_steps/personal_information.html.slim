@@ -1,9 +1,9 @@
-= form_for @restaurant, url: wizard_path, method: :put do |f|
+= form_for current_restaurant, url: wizard_path, method: :put do |f|
   section.text-center.h1 Personal information
   .container[style="height: 100vh;"]
-    - if @restaurant.errors.any?
+    - if current_restaurant.errors.any?
       ul
-        - @restaurant.errors.each do |error|
+        - current_restaurant.errors.each do |error|
           li
             = error.full_message
     .field
