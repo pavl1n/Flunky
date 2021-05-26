@@ -22,4 +22,4 @@ html
   body
     =notice
     = yield
-= render 'footer/footer'
+= render 'footer/footer' unless @skip_footer

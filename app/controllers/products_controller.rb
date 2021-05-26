@@ -3,6 +3,7 @@
 # Actions for product model
 class ProductsController < ApplicationController
   def new
+    @skip_footer = true
     @product = current_user.products.build
   end
 
