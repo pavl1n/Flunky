@@ -13,6 +13,6 @@
         = f.fields_for :products, restaurant.products.build do |product|
           = render 'products/product_fields', f: product
         .links
-          = link_to_add_association 'add task', f, :products, partial: 'products/product_fields'
+          = link_to_add_association 'Add product', f, :products, partial: 'products/product_fields'
     br
-    = f.submit 'Create product'
+    = f.submit 'Create products'
