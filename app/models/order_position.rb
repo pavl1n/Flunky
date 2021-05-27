@@ -3,7 +3,7 @@
 # OrderPosition connects product and restaurant_order association m2m
 class OrderPosition < ApplicationRecord
   belongs_to :product
-  belongs_to :restaurant_order
+  belongs_to :order
   before_save :set_unit_price
   before_save :set_total
 
@@ -28,5 +28,4 @@ class OrderPosition < ApplicationRecord
   def set_total
     self[:total] = total * quantity
   end
-
 end

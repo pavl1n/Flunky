@@ -5,6 +5,6 @@ class MenuController < ApplicationController
   def index
     @restaurants = User.restaurant
     @product = Product.all
-    @order_positions = current_order.order_positions
+    @order_positions = current_order.order_positions.new
   end
 end
