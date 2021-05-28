@@ -3,7 +3,6 @@
 # Model for orders
 class Order < ApplicationRecord
   before_save :set_subtotal
-  belongs_to :client, -> { where user_type: :client }, class_name: 'User', foreign_key: 'user_id'
   has_many :restaurant_orders
   has_many :order_positions
   has_many :products, through: :order_positions

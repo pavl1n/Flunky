@@ -23,4 +23,6 @@ section.jumbotron.text-center[style="margin: 0;"]
                     = f.submit 'Update cart'
                     br
                     = link_to 'Remove position', position, method: :delete, remote: true
+      hr
       section.text-center.h3 Your current order has a total of #{current_order.subtotal}$
+      = button_to 'Make an order', {}, disabled: current_user.nil?
