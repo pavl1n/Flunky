@@ -7,9 +7,8 @@ class OrderPositionsController < ApplicationController
   end
 
   def update
-    binding.pry
     @order_positions = @order.order_positions.find(params[:id])
-    @order_positions.update_attribute(order_params)
+    @order_positions.update(order_params)
     @order_positions = current_order.order_positions
   end
 
