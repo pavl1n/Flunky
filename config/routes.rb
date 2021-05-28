@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'menu#index'
   resources :order_positions
   get 'cart', to: 'cart#show'
+  post 'cart/approve', to: 'cart#approve'
   devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords' }, class_name: 'User'
   devise_for :restaurants,
     class_name: 'User',

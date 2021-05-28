@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# Creating, updating and deleting order positions
 class OrderPositionsController < ApplicationController
   before_action :set_order
   def create
