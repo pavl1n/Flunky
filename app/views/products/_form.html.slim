@@ -1,4 +1,4 @@
-= form_for restaurant, url: path, local: true do |f|
+= form_for restaurant, url: path, local: true, method: :post do |f|
   section.text-center.h1 Products insert
   .container[style="height: 100vh;"]
     - if product.errors.any?

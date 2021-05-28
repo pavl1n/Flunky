@@ -35,6 +35,4 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
-  get 'products', to: 'products#create'
-  patch '/user/:id/products', to: 'products#create'
 end
