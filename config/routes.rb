@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :after_signup
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
+    resources :orders, only: %i[index]
     resources :products
     collection do
       get 'profile'
