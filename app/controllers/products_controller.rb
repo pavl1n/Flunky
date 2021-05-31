@@ -2,8 +2,8 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
+  before_action :skip_footer
   def new
-    @skip_footer = true
     @product = current_user.products.build
   end
 
@@ -27,5 +27,9 @@ class ProductsController < ApplicationController
     params.require(:user).permit(
       products_attributes: %i[name price category description product_picture]
     )
+  end
+
+  def skip_footer
+    @skip_footer = true
   end
 end
