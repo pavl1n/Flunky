@@ -19,8 +19,6 @@
     - if current_user.client?
       a.list-group-item.list-group-item-action[data-toggle="list" href=after_signup_index_path role="tab"]
         |  Verify account
-      a.list-group-item.list-group-item-action[data-toggle="list" href=user_orders_path(current_user) role="tab"]
-        |  Orders
     - else
       a.list-group-item.list-group-item-action[data-toggle="list" href=new_user_product_path(current_user) role="tab"]
         |  Insert dishes
