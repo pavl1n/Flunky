@@ -1,4 +1,4 @@
-= form_for restaurant, url: path, local: true do |f|
+= form_for restaurant, url: path, local: true, method: method do |f|
   section.text-center.h1 Products insert
   .container[style="height: 100vh;"]
     - if product.errors.any?
@@ -10,9 +10,10 @@
       legend
         | New product
       #products
-        = f.fields_for :products, restaurant.products.build do |product|
-          = render 'products/product_fields', f: product
+        = f.fields_for :products do |pr|
+          - if pr.object.new_record?
+            = render 'products/product_fields', f: pr
         .links
-          = link_to_add_association 'add task', f, :products, partial: 'products/product_fields'
+          = link_to_add_association 'Add product', f, :products, partial: 'products/product_fields'
     br
-    = f.submit 'Create product'
+    = f.submit 'Create products'
