@@ -2,15 +2,15 @@
   .field
     = f.label :name
     br
-    = f.text_field :name, autofocus: true
+    = f.text_field :name, autofocus: true, required: true
   .field
     = f.label :price
     br
-    = f.text_field :price, autofocus: true
+    = f.text_field :price, autofocus: true, required: true
   .field
     = f.label :category
     br
-    = f.text_field :category, autofocus: true, autocomplete: 'category'
+    = f.text_field :category, autofocus: true, autocomplete: 'category', required: true
   .field
     = f.label :description
     br
@@ -18,6 +18,6 @@
   .field
     = f.label 'Product photo'
     br
-    = f.file_field :product_picture
+    = f.file_field :product_picture, required: true
   div
     = link_to_remove_association 'Remove product', f
