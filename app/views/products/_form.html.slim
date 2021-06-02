@@ -10,8 +10,6 @@
       legend
         | New product
       #products
-        = f.fields_for :products do |product|
-          = render 'products/product_fields', f: product
         .links
           = link_to_add_association 'Add product', f, :products, partial: 'products/product_fields'
     br
