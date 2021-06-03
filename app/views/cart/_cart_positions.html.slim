@@ -25,7 +25,11 @@ section.jumbotron.text-center[style="margin: 0;"]
                     = link_to 'Remove position', position, method: :delete, remote: true
       hr
       section.text-center.h3 Your current order has a total of #{current_order.subtotal}$
-      = button_to 'Make an order', {controller: :cart, action: 'approve'}, method: :post, disabled: current_user.nil? || @order_positions.blank? || current_order.approved?
+      = button_to 'Make an order', {controller: :cart, action: 'approve'}, method: :post, disabled: current_user.nil? || @order_positions.blank? || current_order.approved? || !current_user.confirmed || !current_user.all_contact_info_filled?
       br
+      - unless current_user.confirmed
+        h3 You should activate your account in profile page
+      - unless current_user.all_contact_info_filled?
+        h3 You should fill all contact information
       - if current_order.approved?
         h3 Your order is waiting to be approved
