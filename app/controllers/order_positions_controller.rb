@@ -11,11 +11,13 @@ class OrderPositionsController < CurrentOrderController
       @order_positions = current_order.order_positions.new(order_params)
       @order.save
     end
+    @order_positions.errors.full_message(:error, 'in creating') if @order_positions.errors.any?
     session[:order_id] = current_order.id
   end
 
   def update
     @order_positions = current_order.order_positions.find_by_id(params[:id])
+    @order_positions.errors.full_message(:error, 'in updating') if @order_positions.errors.any?
     @order_positions.update(order_params)
     @order_positions = current_order.order_positions
   end
