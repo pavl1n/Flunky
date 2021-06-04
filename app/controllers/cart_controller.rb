@@ -8,6 +8,7 @@ class CartController < CurrentOrderController
 
   def approve
     current_order.update(approved: true)
+    order_service(current_order).create_rest_order
     redirect_to root_path
     flash[:notice] = 'Order was succesfully created'
   end
