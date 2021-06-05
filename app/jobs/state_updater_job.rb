@@ -5,7 +5,7 @@ class StateUpdaterJob < ApplicationJob
   queue_as :default
 
   def perform
-    Order.where(approved: true, status: %w[in_progress done]).each do |order|
+    Order.where(approved: true, status: %w[waiting in_progress]).each do |order|
       if order.restaurant_orders.where(approved: true).count == order.restaurant_orders.count
         order.update(status: 'in_progress')
       end
