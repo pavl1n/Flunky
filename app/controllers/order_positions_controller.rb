@@ -2,14 +2,13 @@
 
 # Creating, updating and deleting order positions
 class OrderPositionsController < ApplicationController
-  before_action :set_order
   def create
     if (@order_positions = current_order.order_positions.find_by_product_id(params[:order_position][:product_id]))
       @order_positions.quantity += 1
       @order_positions.save
     else
       @order_positions = current_order.order_positions.new(order_params)
-      @order.save
+      current_order.save
     end
     @order_positions.errors.full_message(:error, 'in creating') if @order_positions.errors.any?
     session[:order_id] = current_order.id
@@ -32,9 +31,5 @@ class OrderPositionsController < ApplicationController
 
   def order_params
     params.require(:order_position).permit(:product_id, :quantity)
-  end
-
-  def set_order
-    @order = current_order
   end
 end
