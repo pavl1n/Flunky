@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
 # Creating, updating and deleting order positions
-class OrderPositionsController < CurrentOrderController
+class OrderPositionsController < ApplicationController
   before_action :set_order
   def create
     if (@order_positions = current_order.order_positions.find_by_product_id(params[:order_position][:product_id]))

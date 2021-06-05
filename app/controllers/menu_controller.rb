@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
 # Controller for main page
-class MenuController < CurrentOrderController
+class MenuController < ApplicationController
   before_action :create_order
   def index
     @restaurants = User.restaurant
