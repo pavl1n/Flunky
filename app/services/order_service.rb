@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Service state machine for order flow
 class OrderService
   include AASM
 
@@ -28,10 +29,10 @@ class OrderService
   end
 
   def create_rest_order
-    unless @current_order.instance_of?(RestaurantOrder)
-      @current_order.products.each do |product|
-        @current_order.restaurant_orders.find_or_create_by(user_id: product.user_id)
-      end
+    return if @current_order.instance_of?(RestaurantOrder)
+
+    @current_order.products.each do |product|
+      @current_order.restaurant_orders.find_or_create_by(user_id: product.user_id)
     end
   end
 
