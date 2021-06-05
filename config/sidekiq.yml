@@ -1,0 +1,10 @@
+development:
+  :concurrency: 1
+production:
+  :concurrency: 1
+:queues:
+  - default
+:schedule:
+  state_update:
+    cron: '0 * * * * *'   # Runs once per minute
+    class: StateUpdaterJob
