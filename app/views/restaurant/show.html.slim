@@ -1,0 +1,36 @@
+body
+.container.p-0[style="height: 100vh;"]
+  br
+  .row
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          .card
+            .card-header
+              .card-actions.float-right
+              h5.card-title.mb-0
+                | Restaurant information
+            .card-body
+              form
+                .row
+                  .col-md-8
+                    .form-group
+                      image src="#{url_for(@restaurant.avatar)}"
+                    .form-group
+                      label
+                        | Name:
+                      = @restaurant.name
+                    .form-group
+                      label
+                        | Email:
+                      = @restaurant.email
+                    .form-group
+                      label
+                        | Address:
+                        = @restaurant.address
+                    .form-group
+                      label
+                        | Contact phone:
+                      = @restaurant.phone_number
+                      br
+                      = link_to 'Products', restaurant_products_path(@restaurant), id: @restaurant

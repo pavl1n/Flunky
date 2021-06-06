@@ -29,9 +29,10 @@ body
                   = f.hidden_field :product_id, value: product.id
                   = f.number_field :quantity, value: 1, min: 1
                   = f.submit 'Add to cart'
+                br
                 .d-flex.justify-content-between.align-items-center
                   .btn-group
-                    button.btn.btn-sm.btn-outline-secondary[type="button"]
+                    a.btn.btn-primary[href="#" role="button"]
                       | View
                   small.text-muted
                     = product.price
@@ -51,7 +52,7 @@ body
                   = user.address
                 .d-flex.justify-content-between.align-items-center
                   .btn-group
-                    button.btn.btn-sm.btn-outline-secondary[type="button"]
+                    a.btn.btn-primary[href="#{restaurant_path(user)}" role="button"]
                       | View
                   small.text-muted
                     = user.phone_number
