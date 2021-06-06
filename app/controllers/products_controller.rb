@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
     @product = current_user.products.build
   end
 
+  def show
+    @product = User.find(params[:user_id]).products.find(params[:id])
+  end
+
   def create
     products_arr = []
     product_params[:products_attributes].each { |_key, value| products_arr << value }
