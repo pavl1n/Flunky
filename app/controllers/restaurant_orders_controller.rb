@@ -7,10 +7,10 @@ class RestaurantOrdersController < ApplicationController
   end
 
   def approve
-    order_service(RestaurantOrder.find_by_id(params[:restaurant_order])).approve_restaurant
+    OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).approve_restaurant
   end
 
   def finish
-    order_service(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
+    OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
   end
 end
