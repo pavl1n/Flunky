@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get  "/restaurants/destroy",    to: "restaurants#destroy", as: :destroy_restaurant_session
   end
 
+  resources :restaurant, only: %i[show] do
+    get :products
+  end
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
   resources :phone_verifications, only: %i[new create] do
