@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   post 'restaurant_orders/finish', to: 'restaurant_orders#finish'
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
-    resources :products
+    resources :products do
+      resources :comments
+    end
     collection do
       get 'profile'
       get 'dishes'

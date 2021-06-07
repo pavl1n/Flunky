@@ -36,3 +36,8 @@ body
                       label
                         | Restaurant:
                       = link_to "#{@product.restaurant.name}", restaurant_path(@product.restaurant)
+                    = form_with(model: [@product, @product.comments.build]) do |f|
+                      .form-group
+                        = f.label 'New comment'
+                        = f.text_area :body, class: 'form-control'
+                      = f.submit 'Submit', class: 'btn btn-primary'
