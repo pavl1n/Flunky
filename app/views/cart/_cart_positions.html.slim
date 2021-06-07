@@ -1,36 +1,37 @@
-section.jumbotron.text-center[style="margin: 0;"]
-  .album.py-5.bg-light
-      section.text-center.h1 Cart
-      .container
-        .row
-          - @order_positions.each do |position|
-            .col-md-4
-              .card.mb-4.box-shadow
-                img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
-    text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-    src="#{url_for(position.product.product_picture)}"   data-holder-rendered="true"]
-                .card-body
-                  h1.card-text
-                    = position.product.name
-                  h6.card-text
-                    = position.product.category
-                  p.card-text
-                    = position.product.price
-                  = form_with model: position, local: false do |f|
-                    = f.hidden_field :product_id, value: position.product.id
-                    = f.number_field :quantity, value: position.quantity.to_i, min: 1
-                    br
-                    = f.submit 'Update cart', disabled: @current_order.approved?
-                    br
-                    - unless @current_order.approved?
-                      = link_to 'Remove position', position, method: :delete, remote: true
-      section.text-center.h3 Your current order has a total of #{@current_order.subtotal}$
-      = button_to 'Make an order', {controller: :cart, action: 'approve'}, method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user.all_contact_info_filled?
-      br
-      - unless current_user.nil?
-        - unless current_user.confirmed
-          h3 You should activate your account in profile page
-        - unless current_user.all_contact_info_filled?
-          h3 You should fill all contact information
-      - if @current_order.approved?
-        h3 Your order is waiting to be approved
+body[style="background-color: #e9ecef"]
+  section.jumbotron.text-center[style="margin: 0;"]
+    .album.py-5.bg-light
+        section.text-center.h1 Cart
+        .container
+          .row
+            - @order_positions.each do |position|
+              .col-md-4
+                .card.mb-4.box-shadow
+                  img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
+      text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+      src="#{url_for(position.product.product_picture)}"   data-holder-rendered="true"]
+                  .card-body
+                    h1.card-text
+                      = position.product.name
+                    h6.card-text
+                      = position.product.category
+                    p.card-text
+                      = position.product.price
+                    = form_with model: position, local: false do |f|
+                      = f.hidden_field :product_id, value: position.product.id
+                      = f.number_field :quantity, value: position.quantity.to_i, min: 1
+                      br
+                      = f.submit 'Update cart', disabled: @current_order.approved?
+                      br
+                      - unless @current_order.approved?
+                        = link_to 'Remove position', position, method: :delete, remote: true
+        section.text-center.h3 Your current order has a total of #{@current_order.subtotal}$
+        = button_to 'Make an order', {controller: :cart, action: 'approve'}, method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user. all_contact_info_filled?
+        br
+        - unless current_user.nil?
+          - unless current_user.confirmed
+            h3 You should activate your account in profile page
+          - unless current_user.all_contact_info_filled?
+            h3 You should fill all contact information
+        - if @current_order.approved?
+          h3 Your order is waiting to be approved
