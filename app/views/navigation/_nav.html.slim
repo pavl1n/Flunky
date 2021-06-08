@@ -16,8 +16,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link[href='#']
           | News
       li.nav-item
-        a.nav-link[href='#']
-          | Feedback
+        a.nav-link[href=cart_path]
+          | Cart
       - unless user_signed_in?
         li.nav-item
           a.nav-link[href=new_restaurant_path]

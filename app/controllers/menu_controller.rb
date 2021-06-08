@@ -2,8 +2,15 @@
 
 # Controller for main page
 class MenuController < ApplicationController
+  before_action :init_cart
   def index
     @restaurants = User.restaurant
     @product = Product.all
+  end
+
+  private
+
+  def init_cart
+    @order_positions = current_order.order_positions.new
   end
 end

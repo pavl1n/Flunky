@@ -20,6 +20,7 @@ html
             | ">
           = value.html_safe
   body
-    =notice
+    #flash
+      = render partial: "shared/notice_banner"
     = yield
 = render 'footer/footer' unless @skip_footer
