@@ -11,9 +11,9 @@ class RestaurantOrdersController < ApplicationController
       OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).approve_restaurant
       flash[:notice] = "Order #{params[:restaurant_order]} approved"
     end
-    if params[:do] == 'finish'
-      OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
-      flash[:notice] = "Order #{params[:restaurant_order]} finished"
-    end
+    return unless params[:do] == 'finish'
+
+    OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
+    flash[:notice] = "Order #{params[:restaurant_order]} finished"
   end
 end
