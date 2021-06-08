@@ -2,7 +2,7 @@
 
 # Controller for main page
 class MenuController < ApplicationController
-  before_action :create_order
+  before_action :init_cart
   def index
     @restaurants = User.restaurant
     @product = Product.all
@@ -10,7 +10,7 @@ class MenuController < ApplicationController
 
   private
 
-  def create_order
+  def init_cart
     @order_positions = current_order.order_positions.new
   end
 end
