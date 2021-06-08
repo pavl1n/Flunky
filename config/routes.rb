@@ -25,9 +25,11 @@ Rails.application.routes.draw do
     end
   end
   resources :after_signup
-  resources :restaurant_orders, only: %i[index]
-  post 'restaurant_orders/approve', to: 'restaurant_orders#approve'
-  post 'restaurant_orders/finish', to: 'restaurant_orders#finish'
+  resources :restaurant_orders, only: %i[index] do
+    collection do
+      post :update
+    end
+  end
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
     resources :products
