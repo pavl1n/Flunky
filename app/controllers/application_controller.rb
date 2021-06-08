@@ -4,6 +4,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def current_order
+    @current_order ||= Order.find_by_id(session[:order_id]) || Order.new
+  end
+
   protected
 
   def configure_permitted_parameters
