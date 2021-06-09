@@ -4,7 +4,6 @@
 class Order < ApplicationRecord
   scope :approved, -> { where(approved: true) }
   before_save :set_subtotal
-  after_update :reload_page
   has_many :restaurant_orders
   has_many :order_positions
   has_many :products, through: :order_positions
@@ -16,10 +15,6 @@ class Order < ApplicationRecord
   end
 
   private
-
-  def reload_page
-    redirect_back(fallback_location: root_path)
-  end
 
   def set_subtotal
     self.subtotal = subtotal
