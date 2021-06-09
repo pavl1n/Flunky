@@ -11,6 +11,9 @@ class RestaurantOrdersController < ApplicationController
       OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).approve_restaurant
       flash[:notice] = "Order #{params[:restaurant_order]} approved"
     end
+    respond_to do |format|
+      format.js { render inline: 'location.reload();' }
+    end
     return unless params[:do] == 'finish'
 
     OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
