@@ -27,9 +27,9 @@
                       | Approved
                   tr
                     td
-                      = rest_order.order.products.map {|product| product.name }
+                      = find_products_name(rest_order)
                     td
-                      = rest_order.order.order_positions.map { |position| position.quantity }
+                      = find_products_quantity(rest_order)
                     td
                       = rest_order.status
                     td
