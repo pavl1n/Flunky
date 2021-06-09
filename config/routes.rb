@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :order_positions
   get 'cart', to: 'cart#show'
   post 'cart/approve', to: 'cart#approve'
-  devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords' }, class_name: 'User'
+  devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords', sessions: 'sessions' }, class_name: 'User'
   devise_for :restaurants,
     class_name: 'User',
     only: [],
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
+    resources :orders, only: %i[index]
     resources :products
     collection do
       get 'profile'
