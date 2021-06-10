@@ -1,0 +1,32 @@
+.container.p-0[style="height: 100vh;"]
+  h1.h3.mb-3
+    | Settings
+  .row
+    .col-md-5.col-xl-4
+      = render 'user/panel'
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          .card
+            .card-header
+              .card-actions.float-right
+              h5.card-title.mb-0
+                | Orders
+            table[border="1" width="100%" cellpadding="5"]
+              - unless @orders.nil?
+                - @orders.each do |order|
+                  tr
+                    th
+                      | Order id:
+                      = order.id
+                    th
+                      | Approved
+                    th
+                      | State
+                  tr
+                    td
+                      = order.products.map { |product| product}.map(&:name)
+                    td
+                      = order.approved
+                    td
+                      = order.status
