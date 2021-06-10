@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates_with UserValidator
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
   validates_uniqueness_of :email, if: :email
-
+  has_many :restaurant_orders
   has_many :products
   has_one_attached :avatar
   validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }

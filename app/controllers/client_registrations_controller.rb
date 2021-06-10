@@ -9,6 +9,7 @@ class ClientRegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(_resource)
+    current_order.update(client_id: current_user.id)
     after_signup_index_path
   end
 

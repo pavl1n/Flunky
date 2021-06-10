@@ -2,6 +2,7 @@
 
 # Model for orders
 class Order < ApplicationRecord
+  scope :approved, -> { where(approved: true) }
   before_save :set_subtotal
   has_many :restaurant_orders
   has_many :order_positions
