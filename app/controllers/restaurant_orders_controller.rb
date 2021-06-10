@@ -7,14 +7,14 @@ class RestaurantOrdersController < ApplicationController
   end
 
   def update
-    if params[:do] == 'approve'
+    if params[:status] == 'approve'
       OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).approve_restaurant
       flash[:notice] = "Order #{params[:restaurant_order]} approved"
     end
     respond_to do |format|
       format.js { render inline: 'location.reload();' }
     end
-    return unless params[:do] == 'finish'
+    return unless params[:status] == 'finish'
 
     OrderService.new(RestaurantOrder.find_by_id(params[:restaurant_order])).finish
     flash[:notice] = "Order #{params[:restaurant_order]} finished"
