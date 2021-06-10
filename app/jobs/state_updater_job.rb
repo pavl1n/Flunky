@@ -11,6 +11,5 @@ class StateUpdaterJob < ApplicationJob
         order.update(status: 'done')
       end
     end
-    puts 'Updated status'
   end
 end

@@ -4,13 +4,15 @@
 class OrderService
   include AASM
 
-  def initialize(current_order)
-    @current_order = current_order
-    aasm.current_state = current_order.status.to_sym
+  def initialize(order)
+    @current_order = order
+    aasm.current_state = order.status.to_sym
+  rescue StandardError => e
+    Rails.logger.info "Rescued: #{e.inspect}"
   end
 
   aasm do
-    state :create_rest_order, before_enter: :create_rest_order
+    state :create_rest_order, before_enter: :create_restaurant_order
     state :waiting
     state :approve_by_restaurant, before_enter: :approve_and_update
     state :finish_order, after: :finish
@@ -28,7 +30,7 @@ class OrderService
     end
   end
 
-  def create_rest_order
+  def create_restaurant_order
     return if @current_order.instance_of?(RestaurantOrder)
 
     @current_order.products.each do |product|

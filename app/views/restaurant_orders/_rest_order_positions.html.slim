@@ -27,13 +27,13 @@
                       | Approved
                   tr
                     td
-                      = rest_order.order.products.map {|product| product.name }
+                      = rest_order.find_products_name(current_user)
                     td
-                      = rest_order.order.order_positions.map { |position| position.quantity }
+                      = rest_order.find_products_quantity(current_user)
                     td
                       = rest_order.status
                     td
                       - unless rest_order.approved
-                        = button_to 'Approve', { controller: :restaurant_orders, action: 'approve' }, params: {  restaurant_order: rest_order }, method: :post, remote: true
+                        = button_to 'Approve', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'approve' }, remote: true
                       - else
-                        = button_to 'Finish order', { controller: :restaurant_orders, action: 'finish' }, params: { restaurant_order: rest_order }, method: :post, remote: true
+                        = button_to 'Finish order', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'finish' }, remote: true
