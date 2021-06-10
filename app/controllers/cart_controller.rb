@@ -14,10 +14,4 @@ class CartController < ApplicationController
     session[:order_id] = nil
     flash[:notice] = 'Order was succesfully created'
   end
-
-  private
-
-  def skip_footer
-    @skip_footer = true
-  end
 end
