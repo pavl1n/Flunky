@@ -2,7 +2,6 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
-  before_action :skip_footer
   def new
     @product = current_user.products.build
   end

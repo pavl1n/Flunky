@@ -1,7 +1,8 @@
 # frozen_string_literal: false
 
-# Showing products
+# Pages for restaurant and their products
 class RestaurantController < ApplicationController
+  before_action :init_cart
   def show
     @restaurant = User.find(params[:id])
   end
