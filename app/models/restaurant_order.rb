@@ -14,5 +14,4 @@ class RestaurantOrder < ApplicationRecord
   def find_products_quantity(current_user)
     order.order_positions.select { |position| current_user.id == position.product.restaurant.id }.map(&:quantity)
   end
-
 end
