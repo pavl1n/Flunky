@@ -36,8 +36,17 @@ body
                       label
                         | Restaurant:
                       = link_to "#{@product.restaurant.name}", restaurant_path(@product.restaurant)
-                    = form_with(model: [@product, @product.comments.build]) do |f|
-                      .form-group
-                        = f.label 'New comment'
-                        = f.text_area :body, class: 'form-control'
-                      = f.submit 'Submit', class: 'btn btn-primary'
+                      br
+                      - if current_user
+                        = form_with model: [@product, @comment], url: { controller: 'comments', action: 'create'}, local: false do |f|
+                          .form-group
+                            = f.label 'New comment'
+                            = f.text_area :body, class: 'form-control'
+                          = f.submit 'Submit', class: 'btn btn-primary'
+                          br
+                      - else
+                        h4 You need to #{link_to 'Login', new_user_session_path} to comment
+                      h3 Comments:
+                      .comments
+                        - @comments.each do |comment|
+                          = render 'comments/comment', comment: comment

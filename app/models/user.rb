@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, if: :email
   has_many :restaurant_orders
   has_many :products
+  has_many :comments, dependent: :destroy
   has_one_attached :avatar
   validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }
   accepts_nested_attributes_for :products, reject_if: :all_blank, allow_destroy: true
