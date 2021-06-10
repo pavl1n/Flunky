@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     end
   end
   resources :restaurant_steps
-  resources :user, only: %i[edit update] do
+  resources :user do
     resources :products do
-      resources :comments
+      resources :comments, only: %i[create]
     end
     resources :orders, only: %i[index]
     collection do

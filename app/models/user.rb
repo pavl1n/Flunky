@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
+  accepts_nested_attributes_for :comments
   validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }
   accepts_nested_attributes_for :products, reject_if: :all_blank, allow_destroy: true
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
