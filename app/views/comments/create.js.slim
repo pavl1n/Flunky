@@ -1,4 +1,8 @@
-| $('.comments').prepend('
-= j render @comment
+/| $('.comments').prepend('
+/= j render @comment
+/| ');
+/| $('#comment_body').val(' ');
+/
+| $('#new_comment').replaceWith('
+=j render 'comments/new', product: @product
 | ');
-| $('#comment_body').val(' ');

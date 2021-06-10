@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root 'menu#index'
   resources :order_positions
   get 'cart', to: 'cart#show'
