@@ -8,7 +8,7 @@ class OrderService
     @current_order = order
     aasm.current_state = order.status.to_sym
   rescue StandardError => e
-    puts "Rescued: #{e.inspect}"
+    Rails.logger.info "Rescued: #{e.inspect}"
   end
 
   aasm do
