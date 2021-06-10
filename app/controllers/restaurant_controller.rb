@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# Showing products
 class RestaurantController < ApplicationController
   def show
     @restaurant = User.find(params[:id])
