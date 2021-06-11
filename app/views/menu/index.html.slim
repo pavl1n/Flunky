@@ -8,51 +8,52 @@ body
     p
       a.btn.btn-primary.my-2[href="#"]
         | Показать больше
-  .album.py-5.bg-light
-    section.text-center.h1 Menu
-    .container
-      .row
-        - @product.slice(0, 12).each do |product|
-          .col-md-4
-            .card.mb-4.box-shadow
-              img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
-  text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-  src="#{url_for(product.product_picture)}"   data-holder-rendered="true"]
-              .card-body
-                h1.card-text
-                  = product.name
-                h6.card-text
-                  = product.category
-                p.card-text
-                  = product.description
-                = form_with model: @order_positions, local: false do |f|
-                  = f.hidden_field :product_id, value: product.id
-                  = f.number_field :quantity, value: 1, min: 1
-                  = f.submit 'Add to cart'
-                br
-                .d-flex.justify-content-between.align-items-center
-                  .btn-group
-                    a.btn.btn-primary[href="#{user_product_path(product.restaurant, product)}" role="button"]
-                      | View
-                  small.text-muted
-                    = product.price
-  .album.py-5.bg-light
-    section.text-center.h1 Restaurants
-    .container
-      .row
-        - @restaurants.slice(0, 50).each do |user|
-          .col-md-4
-            .card.mb-4.box-shadow
-              img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
-  text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="#{url_for(user.avatar)}" data-holder-rendered="true"]
-              .card-body
-                h1.card-text
-                  = user.name
-                h6.card-text
-                  = user.address
-                .d-flex.justify-content-between.align-items-center
-                  .btn-group
-                    a.btn.btn-primary[href="#{restaurant_path(user)}" role="button"]
-                      | View
-                  small.text-muted
-                    = user.phone_number
+  - unless @product.nil?
+    .album.py-5.bg-light
+      section.text-center.h1 Menu
+      .container
+        .row
+          - @product.slice(0, 12).each do |product|
+            .col-md-4
+              .card.mb-4.box-shadow
+                img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
+    text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+    src="#{url_for(product.product_picture)}"   data-holder-rendered="true"]
+                .card-body
+                  h1.card-text
+                    = product.name
+                  h6.card-text
+                    = product.category
+                  p.card-text
+                    = product.description
+                  = form_with model: @order_positions, local: false do |f|
+                    = f.hidden_field :product_id, value: product.id
+                    = f.number_field :quantity, value: 1, min: 1
+                    = f.submit 'Add to cart'
+                  br
+                  .d-flex.justify-content-between.align-items-center
+                    .btn-group
+                      a.btn.btn-primary[href="#{user_product_path(product.restaurant, product)}" role="button"]
+                        | View
+                    small.text-muted
+                      = product.price
+    .album.py-5.bg-light
+      section.text-center.h1 Restaurants
+      .container
+        .row
+          - @restaurants.slice(0, 50).each do |user|
+            .col-md-4
+              .card.mb-4.box-shadow
+                img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
+    text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="#{url_for(user. avatar)}" data-holder-rendered="true"]
+                .card-body
+                  h1.card-text
+                    = user.name
+                  h6.card-text
+                    = user.address
+                  .d-flex.justify-content-between.align-items-center
+                    .btn-group
+                      a.btn.btn-primary[href="#{restaurant_path(user)}" role="button"]
+                        | View
+                    small.text-muted
+                      = user.phone_number

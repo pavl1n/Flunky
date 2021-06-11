@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 gem 'authy', '~> 3.0'
+gem 'aws-sdk-s3', '~> 1.96', '>= 1.96.1'
 gem 'bootstrap', '~> 4.6'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
