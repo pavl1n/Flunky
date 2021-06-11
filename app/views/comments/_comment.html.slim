@@ -1,0 +1,6 @@
+| [
+= comment.created_at.in_time_zone('Moscow').strftime("%l:%M:%S %p")
+| ]
+= comment.user.name
+| : #{comment.body}
+br
