@@ -1,4 +1,4 @@
-import consumer from "./consumer"
+import consumer from "./consumer";
 
 consumer.subscriptions.create("CommentsChannel", {
   connected() {
@@ -10,9 +10,7 @@ consumer.subscriptions.create("CommentsChannel", {
   },
 
   received(data) {
-    console.log(data)
-
-    $('.new_comments').prepend('<div class="comment">'+ "<%= j render #{@comment}%>" + data.content.body + '</div>');
+    $('.new_comments').prepend('<div class="comment">'+ '[ ' + new Date(data.content.created_at).toLocaleTimeString() + ']' + data.user.name + ': ' + data.content.body + '</div>');
     $('#comment_body').val(' ');
   }
 });
