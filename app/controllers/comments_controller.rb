@@ -7,7 +7,15 @@ class CommentsController < ApplicationController
   def create
     @comment = Product.find_by_id(params[:product_id]).comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
+    respond_to do |format|
+      if @comment.save
+        ActionCable.server.broadcast 'comments_channel', { content: @comment }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

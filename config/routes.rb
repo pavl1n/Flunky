@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
   root 'menu#index'
   resources :order_positions
   get 'cart', to: 'cart#show'
@@ -50,4 +49,5 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
+  mount ActionCable.server => '/cable'
 end
