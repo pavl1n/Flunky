@@ -30,3 +30,6 @@
                         .d-flex.justify-content-between.align-items-center
                           small.text-muted
                             = product.price
+                        = link_to 'Edit', edit_user_product_path(id: product, user_id: product.restaurant)
+                        br
+                        = link_to 'Delete', [product.restaurant, product], method: :delete
