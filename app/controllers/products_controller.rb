@@ -6,6 +6,19 @@ class ProductsController < ApplicationController
     @product = current_user.products.build
   end
 
+  def edit; end
+
+  def update
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      if @product.update(update_params)
+        format.html { redirect_to dishes_user_index_path, notice: 'Product was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def show
     @product = User.find(params[:user_id]).products.find(params[:id])
     @comment = Comment.new
@@ -26,7 +39,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    Product.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { render dishes_user_index_path, notice: 'Product was successfully destroyed.' }
+    end
+  end
+
   private
+
+  def update_params
+    params.require(:product).permit(
+      :name, :price, :category, :description, :product_picture
+    )
+  end
 
   def product_params
     params.require(:user).permit(
