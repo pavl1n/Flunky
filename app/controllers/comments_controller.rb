@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    binding.pry
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
     @comment.save

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       post :update
     end
   end
+  get '/search', to: 'pages#search', as: 'search_page'
   resources :restaurant_steps
   resources :user, only: %i[edit update] do
     resources :products do

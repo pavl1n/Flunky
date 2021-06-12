@@ -2,6 +2,8 @@
 
 # Model for product entity
 class Product < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   has_one_attached :product_picture
   belongs_to :restaurant, -> { where user_type: :restaurant }, class_name: 'User', foreign_key: 'user_id'
   has_many :order_positions
@@ -11,4 +13,12 @@ class Product < ApplicationRecord
   validates_numericality_of :price, message: 'only allows digits'
   validates :description, length: { maximum: 100 }
   validates :product_picture, attached: true, content_type: %i[png jpg jpeg]
+
+  settings do
+    mappings dynamic: false do
+      indexes :name, type: :text
+      indexes :category, type: :text, analyzer: :english
+      indexes :description, type: :text, analyzer: :english
+    end
+  end
 end

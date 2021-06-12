@@ -1,0 +1,29 @@
+body[style="background-color: #e9ecef"]
+- unless @product.nil?
+  - if @product.empty?
+    h2 No product found matching your query.
+  - else
+    section.jumbotron.text-center[style="margin: 0;"]
+      .album.py-5.bg-light
+          section.text-center.h1 Search results
+          .container
+            .row
+              - @product.each do |product|
+                .col-md-4
+                  .card.mb-4.box-shadow
+                    img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
+        text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+        src="#{url_for(Product.find(product.id).product_picture)}"   data-holder-rendered="true"]
+                    .card-body
+                      h1.card-text
+                        = product.name
+                      h6.card-text
+                        = product.category
+                      p.card-text
+                        = product.description
+                      .d-flex.justify-content-between.align-items-center
+                        .btn-group
+                          a.btn.btn-primary[href="#{user_product_path(Product.find(product.id).restaurant, Product.find(product.id))}" role="button"]
+                            | View
+                        small.text-muted
+                          = product.price
