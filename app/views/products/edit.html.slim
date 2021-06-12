@@ -1,4 +1,3 @@
-/= render 'form', restaurant: current_user, product: Product.find(params[:id]), path: { controller: 'products', action: 'update'}, method: :put
 = form_for Product.find(params[:id]), url: { controller: 'products', action: 'update'}, method: :put do |f|
   section.text-center.h1 Products update
   .container[style="height: 100vh;"]
