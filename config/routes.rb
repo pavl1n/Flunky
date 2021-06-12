@@ -35,9 +35,9 @@ Rails.application.routes.draw do
   end
   get '/search', to: 'pages#search', as: 'search_page'
   resources :restaurant_steps
-  resources :user, only: %i[edit update] do
+  resources :user do
     resources :products do
-      resources :comments
+      resources :comments, only: %i[create]
     end
     resources :orders, only: %i[index]
     collection do
@@ -50,4 +50,5 @@ Rails.application.routes.draw do
       put :update_phone_number
     end
   end
+  mount ActionCable.server => '/cable'
 end

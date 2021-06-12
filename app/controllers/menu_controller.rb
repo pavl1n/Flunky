@@ -7,10 +7,4 @@ class MenuController < ApplicationController
     @restaurants = User.restaurant
     @product = Product.all
   end
-
-  private
-
-  def init_cart
-    @order_positions = current_order.order_positions.new
-  end
 end

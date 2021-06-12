@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def init_cart
+    @order_positions = current_order.order_positions.new
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:phone_number])
