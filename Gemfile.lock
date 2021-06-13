@@ -227,6 +227,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    pagy (4.8.0)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -430,6 +431,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
+  pagy (~> 4.8)
   pg (~> 1.1)
   phonelib (~> 0.6.49)
   pry (~> 0.14.1)

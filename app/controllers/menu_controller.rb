@@ -4,7 +4,6 @@
 class MenuController < ApplicationController
   before_action :init_cart
   def index
-    @restaurants = User.restaurant
-    @product = Product.all
+    @pagy, @product = pagy(Product.all)
   end
 end
