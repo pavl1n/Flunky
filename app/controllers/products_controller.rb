@@ -8,15 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-<<<<<<< HEAD
     render :edit
-=======
-    if product_policy.able_to_edit?
-      render :edit
-    else
-      redirect_to '/403'
-    end
->>>>>>> 8aa91083 (added policy)
   end
 
   def update
