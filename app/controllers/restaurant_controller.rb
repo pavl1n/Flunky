@@ -4,7 +4,7 @@
 class RestaurantController < ApplicationController
   before_action :init_cart
   def index
-    @pagy, @restaurants = pagy(User.restaurant)
+    @pagy, @restaurants = pagy(User.restaurant.includes(avatar_attachment: :blob))
   end
 
   def show
@@ -12,6 +12,6 @@ class RestaurantController < ApplicationController
   end
 
   def products
-    @restaurant = User.find(params[:restaurant_id])
+    @products = User.find(params[:restaurant_id]).products.includes(product_picture_attachment: :blob)
   end
 end

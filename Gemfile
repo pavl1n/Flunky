@@ -60,6 +60,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
   gem 'faker', '~> 2.17'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'

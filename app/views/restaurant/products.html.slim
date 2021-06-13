@@ -4,14 +4,14 @@ body[style="background-color: #e9ecef"]
         section.text-center.h1 Restaurant Products
         .container
           .row
-            - @restaurant.products.each do |product|
+            - @products.each do |product|
               .col-md-4
                 .card.mb-4.box-shadow
                     img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
   text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
   src="#{url_for(product.product_picture)}"   data-holder-rendered="true"]
                     .card-body
-                      h1.card-text
+                      h3.card-text
                         = product.name
                       h6.card-text
                         = product.category
