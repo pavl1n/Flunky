@@ -6,7 +6,13 @@ class ProductsController < ApplicationController
     @product = current_user.products.build
   end
 
-  def edit; end
+  def edit
+    if product_policy.able_to_edit?
+      render :edit
+    else
+      redirect_to '/403'
+    end
+  end
 
   def update
     @product = Product.find(params[:id])
@@ -60,7 +66,8 @@ class ProductsController < ApplicationController
     )
   end
 
-  def skip_footer
-    @skip_footer = true
+  def product_policy
+    @product_policy ||= ProductPolicy.new(current_user: current_user, resource: Product.find(params[:id]))
   end
+  helper_method :product_policy
 end
