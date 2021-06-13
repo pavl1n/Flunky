@@ -1,14 +1,14 @@
 
 2.times do
-  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::PhoneNumber.phone_number, user_type: 0)
+  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 0, create_stage: 0)
 end
 
 5.times do
-  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: Faker::PhoneNumber.phone_number, user_type: 1)
+  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 1, create_stage: 1)
 end
 
-5.times do
-  @restaurant = User.create(name: Faker::Restaurant.name, city: Faker::Address.city,  phone_number: Faker::PhoneNumber.phone_number, user_type: 2)
+10.times do
+  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 2, create_stage: 1, street: Faker::Address.street_address, house_number: Faker::Address.building_number)
 end
 
 User.restaurant.each do |restaurant|
