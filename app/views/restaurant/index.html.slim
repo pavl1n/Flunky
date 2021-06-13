@@ -5,13 +5,13 @@ body
         section.text-center.h1 Restaurants
         .container
           .row
-            - @restaurants.slice(0, 50).each do |user|
+            - @restaurants.each do |user|
               .col-md-4
                 .card.mb-4.box-shadow
                   img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
           text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="#{url_for(user.avatar)}" data-holder-rendered="true"]
                   .card-body
-                    h1.card-text
+                    h3.card-text
                       = user.name
                     h6.card-text
                       = user.address

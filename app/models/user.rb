@@ -60,6 +60,10 @@ class User < ApplicationRecord
     "#{city}, #{street} #{house_number}"
   end
 
+  def restaurant_products
+    products.includes([:restaurant]).includes(product_picture_attachment: :blob)
+  end
+
   private
 
   def normalize_phone
