@@ -5,6 +5,7 @@ body[style="background-color: #e9ecef"]
         .container
           .row
             - @products.each do |product|
+              - next unless product.approved unless admin(current_user)
               .col-md-4
                 .card.mb-4.box-shadow
                     img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
@@ -19,5 +20,7 @@ body[style="background-color: #e9ecef"]
                         = product.description
                       = render 'order_positions/form', order_positions: @order_positions, product: product unless client(current_user)
                       .d-flex.justify-content-between.align-items-center
+                        - unless product.approved
+                          = button_to 'Confirm', { controller: 'admin', action: 'approve_product', product_id: product}, class: 'btn btn-success', method: :put
                         small.text-muted
                           = product.price

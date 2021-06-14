@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :restaurant, -> { where user_type: :restaurant }, class_name: 'User', foreign_key: 'user_id'
   has_many :order_positions
   has_many :comments, dependent: :destroy
+  scope :approved, -> { where(approved: true) }
   accepts_nested_attributes_for :comments
   after_commit :update_indices, on: %i[create update]
   has_many :orders, through: :order_positions

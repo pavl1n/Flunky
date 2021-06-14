@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     product_params[:products_attributes].each { |_key, value| products_arr << value }
     respond_to do |format|
       products_arr.each do |product|
-        @product = current_user.products.build(product)
+        @product = current_user.products.build(product.merge(approved: false))
         next if @product.save
 
         format.html { render :new }
