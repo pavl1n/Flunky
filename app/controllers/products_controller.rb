@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     respond_to do |format|
-      if @product.update(update_params)
+      if @product.update(update_params.merge(approved: false))
         format.html { redirect_to dishes_user_index_path, notice: 'Product was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
