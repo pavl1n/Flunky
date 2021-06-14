@@ -3,7 +3,7 @@
 # Responsible for showing cart and updating status of order
 class CartController < ApplicationController
   def show
-    @order_positions = current_order.order_positions
+    @order_positions = current_order.order_positions.includes(product: { product_picture_attachment: :blob })
   end
 
   def approve

@@ -19,5 +19,6 @@
     = f.label 'Product photo'
     br
     = f.file_field :product_picture, required: true
-  div
-    = link_to_remove_association 'Remove product', f
+  - if f.object.id.nil?
+    div
+      = link_to_remove_association 'Remove product', f

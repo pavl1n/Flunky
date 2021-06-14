@@ -12,8 +12,11 @@ gem 'cocoon', '~> 1.2', '>= 1.2.15'
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'active_storage_validations', '~> 0.9.3'
+gem 'elasticsearch-model', '~> 7.1', '>= 7.1.1'
+gem 'elasticsearch-rails', '~> 7.1', '>= 7.1.1'
 gem 'jquery-rails', '~> 4.4'
 gem 'omniauth-google-oauth2'
+gem 'pagy', '~> 4.8'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 gem 'rubocop', '~> 1.12', '>= 1.12.1'
@@ -57,6 +60,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
   gem 'faker', '~> 2.17'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'

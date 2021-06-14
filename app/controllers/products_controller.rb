@@ -2,8 +2,24 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
+  before_action :product_policy, only: %i[create new edit update delete]
   def new
     @product = current_user.products.build
+  end
+
+  def edit
+    render :edit
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      if @product.update(update_params)
+        format.html { redirect_to dishes_user_index_path, notice: 'Product was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
@@ -26,7 +42,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if Product.find(params[:id]).destroy
+        format.html { render dishes_user_index_path, notice: 'Product was successfully destroyed.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
+
+  def update_params
+    params.require(:product).permit(
+      :name, :price, :category, :description, :product_picture
+    )
+  end
 
   def product_params
     params.require(:user).permit(
@@ -34,7 +66,9 @@ class ProductsController < ApplicationController
     )
   end
 
-  def skip_footer
-    @skip_footer = true
+  def product_policy
+    return if ProductPolicy.new(current_user: current_user, resource: Product.find(params[:id])).able_to_edit?
+
+    redirect_to '/403'
   end
 end

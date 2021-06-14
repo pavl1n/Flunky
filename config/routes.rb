@@ -15,11 +15,12 @@ Rails.application.routes.draw do
     get  "/restaurants/destroy",    to: "restaurants#destroy", as: :destroy_restaurant_session
   end
 
-  resources :restaurant, only: %i[show] do
+  resources :restaurant, only: %i[index show] do
     get :products
   end
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
+  match '/403', to: 'errors#not_authorized', via: :all
   resources :phone_verifications, only: %i[new create] do
     collection do
       get 'challenge'
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
       post :update
     end
   end
+  get '/search', to: 'pages#search', as: 'search_page'
   resources :restaurant_steps
   resources :user do
     resources :products do
