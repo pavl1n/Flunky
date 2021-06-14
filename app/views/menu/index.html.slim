@@ -14,6 +14,7 @@ body
       .container
         .row
           - @product.each do |product|
+            - next unless product.approved && product.restaurant.confirmed unless admin(current_user)
             .col-md-4
               .card.mb-4.box-shadow
                 img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
@@ -26,15 +27,13 @@ body
                     = product.category
                   p.card-text
                     = product.description
-                  = render 'order_positions/form', order_positions: @order_positions, product: product unless client(current_user)
+                  = render 'order_positions/form', order_positions: @order_positions, product: product unless client (current_user)
                   br
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
-                      a.btn.btn-primary[href="#{user_product_path(product.restaurant, product)}" role="button"]
-                        | View
+                      = button_to 'View', user_product_path(product.restaurant, product), method: :get, class: 'btn btn-primary'
                       - if admin(current_user)
-                        a.btn.btn-danger[data-method="delete" href=user_product_path(product.restaurant, product) role="button"]
-                          | Delete
+                        = button_to 'Delete', user_product_path(product.restaurant, product), class: 'btn btn-danger', method: :delete
                     small.text-muted
                       = product.price
         = pagy_bootstrap_nav(@pagy).html_safe
