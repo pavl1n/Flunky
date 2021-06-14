@@ -32,7 +32,9 @@ body
                     .btn-group
                       a.btn.btn-primary[href="#{user_product_path(product.restaurant, product)}" role="button"]
                         | View
-                      = link_to 'Delete', [product.restaurant, product], method: :delete if admin(current_user)
+                      - if admin(current_user)
+                        a.btn.btn-danger[data-method="delete" href=user_product_path(product.restaurant, product) role="button"]
+                          | Delete
                     small.text-muted
                       = product.price
         = pagy_bootstrap_nav(@pagy).html_safe
