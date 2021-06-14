@@ -46,9 +46,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
     respond_to do |format|
-      format.html { render dishes_user_index_path, notice: 'Product was successfully destroyed.' }
+      if Product.find(params[:id]).destroy
+        format.html { render dishes_user_index_path, notice: 'Product was successfully destroyed.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
