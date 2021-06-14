@@ -27,10 +27,11 @@ body
                       = current_user.email
                     .form-group
                       label
-                        | City:
                       - if current_user.restaurant?
+                        | Address:
                         = current_user.address
                       - else
+                        | City:
                         = current_user.city
                     .form-group
                       label
