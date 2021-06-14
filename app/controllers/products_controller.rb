@@ -2,16 +2,13 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
+  before_action :product_policy, only: %i[create edit update delete]
   def new
     @product = current_user.products.build
   end
 
   def edit
-    if product_policy.able_to_edit?
-      render :edit
-    else
-      redirect_to '/403'
-    end
+    render :edit
   end
 
   def update
@@ -70,7 +67,8 @@ class ProductsController < ApplicationController
   end
 
   def product_policy
-    @product_policy ||= ProductPolicy.new(current_user: current_user, resource: Product.find(params[:id]))
+    return if ProductPolicy.new(current_user: current_user, resource: Product.find(params[:id])).able_to_edit?
+
+    redirect_to '/403'
   end
-  helper_method :product_policy
 end
