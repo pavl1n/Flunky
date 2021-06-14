@@ -27,9 +27,9 @@
                       | Approved
                   tr
                     td
-                      = rest_order.find_products_name(current_user)
+                      = rest_order.find_products_name(current_user.id)
                     td
-                      = rest_order.find_products_quantity(current_user)
+                      = rest_order.find_products_quantity(current_user.id)
                     td
                       = rest_order.status
                     td
