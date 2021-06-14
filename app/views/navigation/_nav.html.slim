@@ -15,9 +15,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link[href=restaurant_index_path]
           | Restaurants
-      li.nav-item
-        a.nav-link[href=cart_path]
-          | Cart
+      - unless client(current_user)
+        li.nav-item
+          a.nav-link[href=cart_path]
+            | Cart
       - unless user_signed_in?
         li.nav-item
           a.nav-link[href=new_restaurant_path]

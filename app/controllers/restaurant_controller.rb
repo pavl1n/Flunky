@@ -14,4 +14,14 @@ class RestaurantController < ApplicationController
   def products
     @products = User.find(params[:restaurant_id]).products.includes(product_picture_attachment: :blob)
   end
+
+  def destroy
+    respond_to do |format|
+      if User.find(params[:id]).destroy
+        format.html { redirect_to root_path, notice: 'Restaurant was successfully destroyed.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
 end

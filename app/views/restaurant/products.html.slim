@@ -17,10 +17,7 @@ body[style="background-color: #e9ecef"]
                         = product.category
                       p.card-text
                         = product.description
-                      = form_with model: @order_positions, local: false do |f|
-                        = f.hidden_field :product_id, value: product.id
-                        = f.number_field :quantity, value: 1, min: 1
-                        = f.submit 'Add to cart'
+                      = render 'order_positions/form', order_positions: @order_positions, product: product unless client(current_user)
                       .d-flex.justify-content-between.align-items-center
                         small.text-muted
                           = product.price
