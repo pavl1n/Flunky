@@ -8,7 +8,7 @@ end
 end
 
 10.times do
-  User.create(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 2, create_stage: 1, street: Faker::Address.street_address, house_number: Faker::Address.building_number)
+  User.new(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 2, create_stage: 2, street: Faker::Address.street_address, house_number: Faker::Address.building_number)
 end
 
 User.restaurant.each do |restaurant|
