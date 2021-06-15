@@ -71,5 +71,4 @@ class ProductsController < ApplicationController
 
     redirect_to '/403'
   end
-  helper_method :product_policy
 end
