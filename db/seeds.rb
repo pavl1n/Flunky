@@ -11,10 +11,21 @@ end
   User.new(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 2, create_stage: 2, street: Faker::Address.street_address, house_number: Faker::Address.building_number)
 end
 
-User.restaurant.each do |restaurant|
-  @products = restaurant.products.create(name: Faker::Food.dish, price: Faker::Types.rb_integer, category: Faker::Restaurant.type, description: Faker::Food.description)
+5.times do
+  restaurant = User.new(name: Faker::Name.name, city: Faker::Address.city, phone_number: '+375' + ['29', '33', '44', '25'].sample + Faker::Number.number(digits: 7).to_s, password: Faker::Internet.password(min_length: 6), email: Faker::Internet.email, user_type: 2, create_stage: 2, street: Faker::Address.street_address, house_number: Faker::Address.building_number, confirmed: true)
+  restaurant.avatar.attach(io: File.open("#{Rails.root}/spec/fixtures/1.jpg"), filename: '1.jpg')
+  restaurant.save
 end
 
-User.client.each do |client|
-  client.orders.create(approved: true, status: 1, payment_type: 0)
+User.restaurant.each do |restaurant|
+  5.times do
+    product = restaurant.products.new(name: Faker::Food.dish, price: Faker::Types.rb_integer, category: Faker::Restaurant.type, description: Faker::Food.description[0...100], approved: true)
+    product.product_picture.attach(io: File.open("#{Rails.root}/spec/fixtures/3.jpeg"), filename: '3.jpeg')
+    product.save
+  end
+  5.times do
+    product = restaurant.products.new(name: Faker::Food.dish, price: Faker::Types.rb_integer, category: Faker::Restaurant.type, description: Faker::Food.description[0...100], approved: false)
+    product.product_picture.attach(io: File.open("#{Rails.root}/spec/fixtures/3.jpeg"), filename: '3.jpeg')
+    product.save
+  end
 end
