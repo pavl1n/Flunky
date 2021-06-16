@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :comments
   has_many :orders, through: :order_positions
   validates :name, :price, :category, :description, presence: true
-  validates_numericality_of :price, message: 'only allows digits'
+  validates_numericality_of :price, message: 'is not a number'
   validates :description, length: { maximum: 100 }
   validates :product_picture, attached: true, content_type: %i[png jpg jpeg]
 
