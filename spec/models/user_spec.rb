@@ -109,10 +109,4 @@ RSpec.describe User, type: :model do
       expect(subject.address).to eq('Baranovichi, Vaskina 12')
     end
   end
-
-  describe 'restaurant_products finder' do
-    let(:restaurant) do
-      create(:restaurant)
-    end
-  end
 end
