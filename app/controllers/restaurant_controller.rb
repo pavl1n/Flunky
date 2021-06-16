@@ -4,7 +4,12 @@
 class RestaurantController < ApplicationController
   before_action :init_cart
   def index
-    @pagy, @restaurants = pagy(User.restaurant.includes(avatar_attachment: :blob))
+    if admin(current_user)
+      @restaurants = User.restaurant
+    else
+      @restaurants = User.restaurant.confirmed
+    end
+    @pagy, @list_of_restaurants = pagy(@restaurants.includes(avatar_attachment: :blob), items: 21)
   end
 
   def show
@@ -23,5 +28,11 @@ class RestaurantController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def admin(user)
+    user_signed_in? && user.admin?
   end
 end

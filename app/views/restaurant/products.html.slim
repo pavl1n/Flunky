@@ -5,7 +5,6 @@ body[style="background-color: #e9ecef"]
         .container
           .row
             - @products.each do |product|
-              - next unless product.approved unless admin(current_user)
               .col-md-4
                 .card.mb-4.box-shadow
                     img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;

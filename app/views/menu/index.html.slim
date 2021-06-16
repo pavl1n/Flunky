@@ -13,8 +13,7 @@ body
       section.text-center.h1 Menu
       .container
         .row
-          - @product.each do |product|
-            - next unless product.approved && product.restaurant.confirmed unless admin(current_user)
+          - @list_of_products.each do |product|
             .col-md-4
               .card.mb-4.box-shadow
                 img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
@@ -34,6 +33,8 @@ body
                       = button_to 'View', user_product_path(product.restaurant, product), method: :get, class: 'btn btn-primary'
                       - if admin(current_user)
                         = button_to 'Delete', user_product_path(product.restaurant, product), class: 'btn btn-danger', method: :delete
+                        - unless product.approved
+                          = button_to 'Confirm', { controller: 'admin', action: 'approve_product', product_id: product}, class: 'btn btn-success', method: :put
                     small.text-muted
                       = product.price
         = pagy_bootstrap_nav(@pagy).html_safe

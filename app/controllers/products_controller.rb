@@ -23,7 +23,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = User.find(params[:user_id]).products.find(params[:id])
+    if admin(current_user)
+      @product = User.find(params[:user_id]).products.find(params[:id])
+    else
+      @product = User.find(params[:user_id]).products.approved.find(params[:id])
+    end
     @comment = Comment.new
     @comments = @product.comments.order('created_at DESC')
   end
