@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
   def extract_locale
     parsed_locale = params[:locale]
     I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale.to_sym : nil
+  end
+
   def init_cart
     @order_positions = current_order.order_positions.new
   end

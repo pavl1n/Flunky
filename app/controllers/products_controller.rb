@@ -2,7 +2,7 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
-  before_action :product_policy, only: %i[create new edit update delete]
+  before_action :product_policy, only: %i[edit update]
   def new
     @product = current_user.products.build
   end

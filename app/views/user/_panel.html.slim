@@ -4,25 +4,21 @@
       = t 'profile.profile_settings'
   .list-group.list-group-flush[role="tablist"]
     a.list-group-item.list-group-item-action[data-toggle="list" href=profile_user_index_path role="tab"]
-      |  Account
+      = t 'profile.my_page'
     - if current_user.restaurant?
       a.list-group-item.list-group-item-action[data-toggle="list" href=dishes_user_index_path role="tab"]
-        |  Dishes
+        = t 'profile.dishes'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_path(current_user) role="tab"]
       = t 'profile.info_change'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_registration_path role="tab"]
       = t 'profile.password_change'
-    a.list-group-item.list-group-item-action[data-toggle="list" href="#" role="tab"]
-      = t 'profile.email_notifications'
-    a.list-group-item.list-group-item-action[data-toggle="list" href="#" role="tab"]
-      |  Web notifications
     - if current_user.client?
       a.list-group-item.list-group-item-action[data-toggle="list" href=after_signup_index_path role="tab"]
-        |  Verify account
+        = t 'profile.verify'
       a.list-group-item.list-group-item-action[data-toggle="list" href=user_orders_path(current_user) role="tab"]
-        |  Order history
+        = t 'profile.order_history'
     - else
       a.list-group-item.list-group-item-action[data-toggle="list" href=new_user_product_path(current_user) role="tab"]
-        |  Insert dishes
+        = t 'profile.insert_dishes'
       a.list-group-item.list-group-item-action[data-toggle="list" href=restaurant_orders_path role="tab"]
-        |  Orders
+        = t 'profile.restaurant_orders'

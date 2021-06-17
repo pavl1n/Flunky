@@ -27,7 +27,7 @@ body
                       = current_user.email
                     .form-group
                       label
-                        | City:
+                        = t 'profile.city'
                       - if current_user.restaurant?
                         = current_user.address
                       - else
@@ -37,10 +37,10 @@ body
                         = t 'profile.phone'
                       = current_user.phone_number
                     .form-group
-                    - if current_user.client?
+                    - unless current_user.admin?
                       label
                         = t 'profile.account_status'
                       - if current_user.confirmed
                           = t 'profile.verified'
                       - else
-                          | Not verified
+                          = t 'profile.not_verified'

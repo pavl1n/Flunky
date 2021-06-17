@@ -243,11 +243,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-<<<<<<< HEAD
-    puma (5.3.1)
-=======
     puma (5.3.2)
->>>>>>> main
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.5.2)
@@ -431,12 +427,9 @@ DEPENDENCIES
   capybara (>= 3.26)
   cocoon (~> 1.2, >= 1.2.15)
   devise!
-<<<<<<< HEAD
   devise-i18n (~> 1.9, >= 1.9.3)
-=======
   elasticsearch-model (~> 7.1, >= 7.1.1)
   elasticsearch-rails (~> 7.1, >= 7.1.1)
->>>>>>> main
   envyable (~> 1.2)
   faker (~> 2.17)
   i18n (~> 1.8, >= 1.8.10)
