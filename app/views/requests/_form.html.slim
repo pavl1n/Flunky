@@ -1,0 +1,14 @@
+= form_for request, method: :post do |f|
+  section.jumbotron.text-center[style="margin: 0; height: 100vh;"]
+      .container
+        h2
+          | Registration request
+      = f.label :email
+      br
+      = f.email_field :email, autofocus: true, autocomplete: 'email', required: true, size: 40
+      br
+      = f.label :description
+      br
+      = f.text_area :description, cols: 50, rows: 10, required: true
+      br
+      = f.button :submit
