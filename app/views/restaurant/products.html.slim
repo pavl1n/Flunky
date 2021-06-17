@@ -1,0 +1,26 @@
+body[style="background-color: #e9ecef"]
+  section.jumbotron.text-center[style="margin: 0;"]
+    .album.py-5.bg-light
+        section.text-center.h1 Restaurant Products
+        .container
+          .row
+            - @products.each do |product|
+              .col-md-4
+                .card.mb-4.box-shadow
+                    img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
+  text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+  src="#{url_for(product.product_picture)}"   data-holder-rendered="true"]
+                    .card-body
+                      h3.card-text
+                        = product.name
+                      h6.card-text
+                        = product.category
+                      p.card-text
+                        = product.description
+                      = form_with model: @order_positions, local: false do |f|
+                        = f.hidden_field :product_id, value: product.id
+                        = f.number_field :quantity, value: 1, min: 1
+                        = f.submit 'Add to cart'
+                      .d-flex.justify-content-between.align-items-center
+                        small.text-muted
+                          = product.price

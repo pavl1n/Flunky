@@ -1,0 +1,29 @@
+.container.p-0[style="height: 100vh;"]
+  h1.h3.mb-3
+    | Settings
+  .row
+    .col-md-5.col-xl-4
+      = render 'user/panel'
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          .card
+            .card-header
+              .card-actions.float-right
+              h5.card-title.mb-0
+                | Profile information change
+          = form_with(model: current_user, url: {action: 'update_phone_number'}) do |f|
+            - if current_user.errors.any?
+              ul
+                - current_user.errors.each do |error|
+                  li
+                    = error.full_message
+            - if current_user.phone_number.nil? || !(current_user.errors[:phone_number].blank?)
+              h1 Enter your phone number
+              .field
+                = f.label :phone_number
+                br
+                = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
+              .actions
+                br
+                = f.submit

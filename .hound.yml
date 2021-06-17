@@ -5,3 +5,6 @@ reek:
 rubocop:
   enable: true
   config_file: .rubocop.yml
+
+jshint:
+  config_file: .jshintrc

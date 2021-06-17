@@ -1,4 +1,3 @@
-= render 'navigation/nav'
 .container.p-0[style="height: 100vh;"]
   h1.h3.mb-3
     = t 'profile.settings'
@@ -19,27 +18,18 @@
                 - current_user.errors.each do |error|
                   li
                     = error.full_message
-            - if current_user.phone_number.nil? || !(current_user.errors[:phone_number].blank?)
-              h1
-                = t 'profile.enter_phone'
-              .field
-                = f.label :phone_number
-                br
-                = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
-            - else
-              .field
-                = f.label t 'profile.name'
-                br
-                = f.text_field :name, autofocus: true
-              .field
-                = f.label t 'profile.email'
-                br
-                = f.email_field :email, autofocus: true, autocomplete: 'email'
-              .field
-                = f.label t 'profile.city'
-                br
-                = f.text_field :city, autofocus: true, autocomplete: 'city'
+            .field
+              = f.label :name
+              br
+              = f.text_field :name, autofocus: true
+            .field
+              = f.label :email
+              br
+              = f.email_field :email, autofocus: true, autocomplete: 'email'
+            .field
+              = f.label :city
+              br
+              = f.text_field :city, autofocus: true, autocomplete: 'city'
             .actions
             br
-              = f.submit t 'profile.update'
-= render 'footer/footer'
+              = f.submit

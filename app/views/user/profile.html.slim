@@ -1,4 +1,3 @@
-= render 'navigation/nav'
 body
 .container.p-0[style="height: 100vh;"]
   h1.h3.mb-3
@@ -28,17 +27,20 @@ body
                       = current_user.email
                     .form-group
                       label
-                        = t 'profile.city'
-                      = current_user.city
+                        | City:
+                      - if current_user.restaurant?
+                        = current_user.address
+                      - else
+                        = current_user.city
                     .form-group
                       label
                         = t 'profile.phone'
                       = current_user.phone_number
                     .form-group
+                    - if current_user.client?
                       label
                         = t 'profile.account_status'
                       - if current_user.confirmed
                           = t 'profile.verified'
                       - else
-                          = t 'profile.not_verified'
-= render 'footer/footer'
+                          | Not verified

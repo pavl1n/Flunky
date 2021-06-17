@@ -1,0 +1,5 @@
+= form_for Product.find(params[:id]), url: { controller: 'products', action: 'update'}, method: :put do |f|
+  section.text-center.h1 Products update
+  .container[style="height: 100vh;"]
+    = render 'products/product_fields', f: f
+    = f.submit 'Update products'

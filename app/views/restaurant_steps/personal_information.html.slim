@@ -1,0 +1,40 @@
+= form_for current_restaurant, url: wizard_path, method: :put do |f|
+  section.text-center.h1 Personal information
+  .container[style="height: 100vh;"]
+    - if current_restaurant.errors.any?
+      ul
+        - current_restaurant.errors.each do |error|
+          li
+            = error.full_message
+    .field
+      = f.label :name
+    td
+      = f.text_field :name, autofocus: true
+    .field
+    br
+      = f.label :email
+    td
+      = f.email_field :email, autofocus: true, autocomplete: 'email'
+    .field
+    br
+      = f.label :city
+    td
+      = f.text_field :city, autofocus: true, autocomplete: 'city'
+    .field
+    br
+      = f.label :street
+    td
+      = f.text_field :street, autofocus: true, autocomplete: 'street'
+    br
+    .field
+      = f.label :house_number
+    td
+      = f.text_field :house_number, autofocus: true, autocomplete: 'house_number'
+    .field
+    br
+      = f.label 'Profile photo'
+    td
+      = f.file_field :avatar
+    .actions
+    br
+    = f.submit 'Submit information'

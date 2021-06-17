@@ -1,0 +1,24 @@
+.nested-fields
+  .field
+    = f.label :name
+    br
+    = f.text_field :name, autofocus: true, required: true
+  .field
+    = f.label :price
+    br
+    = f.text_field :price, autofocus: true, required: true
+  .field
+    = f.label :category
+    br
+    = f.text_field :category, autofocus: true, autocomplete: 'category', required: true
+  .field
+    = f.label :description
+    br
+    = f.text_area :description, autofocus: true, autocomplete: 'description', required: true
+  .field
+    = f.label 'Product photo'
+    br
+    = f.file_field :product_picture, required: true
+  - if f.object.id.nil?
+    div
+      = link_to_remove_association 'Remove product', f

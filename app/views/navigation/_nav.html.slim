@@ -10,23 +10,24 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         a.nav-link[href=root_path]
           = t 'navigation.home'
       li.nav-item
-        a.nav-link[href=user_profile_path]
-          = t 'navigation.profile'
+        a.nav-link[href=profile_user_index_path]
+          | Profile
       li.nav-item
-        a.nav-link[href='#']
-          = t 'navigation.news'
+        a.nav-link[href=restaurant_index_path]
+          | Restaurants
       li.nav-item
-        a.nav-link[href='#']
-          = t 'navigation.feedback'
+        a.nav-link[href=cart_path]
+          | Cart
       li.nav-item
-        a.nav-link[href="#{root_path(locale: :en)}"]
-          | English
-      li.nav-item
-        a.nav-link[href="#{root_path(locale: :be)}"]
-          | Belarussian
+        a.nav-link[href=new_request_path]
+          | Request registration
+      - unless user_signed_in?
+        li.nav-item
+          a.nav-link[href=new_restaurant_path]
+            | Sign up as restaurant
     - if user_signed_in?
       span.navbar-nav
-          a.nav-link[href=user_profile_path]
+          a.nav-link[href=profile_user_index_path]
             = current_user.name
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
@@ -39,7 +40,15 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
           a.nav-link[href=new_user_registration_path]
             = t 'navigation.sign_up'
     end
+<<<<<<< HEAD
     form.form-inline.my-2.my-lg-0
       input.form-control.mr-sm-2[type='search' placeholder="#{t 'navigation.search'}" aria-label='Search']
       button.btn.btn-outline-success.my-2.my-sm-0[type='submit']
         = t 'navigation.search'
+=======
+    = form_tag(search_page_path, method: :get, class: 'navbar-form navbar-left') do
+      .input-group
+        = search_field_tag :query, params[:search], placeholder: "Search", class: "form-control"
+        .input-group-btn
+          = button_tag "search", class: 'btn btn-info glyphicon glyphicon-search', name: nil
+>>>>>>> main

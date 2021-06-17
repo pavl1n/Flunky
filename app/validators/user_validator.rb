@@ -19,6 +19,12 @@ class UserValidator < ActiveModel::Validator
     validate_present(:email)
   end
 
+  def validate_stage2
+    validate_stage1
+    validate_present(:street)
+    validate_present(:house_number)
+  end
+
   def validate_present(attr)
     @record.errors.add(attr, 'can\'t be blank') unless @record.__send__(attr).present?
   end

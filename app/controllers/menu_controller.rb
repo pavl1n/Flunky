@@ -2,8 +2,8 @@
 
 # Controller for main page
 class MenuController < ApplicationController
+  before_action :init_cart
   def index
-    @restaurants = User.restaurant
-    @product = Product.all
+    @pagy, @product = pagy(Product.all.includes([:restaurant]).includes(product_picture_attachment: :blob))
   end
 end

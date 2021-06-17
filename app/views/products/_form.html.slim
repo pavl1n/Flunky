@@ -1,0 +1,19 @@
+= form_for restaurant, url: path, local: true, method: method do |f|
+  section.text-center.h1 Products insert
+  .container[style="height: 100vh;"]
+    - if product.errors.any?
+      ul
+        - product.errors.each do |error|
+          li
+            = error.full_message
+    .field
+      legend
+        | New product
+      #products
+        = f.fields_for :products do |pr|
+          - if pr.object.new_record?
+            = render 'products/product_fields', f: pr
+        .links
+          = link_to_add_association 'Add product', f, :products, partial: 'products/product_fields'
+    br
+    = f.submit 'Create products'
