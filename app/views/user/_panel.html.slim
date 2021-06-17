@@ -5,6 +5,9 @@
   .list-group.list-group-flush[role="tablist"]
     a.list-group-item.list-group-item-action[data-toggle="list" href=profile_user_index_path role="tab"]
       |  Account
+    - if current_user.admin?
+      a.list-group-item.list-group-item-action[data-toggle="list" href=requests_path role="tab"]
+        |  Registration requests
     - if current_user.restaurant?
       a.list-group-item.list-group-item-action[data-toggle="list" href=dishes_user_index_path role="tab"]
         |  Dishes
