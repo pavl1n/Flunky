@@ -2,5 +2,5 @@
 
 module Constants
   PHONE_CODE = '+375'
-  ITEMS_PER_PAGE = 21
+  ITEMS = 21
 end

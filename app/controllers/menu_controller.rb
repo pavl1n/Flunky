@@ -6,6 +6,6 @@ class MenuController < ApplicationController
   before_action :init_cart
   def index
     @product = admin(current_user) ? Product.all : Product.approved
-    @pagy, @products = pagy(@product.includes([:restaurant]).includes(product_picture_attachment: :blob), items: ITEMS_PER_PAGE)
+    @pagy, @products = pagy(@product.includes([:restaurant]).includes(product_picture_attachment: :blob), items: ITEMS)
   end
 end
