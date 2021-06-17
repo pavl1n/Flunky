@@ -19,10 +19,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         li.nav-item
           a.nav-link[href=cart_path]
             | Cart
-      - unless user_signed_in?
-        li.nav-item
-          a.nav-link[href=new_restaurant_path]
-            | Sign up as restaurant
+      li.nav-item
+        a.nav-link[href=new_request_path]
+          | Request registration
     - if user_signed_in?
       span.navbar-nav
           a.nav-link[href=profile_user_index_path]

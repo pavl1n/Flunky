@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :order_positions
   put 'admin/approve_product', to: 'admin#approve_product'
   put 'admin/approve_restaurant', to: 'admin#approve_restaurant'
+  resources :requests
   get 'cart', to: 'cart#show'
   post 'cart/approve', to: 'cart#approve'
   devise_for :users, controllers: { registrations: 'client_registrations', omniauth_callbacks: 'users/omniauth_callbacks', passwords: 'passwords', sessions: 'sessions' }, class_name: 'User'
