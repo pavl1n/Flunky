@@ -25,7 +25,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.update(approved: params[:approved])
         format.js { render inline: 'location.reload();' }
-        RestaurantRequestMailer.welcome_email(@request.email).deliver_now
+        RestaurantRequestMailer.welcome_email(@request.email).deliver_later
         flash[:notice] = 'Mail with registration path send'
       end
     end

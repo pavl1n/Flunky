@@ -21,6 +21,6 @@ body[style="background-color: #e9ecef"]
                       = render 'order_positions/form', order_positions: @order_positions, product: product unless client(current_user)
                       .d-flex.justify-content-between.align-items-center
                         - unless product.approved
-                          = button_to 'Confirm', { controller: 'admin', action: 'approve_product', product_id: product}, class: 'btn btn-success', method: :put
+                          = button_to 'Confirm', { controller: 'admins', action: 'update', product_id: product}, class: 'btn btn-success', method: :put
                         small.text-muted
                           = product.price

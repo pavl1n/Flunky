@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'menu#index'
   resources :order_positions
-  put 'admin/approve_product', to: 'admin#approve_product'
-  put 'admin/approve_restaurant', to: 'admin#approve_restaurant'
+  resources :admins do
+    collection do
+      put :update
+    end
+  end
   resources :requests
   get 'cart', to: 'cart#show'
   post 'cart/approve', to: 'cart#approve'

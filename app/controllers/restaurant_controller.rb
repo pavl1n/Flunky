@@ -26,10 +26,4 @@ class RestaurantController < ApplicationController
       end
     end
   end
-
-  private
-
-  def admin(user)
-    user_signed_in? && user.admin?
-  end
 end

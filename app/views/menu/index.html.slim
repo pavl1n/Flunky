@@ -34,7 +34,7 @@ body
                       - if admin(current_user)
                         = button_to 'Delete', user_product_path(product.restaurant, product), class: 'btn btn-danger', method: :delete
                         - unless product.approved
-                          = button_to 'Confirm', { controller: 'admin', action: 'approve_product', product_id: product}, class: 'btn btn-success', method: :put
+                          = button_to 'Confirm', { controller: 'admins', action: 'update', product_id: product}, class: 'btn btn-success', method: :put
                     small.text-muted
                       = product.price
         = pagy_bootstrap_nav(@pagy).html_safe
