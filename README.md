@@ -25,7 +25,7 @@ Flunky is an online service providing food delivery from the restaurant.
 ---
 ## General description:
 
-The service is a mediator between the client and the restaurant. The registration for the client is available immediately. The restaurant and courier registration is provided via the administrator.
+The service is a mediator between the client and the restaurant. The registration for the client is available immediately. The restaurants registration is provided via the administrator.
 
 ## Roles:
   * Admin
