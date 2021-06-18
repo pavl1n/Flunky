@@ -5,6 +5,7 @@ en:
     show_more: 'Show more'
     menu: 'Menu'
     view: 'View'
+    promotions_part: 'Here will be promotions'
     add_to_check: 'Add to pay'
     restaurants: 'Restaurants'
     submit: 'Submit'
@@ -32,6 +33,7 @@ en:
     sign_in_with_twitter: 'Sign in with Twitter'
     password_length: 'characters minimum'
   profile:
+    registration_request: 'Registration request'
     title: 'Title: '
     category: 'Category: '
     price: 'Price: '

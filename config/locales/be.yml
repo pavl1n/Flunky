@@ -3,6 +3,7 @@ be:
     promotions: 'Акцыi'
     add_to_cart: 'Дадаць у кошык'
     show_more: 'Паказаць больш'
+    promotions_part: 'Здесь павінны быць акцыі'
     menu: 'Стравы'
     view: 'Прагледзець'
     add_to_check: 'Дадаць у чэк'
@@ -34,6 +35,7 @@ be:
   phone_verification:
     verify: 'Пацвердзiце свой мабiльны нумар'
   profile:
+    registration_request: 'Запрос на рэгістрацыю'
     title: 'Назва: '
     category: 'Катэгорыя: '
     price: 'Кошт: '
