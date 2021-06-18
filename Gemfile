@@ -60,6 +60,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener', '~> 1.7'
   gem 'bullet', '~> 6.1', '>= 6.1.4'
   gem 'faker', '~> 2.17'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

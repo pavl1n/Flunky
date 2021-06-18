@@ -37,7 +37,7 @@ body
                         = t 'profile.dishes'
                       = link_to "#{@product.restaurant.name}", restaurant_path(@product.restaurant)
                       br
-              - if current_user
+              - if current_user && !(current_user.admin? || current_user.restaurant?)
                 = form_with model: [current_user, @product, @comment], method: :post, local: false do |f|
                   .form-group
                     = f.label t 'menu_page.comment'
@@ -45,8 +45,9 @@ body
                   = f.submit (t 'menu_page.submit'), class: 'btn btn-primary'
                   br
               - else
-                h4 #{t 'menu_page.need_to_login'} #{link_to (t 'navigation.log_in'), new_user_session_path} #{t 'menu_page.to_comment'}
-              h3 #{t 'menu_page.comments'}
+                - unless client(current_user)
+                  h4 #{t 'menu_page.need_to_login'} #{link_to (t 'navigation.log_in'), new_user_session_path} #{t 'menu_page.to_comment'}
+                h3 #{t 'menu_page.comments'}
               .new_comments
                 - @comments.each do |comment|
                   = render 'comments/comment', comment: comment

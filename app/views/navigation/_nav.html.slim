@@ -15,9 +15,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link[href=restaurant_index_path]
           = t 'navigation.restaurants'
-      li.nav-item
-        a.nav-link[href=cart_path]
-          = t 'navigation.cart'
+      - unless client(current_user)
+        li.nav-item
+          a.nav-link[href=cart_path]
+            = t 'navigation.cart'
       li.nav-item
         a.nav-link[href=new_request_path]
           = t 'navigation.request_registration'
@@ -27,10 +28,6 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       li.nav-item
         a.nav-link[href="#{root_path(locale: :be)}"]
           | Belarussian
-      - unless user_signed_in?
-        li.nav-item
-          a.nav-link[href=new_restaurant_path]
-            | Sign up as restaurant
     - if user_signed_in?
       span.navbar-nav
           a.nav-link[href=profile_user_index_path]

@@ -5,9 +5,16 @@
   .list-group.list-group-flush[role="tablist"]
     a.list-group-item.list-group-item-action[data-toggle="list" href=profile_user_index_path role="tab"]
       = t 'profile.my_page'
+    - if current_user.admin?
+      a.list-group-item.list-group-item-action[data-toggle="list" href=requests_path role="tab"]
+        |  Registration requests
     - if current_user.restaurant?
       a.list-group-item.list-group-item-action[data-toggle="list" href=dishes_user_index_path role="tab"]
         = t 'profile.dishes'
+      a.list-group-item.list-group-item-action[data-toggle="list" href=new_user_product_path(current_user) role="tab"]
+        = t 'profile.insert_dishes'
+      a.list-group-item.list-group-item-action[data-toggle="list" href=restaurant_orders_path role="tab"]
+        = t 'profile.restaurant_orders'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_path(current_user) role="tab"]
       = t 'profile.info_change'
     a.list-group-item.list-group-item-action[data-toggle="list" href=edit_user_registration_path role="tab"]
@@ -17,8 +24,3 @@
         = t 'profile.verify'
       a.list-group-item.list-group-item-action[data-toggle="list" href=user_orders_path(current_user) role="tab"]
         = t 'profile.order_history'
-    - else
-      a.list-group-item.list-group-item-action[data-toggle="list" href=new_user_product_path(current_user) role="tab"]
-        = t 'profile.insert_dishes'
-      a.list-group-item.list-group-item-action[data-toggle="list" href=restaurant_orders_path role="tab"]
-        = t 'profile.restaurant_orders'

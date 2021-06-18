@@ -48,7 +48,7 @@ en:
     phone: 'Contact phone:'
     name: 'Name:'
     email: 'Email:'
-    city: 'City:'
+    address: 'Address:'
     order_history: 'Order history'
     insert_dishes: 'Insert dishes'
     restaurant_orders: 'Orders'

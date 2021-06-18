@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale.to_sym : nil
   end
 
+  def admin(user)
+    user_signed_in? && user.admin?
+  end
+
   def init_cart
     @order_positions = current_order.order_positions.new
   end

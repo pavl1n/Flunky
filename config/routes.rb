@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'menu#index'
   resources :order_positions
+  resources :admins do
+    collection do
+      put :update
+    end
+  end
   resources :requests
   get 'cart', to: 'cart#show'
   post 'cart/approve', to: 'cart#approve'
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
     get  "/restaurants/destroy",    to: "restaurants#destroy", as: :destroy_restaurant_session
   end
 
-  resources :restaurant, only: %i[index show] do
+  resources :restaurant, only: %i[index show destroy] do
     get :products
   end
   match '/404', to: 'errors#not_found', via: :all
@@ -39,7 +44,7 @@ Rails.application.routes.draw do
   resources :restaurant_steps
   resources :user do
     resources :products do
-      resources :comments, only: %i[create]
+      resources :comments, only: %i[create destroy]
     end
     resources :orders, only: %i[index]
     collection do

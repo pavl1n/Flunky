@@ -2,8 +2,10 @@
 
 # Controller for main page
 class MenuController < ApplicationController
+  include Constants
   before_action :init_cart
   def index
-    @pagy, @product = pagy(Product.all.includes([:restaurant]).includes(product_picture_attachment: :blob))
+    @product = admin(current_user) ? Product.all : Product.approved
+    @pagy, @products = pagy(@product.includes([:restaurant]).includes(product_picture_attachment: :blob), items: ITEMS)
   end
 end

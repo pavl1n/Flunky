@@ -54,7 +54,7 @@ be:
     phone: 'Кантактны нумар:'
     name: 'Імя:'
     email: 'Пошта:'
-    city: 'Горад:'
+    address: 'Адрас:'
     account_status: 'Стан профіля:'
     verified: 'Падцверджаны'
     not_verified: 'Не падцверджаны'

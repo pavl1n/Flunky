@@ -2,7 +2,9 @@
 
 # Responsible for requests from replying form
 class RequestsController < ApplicationController
-  def index; end
+  def index
+    @requests = Request.not_approved
+  end
 
   def new
     @request = Request.new
@@ -12,10 +14,20 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     if @request.save
       redirect_to root_path
-      RestaurantRequestMailer.welcome_email(request_params[:email]).deliver_now
       flash[:notice] = 'Request accepted'
     else
       render :new
+    end
+  end
+
+  def update
+    @request = Request.find_by_id(params[:id])
+    respond_to do |format|
+      if @request.update(approved: params[:approved])
+        format.js { render inline: 'location.reload();' }
+        RestaurantRequestMailer.welcome_email(@request.email).deliver_later
+        flash[:notice] = 'Mail with registration path send'
+      end
     end
   end
 
