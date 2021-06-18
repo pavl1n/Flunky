@@ -5,7 +5,7 @@ body
         section.text-center.h1 Restaurants
         .container
           .row
-            - @restaurants.each do |user|
+            - @list_of_restaurants.each do |user|
               .col-md-4
                 .card.mb-4.box-shadow
                   img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
@@ -17,8 +17,11 @@ body
                       = user.address
                     .d-flex.justify-content-between.align-items-center
                       .btn-group
-                        a.btn.btn-primary[href="#{restaurant_path(user)}" role="button"]
-                          | View
+                        = button_to 'View', restaurant_path(user), method: :get, class: 'btn btn-primary'
+                        - if admin(current_user)
+                          = button_to 'Delete', restaurant_path(user), class: 'btn btn-danger', method: :delete
+                        - unless user.confirmed
+                          = button_to 'Confirm', { controller: 'admins', action: 'update', restaurant_id: user}, class: 'btn btn-success', method: :put
                       small.text-muted
                         = user.phone_number
           = pagy_bootstrap_nav(@pagy).html_safe

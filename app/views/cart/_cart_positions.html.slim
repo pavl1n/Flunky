@@ -26,7 +26,7 @@ body[style="background-color: #e9ecef"]
                       - unless @current_order.approved?
                         = link_to 'Remove position', position, method: :delete, remote: true
         section.text-center.h3 Your current order has a total of #{@current_order.subtotal}$
-        = button_to 'Make an order', {controller: :cart, action: 'approve'}, method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user. all_contact_info_filled?
+        = button_to 'Make an order', {controller: :cart, action: 'approve'}, class: 'btn btn-success', method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user. all_contact_info_filled?
         br
         - unless current_user.nil?
           - unless current_user.confirmed

@@ -62,7 +62,7 @@ end
 
 User.restaurant.each do |restaurant|
   # Products approved
-  5.times do
+  2.times do
     product = restaurant.products.new(
       name: Faker::Food.dish,
       price: Faker::Types.rb_integer,
@@ -75,7 +75,7 @@ User.restaurant.each do |restaurant|
   end
 
   # Products not approved
-  5.times do
+  2.times do
     product = restaurant.products.new(
       name: Faker::Food.dish,
       price: Faker::Types.rb_integer,

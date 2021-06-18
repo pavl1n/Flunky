@@ -2,7 +2,7 @@
 
 # Actions for product model
 class ProductsController < ApplicationController
-  before_action :product_policy, only: %i[create new edit update delete]
+  before_action :product_policy, only: %i[edit update]
   def new
     @product = current_user.products.build
   end
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     respond_to do |format|
-      if @product.update(update_params)
+      if @product.update(update_params.merge(approved: false))
         format.html { redirect_to dishes_user_index_path, notice: 'Product was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -23,7 +23,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = User.find(params[:user_id]).products.find(params[:id])
+    @product = if admin(current_user)
+                 User.find(params[:user_id]).products.find(params[:id])
+               else
+                 User.find(params[:user_id]).products.approved.find(params[:id])
+               end
     @comment = Comment.new
     @comments = @product.comments.order('created_at DESC')
   end
@@ -33,7 +37,7 @@ class ProductsController < ApplicationController
     product_params[:products_attributes].each { |_key, value| products_arr << value }
     respond_to do |format|
       products_arr.each do |product|
-        @product = current_user.products.build(product)
+        @product = current_user.products.build(product.merge(approved: false))
         next if @product.save
 
         format.html { render :new }

@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def admin(user)
+    user_signed_in? && user.admin?
+  end
+
   def init_cart
     @order_positions = current_order.order_positions.new
   end

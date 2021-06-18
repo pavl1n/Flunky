@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if Comment.find(params[:comment_id]).destroy
+        format.html { redirect_to root_path, notice: 'Comment was successfully destroyed.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def comment_params
