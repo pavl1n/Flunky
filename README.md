@@ -165,8 +165,21 @@ This restaurant order includes id order, product names and quantity.  It has the
 > The verification of updating these stages between the order and the restaurant order happens with Application Job every minute.
 
 ---
+## Built with
 
+* Ruby 3.0.0
+
+* Rails 6.1.3.2
+
+* PostgreSQL 13.2
+
+* Elasticesearch 7.13.1
+
+* Yarn 1.22.10
+
+---
 ## Getting Started
+
 
 In order to get repository local:
 
@@ -205,6 +218,25 @@ To start background job:
 ```
 sidekiq
 ```
+
+Elasticsearch install:
+
+On mac using ```brew``` manager you should do the following:
+
+```
+brew tap elastic/tap
+
+brew install elastic/tap/elasticsearch-full
+```
+
+In other cases please follow the official web-site with installing guide ```https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html```
+
+After the installation, just make sure to start the service if it’s not started.
+
+You can check that with curl:
+
+>http://localhost:9200
+
 
 And in the end:
 
