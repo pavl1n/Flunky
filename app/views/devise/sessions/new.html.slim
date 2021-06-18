@@ -2,7 +2,7 @@ body
   section.jumbotron.text-center[style="margin: 0; height: 100vh;"]
     .container
       h2
-        | Log in
+        = t 'navigation.log_in'
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = alert
         .field
@@ -10,7 +10,7 @@ body
           br
           = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
         .field
-          = f.label :password
+          = f.label 'password'
           br
           = f.password_field :password, autocomplete: 'current-password'
         - if devise_mapping.rememberable?
@@ -18,5 +18,5 @@ body
             = f.check_box :remember_me
             = f.label :remember_me
         .actions
-          = f.submit 'Log in'
+          = f.submit (t 'navigation.log_in').downcase
       = render 'devise/shared/links'

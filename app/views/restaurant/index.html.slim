@@ -2,7 +2,7 @@ body
   section.jumbotron.text-center[style="margin: 0;"]
     - unless @restaurants.nil?
       .album.py-5.bg-light
-        section.text-center.h1 Restaurants
+        section.text-center.h1 #{t 'menu_page.restaurants'}
         .container
           .row
             - @list_of_restaurants.each do |user|
@@ -17,7 +17,7 @@ body
                       = user.address
                     .d-flex.justify-content-between.align-items-center
                       .btn-group
-                        = button_to 'View', restaurant_path(user), method: :get, class: 'btn btn-primary'
+                        = button_to (t 'menu_page.view'), restaurant_path(user), method: :get, class: 'btn btn-primary'
                         - if admin(current_user)
                           = button_to 'Delete', restaurant_path(user), class: 'btn btn-danger', method: :delete
                         - unless user.confirmed

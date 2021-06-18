@@ -82,6 +82,8 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'devise-i18n', '~> 1.9', '>= 1.9.3'
+gem 'i18n', '~> 1.8', '>= 1.8.10'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'omniauth-rails_csrf_protection', '~> 1.0'

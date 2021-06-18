@@ -2,7 +2,7 @@ body
   section.jumbotron.text-center[style="margin: 0; height: 100vh;"]
     .container
       h2
-        | Forgot your password?
+        = (t '.forgot_your_password')
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
         = render 'devise/shared/error_messages', resource: resource
         .field
@@ -10,5 +10,5 @@ body
           br
           = f.email_field :email, autofocus: true, autocomplete: 'email'
         .actions
-          = f.submit 'Send me reset password instructions'
+          = f.submit (t '.send_me_reset_password_instructions')
       = render 'devise/shared/links'

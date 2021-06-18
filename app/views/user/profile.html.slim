@@ -1,7 +1,7 @@
 body
 .container.p-0[style="height: 100vh;"]
   h1.h3.mb-3
-    | Settings
+    = t 'profile.my_page'
   .row
     .col-md-5.col-xl-4
       = render 'user/panel'
@@ -12,36 +12,36 @@ body
             .card-header
               .card-actions.float-right
               h5.card-title.mb-0
-                | Public info
+                = t 'profile.info'
             .card-body
               form
                 .row
                   .col-md-8
                     .form-group
                       label
-                        | Name:
+                        = t 'profile.name'
                       = current_user.name
                     .form-group
                       label
-                        | Email:
+                        = t 'profile.email'
                       = current_user.email
                     .form-group
                       label
                       - if current_user.restaurant?
-                        | Address:
+                        = t 'profile.address'
                         = current_user.address
                       - else
                         | City:
                         = current_user.city
                     .form-group
                       label
-                        | Contact phone:
+                        = t 'profile.phone'
                       = current_user.phone_number
                     .form-group
-                    - if current_user.client?
+                    - unless current_user.admin?
                       label
-                        | Account status:
+                        = t 'profile.account_status'
                       - if current_user.confirmed
-                          | Verified
+                          = t 'profile.verified'
                       - else
-                          | Not verified
+                          = t 'profile.not_verified'

@@ -1,7 +1,7 @@
 body[style="background-color: #e9ecef"]
   section.jumbotron.text-center[style="margin: 0;"]
     .album.py-5.bg-light
-        section.text-center.h1 Cart
+        section.text-center.h1 #{t 'navigation.cart'}
         .container
           .row
             - @order_positions.each do |position|
@@ -21,17 +21,15 @@ body[style="background-color: #e9ecef"]
                       = f.hidden_field :product_id, value: position.product.id
                       = f.number_field :quantity, value: position.quantity.to_i, min: 1
                       br
-                      = f.submit 'Update cart', disabled: @current_order.approved?
+                      = f.submit (t 'profile.update'), disabled: @current_order.approved?
                       br
                       - unless @current_order.approved?
-                        = link_to 'Remove position', position, method: :delete, remote: true
-        section.text-center.h3 Your current order has a total of #{@current_order.subtotal}$
-        = button_to 'Make an order', {controller: :cart, action: 'approve'}, class: 'btn btn-success', method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user. all_contact_info_filled?
+                        = link_to (t 'cart.delete'), position, method: :delete, remote: true
+        section.text-center.h3 #{t 'cart.order_sum'} #{@current_order.subtotal}$
+        = button_to (t 'cart.make_order'), {controller: :cart, action: 'approve'}, class: 'btn btn-success', method: :post, disabled: current_user.nil? || @order_positions.blank? || @current_order.approved? || !current_user.confirmed || !current_user.all_contact_info_filled?
         br
         - unless current_user.nil?
           - unless current_user.confirmed
-            h3 You should activate your account in profile page
+            h3 #{t 'cart.activate'}
           - unless current_user.all_contact_info_filled?
-            h3 You should fill all contact information
-        - if @current_order.approved?
-          h3 Your order status: #{@current_order.status}
+            h3 #{t 'cart.fill'}

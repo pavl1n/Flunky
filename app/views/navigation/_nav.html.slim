@@ -8,37 +8,43 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0
       li.nav-item.active
         a.nav-link[href=root_path]
-          | Home
+          = t 'navigation.home'
       li.nav-item
         a.nav-link[href=profile_user_index_path]
-          | Profile
+          = t 'navigation.profile'
       li.nav-item
         a.nav-link[href=restaurant_index_path]
-          | Restaurants
+          = t 'navigation.restaurants'
       - unless client(current_user)
         li.nav-item
           a.nav-link[href=cart_path]
-            | Cart
+            = t 'navigation.cart'
       li.nav-item
         a.nav-link[href=new_request_path]
-          | Request registration
+          = t 'navigation.request_registration'
+      li.nav-item
+        a.nav-link[href="#{root_path(locale: :en)}"]
+          | English
+      li.nav-item
+        a.nav-link[href="#{root_path(locale: :be)}"]
+          | Belarussian
     - if user_signed_in?
       span.navbar-nav
           a.nav-link[href=profile_user_index_path]
             = current_user.name
       span.navbar-nav
         a.nav-link[href=destroy_user_session_path]
-          | Sign out
+          = t 'navigation.sign_out'
     - else
       span.navbar-nav
           a.nav-link[href=new_user_session_path]
-            | Log in
+            = t 'navigation.log_in'
       span.navbar-nav
           a.nav-link[href=new_user_registration_path]
-            | Sign up
+            = t 'navigation.sign_up'
     end
     = form_tag(search_page_path, method: :get, class: 'navbar-form navbar-left') do
       .input-group
-        = search_field_tag :query, params[:search], placeholder: "Search", class: "form-control"
+        = search_field_tag :query, params[:search], placeholder: "#{t 'navigation.search'}", class: "form-control"
         .input-group-btn
-          = button_tag "search", class: 'btn btn-info glyphicon glyphicon-search', name: nil
+          = button_tag (t 'navigation.search'), class: 'btn btn-info glyphicon glyphicon-search', name: nil
