@@ -5,7 +5,7 @@ class RestaurantOrder < ApplicationRecord
   scope :approved, -> { where(approved: true) }
   belongs_to :order
   belongs_to :restaurant, -> { where user_type: :restaurant }, class_name: 'User', foreign_key: 'user_id'
-  enum status: { waiting: 0, in_progress: 1, done: 2 }
+  enum status: { waiting: 0, in_progress: 1, done: 2, cancel: 3 }
 
   def find_products_name(id)
     ActiveRecord::Base.connection.execute(find_products_name_sql(id)).to_a.map { |res| res.first.last }

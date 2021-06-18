@@ -16,6 +16,7 @@ class OrderService
     state :waiting
     state :approve_by_restaurant, before_enter: :approve_and_update
     state :finish_order, after: :finish
+    state :cancel_order, after: :cancel
 
     event :create_restaurant_order do
       transitions from: :create_rest_order, to: :waiting
@@ -27,6 +28,10 @@ class OrderService
 
     event :finish do
       transitions from: :approve_by_restaurant, to: :finish_order
+    end
+
+    event :cancel do
+      transitions from: %i[create_rest_order waiting approve_by_restaurant finish_order cancel_order], to: :cancel_order
     end
   end
 
@@ -44,5 +49,10 @@ class OrderService
 
   def finish
     @current_order.update(status: 2)
+  end
+
+  def cancel
+    @current_order.order.restaurant_orders.update_all(status: 3)
+    @current_order.order.update(status: 3)
   end
 end
