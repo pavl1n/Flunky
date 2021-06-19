@@ -69,3 +69,24 @@ be:
     activate: 'Вам патрэбна актываваць акаўнт '
     make_order: 'Зрабіць заказ '
     fill: 'Вам патрэбна запоўніць усю прыватную інфармацыю'
+  pagy:
+
+    item_name:
+      one: "запіс"
+      few: "запісаў"
+      many: "запісаў"
+      other: "запісы"
+
+    nav:
+      prev: "&lsaquo;&nbsp;Назад"
+      next: "Уперад&nbsp;&rsaquo;"
+      gap: "&hellip;"
+
+    info:
+      no_items: "Пакуль %{item_name} няма"
+      single_page: "<b>%{count}</b> %{item_name}"
+      multiple_pages: "Усяго <b>%{count}</b> %{item_name}, паказана з <b>%{from}</b> па <b>%{to}</b>"
+
+    combo_nav_js: "<label>Старонка %{page_input} з %{pages}</label>"
+
+    items_selector_js: "<label>Адлюстраваць %{items_input} %{item_name} на старонке</label>"
