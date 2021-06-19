@@ -54,5 +54,6 @@ class OrderService
   def cancel
     @current_order.order.restaurant_orders.update_all(status: 3)
     @current_order.order.update(status: 3)
+    OrderMailer.notice_email(@current_order.order).deliver_later
   end
 end
