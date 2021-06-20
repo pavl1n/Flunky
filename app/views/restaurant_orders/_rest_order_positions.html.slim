@@ -1,6 +1,6 @@
 .container.p-0[style="height: 100vh;"]
   h1.h3.mb-3
-    | Settings
+    = t 'profile.settings'
   .row
     .col-md-5.col-xl-4
       = render 'user/panel'
@@ -29,9 +29,13 @@
                       | Cancel
                   tr
                     td
-                      = rest_order.find_products_name(current_user.id)
+                      - rest_order.find_products_name(current_user.id).each do |product|
+                        = product
+                        br
                     td
-                      = rest_order.find_products_quantity(current_user.id)
+                      - rest_order.find_products_quantity(current_user.id).each do |quantity|
+                        = quantity
+                        br
                     td
                       = rest_order.status
                     td

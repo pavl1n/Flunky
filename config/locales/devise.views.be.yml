@@ -47,6 +47,8 @@ be:
       send_instructions: Цягам некалькіх хвілін вы атрымаеце ліст з інструкцыямі па пацверджанні адраса эл. пошты.
       send_paranoid_instructions: Калі ваш адрас эл. пошты ёсть y сістэме, то цягам некалькіх хвілін вы атрымаеце ліст з інструкцыямі па яго пацверджанні.
     failure:
+      user:
+        not_found_in_database: Мабільны нумар альбо пароль няверны
       already_authenticated: Вы ўжо ўвайшлі ў сістэму.
       inactive: Ваш уліковы запіс яшчэ не актываваны.
       invalid: Ня верны нумар ці пароль
@@ -110,7 +112,7 @@ be:
         leave_blank_if_you_don_t_want_to_change_it: пакіньце крысу пустым, калі не хочаце яго змяняць
         title: Рэдагаваць %{resource}
         unhappy: Расчараваны
-        update: Абнавіць
+        update: Аднавіць
         we_need_your_current_password_to_confirm_your_changes: увядзіце бягучы пароль для пацверджання змен
       new:
         sign_up: Рэгістрацыя
