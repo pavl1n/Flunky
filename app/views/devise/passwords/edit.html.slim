@@ -10,7 +10,9 @@ h2
       em
         | (
         = @minimum_password_length
-        |  characters minimum)
+        = ' '
+        = t 'devise.password_length'
+        | )
       br
     = f.password_field :password, autofocus: true, autocomplete: 'new-password'
   .field

@@ -21,6 +21,7 @@ body[style="background-color: #e9ecef"]
                         = product.category
                       p.card-text
                         = product.description
+                      = render 'order_positions/form', order_positions: @order_positions, product: product unless client (current_user)
                       .d-flex.justify-content-between.align-items-center
                         .btn-group
                           a.btn.btn-primary[href="#{user_product_path(Product.find(product.id).restaurant, Product.find(product.id))}" role="button"]

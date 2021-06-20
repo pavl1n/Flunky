@@ -1,0 +1,40 @@
+.container.p-0[style="height: 100vh;"]
+  h1.h3.mb-3
+    | Settings
+  .row
+    .col-md-5.col-xl-4
+      = render 'user/panel'
+    .col-md-7.col-xl-8
+      .tab-content
+        #account.tab-pane.fade.show.active[role="tabpanel"]
+          table[border="1" width="100%" cellpadding="5"]
+            - unless @requests.nil?
+              - @requests.each do |request|
+                tr
+                  th
+                    | Request #
+                  th
+                    | Email
+                  th
+                    | Description
+                  th
+                    | Approved
+                  th
+                    | Reject
+                tr
+                  td
+                    = request.id
+                  td
+                    = request.email
+                  td
+                    = request.description
+                  td
+                    = form_tag request_path(request), method: :put, remote: true do
+                      = hidden_field_tag :id, request.id
+                      = hidden_field_tag :approved, :true
+                      = submit_tag 'Approve request', class: 'btn btn-success'
+                  td
+                    = form_tag request_path(request), method: :put, remote: true do
+                      = hidden_field_tag :id, request.id
+                      = hidden_field_tag :approved, :false
+                      = submit_tag 'Reject request', class: 'btn btn-danger'

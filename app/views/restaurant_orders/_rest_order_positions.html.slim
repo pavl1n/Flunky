@@ -24,7 +24,9 @@
                     th
                       | State
                     th
-                      | Approved
+                      | Action
+                    th
+                      | Cancel
                   tr
                     td
                       = rest_order.find_products_name(current_user.id)
@@ -34,6 +36,8 @@
                       = rest_order.status
                     td
                       - unless rest_order.approved
-                        = button_to 'Approve', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'approve' }, remote: true
+                        = button_to 'Approve', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, approved: true }, remote: true
                       - else
-                        = button_to 'Finish order', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'finish' }, remote: true
+                        = button_to 'Finish order', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'finish' }, remote: true, disabled: rest_order.cancel? || rest_order.done?
+                    td
+                      = button_to 'Cancel', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'cancel' }, remote: true, disabled: rest_order.cancel? || rest_order.done?

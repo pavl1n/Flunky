@@ -2,7 +2,7 @@ body
   section.jumbotron.text-center[style="margin: 0; height: 100vh;"]
     .container
       h2
-        | Sign up
+        = t 'navigation.sign_up'
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render 'devise/shared/error_messages', resource: resource
         .field
@@ -15,7 +15,9 @@ body
             em
               | (
               = @minimum_password_length
-              |  characters minimum)
+              = ' '
+              = t 'devise.password_length'
+              | )
           br
           = f.password_field :password, autocomplete: 'new-password'
         .field
@@ -23,5 +25,5 @@ body
           br
           = f.password_field :password_confirmation, autocomplete: 'new-password'
         .actions
-          = f.submit 'Sign up'
+          = f.submit ((t 'navigation.sign_up').downcase)
       = render 'devise/shared/links'

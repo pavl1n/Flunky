@@ -2,9 +2,11 @@
 
 # Pages for restaurant and their products
 class RestaurantController < ApplicationController
+  include Constants
   before_action :init_cart
   def index
-    @pagy, @restaurants = pagy(User.restaurant.includes(avatar_attachment: :blob))
+    @restaurants = admin(current_user) ? User.restaurant : User.restaurant.confirmed
+    @pagy, @list_of_restaurants = pagy(@restaurants.includes(avatar_attachment: :blob), items: ITEMS)
   end
 
   def show
@@ -13,5 +15,15 @@ class RestaurantController < ApplicationController
 
   def products
     @products = User.find(params[:restaurant_id]).products.includes(product_picture_attachment: :blob)
+  end
+
+  def destroy
+    respond_to do |format|
+      if User.find(params[:id]).destroy
+        format.html { redirect_to root_path, notice: 'Restaurant was successfully destroyed.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 end

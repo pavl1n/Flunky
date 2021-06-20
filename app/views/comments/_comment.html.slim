@@ -3,4 +3,7 @@
 | ]
 = comment.user.name
 | : #{comment.body}
+- if admin(current_user)
+  a.close[data-method="delete" href=user_product_comment_path(comment_id: comment, product_id: comment.product)]
+    | ×
 br

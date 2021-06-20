@@ -9,11 +9,12 @@ class User < ApplicationRecord
   validates_with UserValidator
   validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
   validates_uniqueness_of :email, if: :email
-  has_many :restaurant_orders
-  has_many :products
+  has_many :restaurant_orders, dependent: :delete_all
+  has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
   accepts_nested_attributes_for :comments
+  scope :confirmed, -> { where(confirmed: true) }
   validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }
   accepts_nested_attributes_for :products, reject_if: :all_blank, allow_destroy: true
   enum user_type: { admin: 0, client: 1, restaurant: 2 }

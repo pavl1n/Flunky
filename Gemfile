@@ -14,6 +14,7 @@ gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'active_storage_validations', '~> 0.9.3'
 gem 'elasticsearch-model', '~> 7.1', '>= 7.1.1'
 gem 'elasticsearch-rails', '~> 7.1', '>= 7.1.1'
+gem 'faker', '~> 2.17'
 gem 'jquery-rails', '~> 4.4'
 gem 'omniauth-google-oauth2'
 gem 'pagy', '~> 4.8'
@@ -40,7 +41,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'envyable', '~> 1.2'
@@ -61,7 +62,7 @@ end
 
 group :development do
   gem 'bullet', '~> 6.1', '>= 6.1.4'
-  gem 'faker', '~> 2.17'
+  gem 'letter_opener', '~> 1.7'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -86,6 +87,8 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'devise-i18n', '~> 1.9', '>= 1.9.3'
+gem 'i18n', '~> 1.8', '>= 1.8.10'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'omniauth-rails_csrf_protection', '~> 1.0'

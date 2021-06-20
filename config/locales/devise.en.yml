@@ -1,6 +1,22 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
+  activerecord:
+    attributes:
+      user:
+        phone_number: 'Phone number:'
+        password: Password
+    errors:
+          models:
+            user:
+              attributes:
+                phone_number:
+                  invalid: not valid
+                password:
+                  blank: blank
+                  too_short: is too short
+                password_confirmation:
+                  confirmation: ' '
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

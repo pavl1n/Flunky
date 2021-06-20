@@ -2,18 +2,18 @@ body
   section.jumbotron.text-center[style="margin: 0;"]
     .container
     h1.jumbotron-heading
-      | Promotions
+      = t 'menu_page.promotions'
     p.lead.text-muted
-      | Здесь будут акции
+      = t 'menu_page.promotions_part'
     p
       a.btn.btn-primary.my-2[href="#"]
-        | Показать больше
+        = t 'menu_page.show_more'
   - unless @product.nil?
     .album.py-5.bg-light
-      section.text-center.h1 Menu
+      section.text-center.h1 #{ t 'menu_page.menu'}
       .container
         .row
-          - @product.each do |product|
+          - @products.each do |product|
             .col-md-4
               .card.mb-4.box-shadow
                 img.card-img-top[data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;
@@ -26,15 +26,16 @@ body
                     = product.category
                   p.card-text
                     = product.description
-                  = form_with model: @order_positions, local: false do |f|
-                    = f.hidden_field :product_id, value: product.id
-                    = f.number_field :quantity, value: 1, min: 1
-                    = f.submit 'Add to cart'
+                  = render 'order_positions/form', order_positions: @order_positions, product: product unless client (current_user)
                   br
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
-                      a.btn.btn-primary[href="#{user_product_path(product.restaurant, product)}" role="button"]
-                        | View
+                      = button_to (t 'menu_page.view'), user_product_path(product.restaurant, product), method: :get, class: 'btn btn-primary'
+                      - if admin(current_user)
+                        = button_to 'Delete', user_product_path(product.restaurant, product), class: 'btn btn-danger', method: :delete
+                        - unless product.approved
+                          = button_to 'Confirm', { controller: 'admins', action: 'update', product_id: product}, class: 'btn btn-success', method: :put
                     small.text-muted
                       = product.price
+                      | $
         = pagy_bootstrap_nav(@pagy).html_safe
