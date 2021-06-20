@@ -19,9 +19,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         li.nav-item
           a.nav-link[href=cart_path]
             = t 'navigation.cart'
-      li.nav-item
-        a.nav-link[href=new_request_path]
-          = t 'navigation.request_registration'
+      - unless user_signed_in?
+        li.nav-item
+          a.nav-link[href=new_request_path]
+            = t 'navigation.request_registration'
       li.nav-item
         a.nav-link[href="#{root_path(locale: :en)}"]
           | English
