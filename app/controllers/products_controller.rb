@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
                  User.find(params[:user_id]).products.approved.find(params[:id])
                end
     @comment = Comment.new
-    @comments = @product.comments.order('created_at DESC')
+    @comments = @product.comments.order('created_at DESC').includes([:user])
   end
 
   def create
