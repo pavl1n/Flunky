@@ -73,6 +73,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.perform_caching = false
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
