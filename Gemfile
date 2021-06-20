@@ -14,6 +14,7 @@ gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'active_storage_validations', '~> 0.9.3'
 gem 'elasticsearch-model', '~> 7.1', '>= 7.1.1'
 gem 'elasticsearch-rails', '~> 7.1', '>= 7.1.1'
+gem 'faker', '~> 2.17'
 gem 'jquery-rails', '~> 4.4'
 gem 'omniauth-google-oauth2'
 gem 'pagy', '~> 4.8'
@@ -62,7 +63,6 @@ end
 group :development do
   gem 'letter_opener', '~> 1.7'
   gem 'bullet', '~> 6.1', '>= 6.1.4'
-  gem 'faker', '~> 2.17'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
