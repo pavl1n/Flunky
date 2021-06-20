@@ -61,8 +61,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'letter_opener', '~> 1.7'
   gem 'bullet', '~> 6.1', '>= 6.1.4'
+  gem 'letter_opener', '~> 1.7'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
