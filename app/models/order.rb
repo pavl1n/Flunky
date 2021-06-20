@@ -4,6 +4,7 @@
 class Order < ApplicationRecord
   scope :approved, -> { where(approved: true) }
   before_save :set_subtotal
+  scope :approved, -> { where(approved: true) }
   has_many :restaurant_orders
   has_many :order_positions, dependent: :delete_all
   has_many :products, through: :order_positions

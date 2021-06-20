@@ -14,19 +14,22 @@
                 | Orders
             table[border="1" width="100%" cellpadding="5"]
               - unless @orders.nil?
+                tr
+                  th
+                    | Order id:
+                  th
+                    | Dishes
+                  th
+                    | State
                 - @orders.each do |order|
                   tr
-                    th
-                      | Order id:
+                    td
                       = order.id
-                    th
-                      | Approved
-                    th
-                      | State
-                  tr
                     td
-                      = order.products.map { |product| product}.map(&:name)
-                    td
-                      = order.approved
+                      - order.order_positions.each do |order_position|
+                        = "#{order_position.product.name}"
+                        .quantity[style="color: #df1065; display: inline"]
+                          = " - x#{order_position.quantity}"
+                        br
                     td
                       = order.status
