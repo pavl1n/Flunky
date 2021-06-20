@@ -72,6 +72,8 @@ Rails.application.configure do
     password:ENV["GMAIL_PASSWORD"]
   }
 
+  config.action_mailer.default_url_options = { :host => 'intense-ridge-37662.herokuapp.com' }
+
   config.action_mailer.perform_caching = false
   Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 
