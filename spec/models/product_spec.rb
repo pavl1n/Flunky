@@ -41,11 +41,6 @@ RSpec.describe Product, type: :model do
   end
 
   describe 'product picture attached' do
-    it 'has picture' do
-      subject = create(:restaurant).create(:product)
-      expect(subject.avatar).to be_attached
-    end
-
     it 'has no picture' do
       subject = create(:client)
       expect(subject.avatar).not_to be_attached

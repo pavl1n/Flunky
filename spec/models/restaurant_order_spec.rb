@@ -14,14 +14,4 @@ RSpec.describe RestaurantOrder, type: :model do
       expect(subject).to define_enum_for(:status)
     end
   end
-
-  describe 'find products name and quantity' do
-    it 'finds name' do
-      # Когда замержу sql
-    end
-
-    it 'finds quantity' do
-      # Когда замержу sql
-    end
-  end
 end

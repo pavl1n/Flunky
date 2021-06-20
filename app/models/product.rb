@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   after_commit :update_indices, on: %i[create update]
   has_many :orders, through: :order_positions
   validates :name, :price, :category, :description, presence: true
-  validates_numericality_of :price, message: 'is not a number'
+  validates_numericality_of :price
   validates :description, length: { maximum: 100 }
   validates :product_picture, attached: true, content_type: %i[png jpg jpeg]
 
