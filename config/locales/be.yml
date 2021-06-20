@@ -1,9 +1,16 @@
 be:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            phone_number:
+              taken: ' ужо заняты, гэта фіаска, мой сябр'
   menu_page:
     promotions: 'Акцыi'
     add_to_cart: 'Дадаць у кошык'
     show_more: 'Паказаць больш'
-    promotions_part: 'Здесь павінны быць акцыі'
+    promotions_part: 'Здесь павінны быць акцыі, але ж чэшскія куклаводы перашкодзілі гэтаму'
     menu: 'Стравы'
     view: 'Прагледзець'
     add_to_check: 'Дадаць у чэк'

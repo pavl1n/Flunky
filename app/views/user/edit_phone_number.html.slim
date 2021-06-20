@@ -1,6 +1,6 @@
 .container.p-0[style="height: 100vh;"]
   h1.h3.mb-3
-    | Settings
+    = t 'profile.settings'
   .row
     .col-md-5.col-xl-4
       = render 'user/panel'
@@ -26,4 +26,4 @@
                 = f.telephone_field :phone_number, autofocus: true, autocomplete: 'phone_number'
               .actions
                 br
-                = f.submit
+                = f.submit (t 'devise.registrations.edit.update')
