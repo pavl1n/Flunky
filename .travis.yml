@@ -5,6 +5,7 @@ cache:
   - bundler
   - yarn
 services:
+  - elasticsearch
   - postgresql
   - redis-server
 before_install:
