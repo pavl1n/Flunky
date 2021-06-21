@@ -25,5 +25,6 @@ body
           br
           = f.password_field :password_confirmation, autocomplete: 'new-password'
         .actions
+        br
           = f.submit ((t 'navigation.sign_up').downcase)
       = render 'devise/shared/links'
