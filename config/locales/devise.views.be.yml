@@ -32,6 +32,10 @@ be:
       models:
         user:
           attributes:
+            avatar:
+              blank: патрэбен быць
+            email:
+              taken: Заняты
             phone_number:
               invalid: ня добры
             password:
