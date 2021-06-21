@@ -18,10 +18,11 @@ class UserController < ApplicationController
   def edit_phone_number; end
 
   def update
-    respond_to do |format|
-      if current_user.update(user_params.merge(create_stage: 1))
-        format.html { current_user.confirmed ? (redirect_to root_path) : (redirect_to after_signup_index_path) }
-      else
+    if current_user.update(user_params.merge(create_stage: 1))
+      current_user.update(confirmed: false) if current_user.restaurant?
+      current_user.confirmed || !current_user.client? ? (redirect_to root_path) : (redirect_to after_signup_index_path)
+    else
+      respond_to do |format|
         format.html { render action: :edit }
       end
     end
