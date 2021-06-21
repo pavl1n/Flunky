@@ -18,10 +18,11 @@ class RestaurantController < ApplicationController
   end
 
   def destroy
-    respond_to do |format|
-      if User.find(params[:id]).destroy
-        format.html { redirect_to root_path, notice: 'Restaurant was successfully destroyed.' }
-      else
+    if User.find(params[:id]).destroy
+      redirect_back fallback_location: root_path
+      flash[:notice] = 'Restaurant was successfully destroyed.'
+    else
+      respond_to do |format|
         format.html { render :edit, status: :unprocessable_entity }
       end
     end

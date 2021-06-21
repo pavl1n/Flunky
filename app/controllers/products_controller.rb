@@ -15,8 +15,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update(update_params.merge(approved: false))
-        redirect_back fallback_location: root_path
-        flash[:notice] = 'Product was successfully updated.'
+        format.html { redirect_to dishes_user_index_path, notice: 'Product was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,10 +47,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    respond_to do |format|
-      if Product.find(params[:id]).destroy
-        format.html { render dishes_user_index_path, notice: 'Product was successfully destroyed.' }
-      else
+    if Product.find(params[:id]).destroy
+      redirect_back fallback_location: root_path
+      flash[:notice] = 'Product was successfully destroyed.'
+    else
+      respond_to do |format|
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
