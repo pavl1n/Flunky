@@ -54,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def all_contact_info_filled?
-    name && email && city
+    !(name && email && city).nil?
   end
 
   def address

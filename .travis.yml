@@ -5,7 +5,9 @@ cache:
   - bundler
   - yarn
 services:
+  - elasticsearch
   - postgresql
+  - redis-server
 before_install:
   - nvm install --lts
 before_script:
