@@ -40,7 +40,7 @@
                       = rest_order.status
                     td
                       - unless rest_order.approved
-                        = button_to 'Approve', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, approved: true }, remote: true
+                        = button_to 'Approve', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, approved: true }, remote: true, disabled: rest_order.cancel? || rest_order.done?
                       - else
                         = button_to 'Finish order', { controller: :restaurant_orders, action: :update }, params: { restaurant_order: rest_order, status: 'finish' }, remote: true, disabled: rest_order.cancel? || rest_order.done?
                     td
