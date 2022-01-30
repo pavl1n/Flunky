@@ -129,3 +129,10 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 config/env.yml
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
