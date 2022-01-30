@@ -16,3 +16,7 @@ jquery3.start();
 popper.start();
 bootstrap-sprockets.start();
 import "cocoon-js";
+
+var componentRequireContext = require.context("components", true)
+var ReactRailsUJS = require("react_ujs")
+ReactRailsUJS.useContext(componentRequireContext)
