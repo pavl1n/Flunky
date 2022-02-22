@@ -95,4 +95,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'omniauth-twitter', '~> 1.4'
 
-gem 'fast_jsonapi', '~> 1.5'
+gem 'jsonapi-serializer', '~> 2.2'
