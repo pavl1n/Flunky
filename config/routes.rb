@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   root 'menu#index'
+  namespace :api do
+    namespace :v1 do
+      resources :products
+      resources :user
+    end
+  end
+
+  get '*path', to: 'pages#index', via: :all
   resources :order_positions
   resources :admins do
     collection do
