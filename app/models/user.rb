@@ -3,20 +3,24 @@
 # Model which describes users
 class User < ApplicationRecord
   before_validation :normalize_phone
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]
 
-  validates_with UserValidator
-  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
-  validates_uniqueness_of :email, if: :email
   has_many :restaurant_orders, dependent: :delete_all
   has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :avatar
   accepts_nested_attributes_for :comments
-  scope :confirmed, -> { where(confirmed: true) }
-  validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }
   accepts_nested_attributes_for :products, reject_if: :all_blank, allow_destroy: true
+
+  validates_with UserValidator
+  validates :phone_number, uniqueness: true, phone: { possible: true, types: :mobile, countries: :by }
+  validates_uniqueness_of :email, if: :email
+  validates :avatar, attached: true, content_type: %i[png jpg jpeg], if: -> { create_stage == 2 }
+
+  scope :confirmed, -> { where(confirmed: true) }
+
   enum user_type: { admin: 0, client: 1, restaurant: 2 }
 
   def self.from_omniauth(auth)
