@@ -4,14 +4,18 @@
 class Product < ApplicationRecord
   include Elasticsearch::Model
   #include Elasticsearch::Model::Callbacks
+
   has_one_attached :product_picture
   belongs_to :restaurant, -> { where user_type: :restaurant }, class_name: 'User', foreign_key: 'user_id'
   has_many :order_positions
   has_many :comments, dependent: :destroy
-  scope :approved, -> { where(approved: true) }
-  accepts_nested_attributes_for :comments
-  after_commit :update_indices, on: %i[create update]
   has_many :orders, through: :order_positions
+  accepts_nested_attributes_for :comments
+
+  scope :approved, -> { where(approved: true) }
+
+  after_commit :update_indices, on: %i[create update]
+
   validates :name, :price, :category, :description, presence: true
   validates_numericality_of :price
   validates :description, length: { maximum: 100 }
