@@ -1,7 +1,8 @@
+# frozen_string_literal: false
+
 module Api
   module V1
     class ProductsController < ApplicationController
-
       def new
         product = current_user.products.build
 
@@ -17,9 +18,9 @@ module Api
       def show
         product = if admin(current_user)
                     User.find(params[:user_id]).products.find(params[:id])
-                    else
+                  else
                     User.find(params[:user_id]).products.approved.find(params[:id])
-                    end
+                  end
 
         render json: ProductSerializer.new(product).serializable_hash.to_json
       end
@@ -43,7 +44,6 @@ module Api
           render json: { error: product.errors.messages }, status: 422
         end
       end
-
 
       def destroy
         if Product.find(params[:id]).destroy
