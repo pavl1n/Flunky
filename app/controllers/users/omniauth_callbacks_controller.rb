@@ -31,7 +31,7 @@ module Users
       redirect_to root_path
     end
 
-    protected
+    private
 
     def sign_and_redirect
       sign_in(@user)

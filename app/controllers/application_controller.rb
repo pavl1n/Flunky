@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     current_user.nil? ? Order.new : Order.new(client_id: current_user.id)
   end
 
-  protected
+  private
 
   def default_url_options
     { locale: I18n.locale }
