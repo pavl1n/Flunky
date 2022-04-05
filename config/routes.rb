@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'menu#index'
+  get 'checkout', to: 'checkouts#show'
   resources :order_positions
   resources :admins do
     collection do

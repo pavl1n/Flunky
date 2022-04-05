@@ -253,6 +253,8 @@ GEM
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
+    pay (3.0.24)
+      rails (>= 6.0.0)
     pg (1.2.3)
     phonelib (0.6.51)
     popper_js (1.16.0)
@@ -402,6 +404,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (5.48.0)
     temple (0.8.2)
     thor (1.1.0)
     thwait (0.2.0)
@@ -477,6 +480,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
   pagy (~> 4.8)
+  pay (~> 3.0, >= 3.0.24)
   pg (~> 1.1)
   phonelib (~> 0.6.49)
   pry (~> 0.14.1)
@@ -497,6 +501,7 @@ DEPENDENCIES
   slim (~> 4.1)
   slim-rails (~> 3.2)
   spring
+  stripe (>= 5.0, < 6.0)
   turbolinks (~> 5)
   twilio-ruby (~> 5.51)
   tzinfo-data

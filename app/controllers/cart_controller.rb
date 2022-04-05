@@ -9,7 +9,7 @@ class CartController < ApplicationController
   def approve
     current_order.update(approved: true)
     OrderService.new(current_order).create_restaurant_order
-    redirect_to root_path
+    redirect_to checkout_path(id: current_order.products.ids, quantity: current_order.order_positions.map(&:quantity))
     session[:order_id] = nil
     flash[:notice] = 'Order was succesfully created'
   end
