@@ -16,3 +16,9 @@ jquery3.start();
 popper.start();
 bootstrap-sprockets.start();
 import "cocoon-js";
+
+$(function() {
+  setTimeout(function(){
+    $('.alert').slideUp(500);
+  }, 1000);
+});
