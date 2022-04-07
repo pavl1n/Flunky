@@ -2,6 +2,7 @@
 
 # Model which describes users
 class User < ApplicationRecord
+  pay_customer
   before_validation :normalize_phone
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2 twitter]

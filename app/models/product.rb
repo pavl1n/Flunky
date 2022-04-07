@@ -17,11 +17,24 @@ class Product < ApplicationRecord
   validates :description, length: { maximum: 100 }
   validates :product_picture, attached: true, content_type: %i[png jpg jpeg]
 
+  after_create do
+    product = Stripe::Product.create(name: name)
+    price = Stripe::Price.create(product: product, unit_amount: self.price * 100, currency: 'eur')
+    update(stripe_product_id: product.id, stripe_price_id: price.id)
+  end
+
   settings do
     mappings dynamic: false do
       indexes :name, type: :text
       indexes :category, type: :text
       indexes :description, type: :text
+    end
+  end
+
+  def to_builder(quantity)
+    Jbuilder.new do |product|
+      product.price stripe_price_id
+      product.quantity quantity
     end
   end
 

@@ -129,3 +129,5 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 config/env.yml
+
+/config/credentials/development.key

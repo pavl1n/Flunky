@@ -26,6 +26,7 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'sidekiq-scheduler', '~> 3.1'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 # Use postgresql as the database for Active Record
+gem 'pay', '~> 3.0', '>= 3.0.24'
 gem 'pg', '~> 1.1'
 gem 'pry', '~> 0.14.1'
 # Use Puma as the app server
@@ -34,6 +35,7 @@ gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.2'
+gem 'stripe', '>= 5.0', '< 6.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

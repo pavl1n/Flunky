@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'menu#index'
+  get 'checkout', to: 'checkouts#show'
+  get 'order/success', to: 'checkouts#success'
+  get 'order/cancel', to: 'checkouts#cancel'
   resources :order_positions
   resources :admins do
     collection do
