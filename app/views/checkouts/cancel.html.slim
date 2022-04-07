@@ -1,0 +1,11 @@
+.container
+  .col-md-6.mx-auto.mt-5
+    .payment
+      .payment_header
+        .check
+          i.fa.fa-check aria-hidden="true"
+      .content
+        h1 Payment was failed!
+        p Dear #{@customer.name}, something gone wrong.
+        p Please check your mail to find out the issue that caused breaking the payment.
+        a href="#{root_path}" Go to Home

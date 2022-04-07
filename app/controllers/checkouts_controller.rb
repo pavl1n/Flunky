@@ -11,14 +11,28 @@ class CheckoutsController < ApplicationController
 
     @checkout_session = current_user.payment_processor.checkout(
       mode: 'payment',
-      line_items: products.collect.with_index { |item, index| item.to_builder(params[:quantity][index]).attributes! }
+      line_items: products.collect.with_index { |item, index| item.to_builder(params[:quantity][index]).attributes! },
+      success_url: order_success_url,
+      cancel_url: order_cancel_url
     )
+  end
+
+  def success
+    stripe_user
+  end
+
+  def cancel
+    stripe_user
   end
 
   private
 
+  def stripe_user
+    session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    @customer = Stripe::Customer.retrieve(session.customer)
+  end
+
   def reset_session
-    flash[:notice] = 'Order was succesfully created'
     session[:order_id] = nil
   end
 end
